@@ -1,28 +1,15 @@
 #include "caresphere.h"
-
-#include<iostream>
-
-#include <QApplication>
-using namespace std;
-
 #include <QDebug>
 #include <QApplication>
 #include <QTextStream>
-#include <iostream>
 #include "login.h"
 
-
 using namespace std;
-
-
 
 int main(int argc, char *argv[]) {
     QApplication a(argc, argv);
     CareSphere w;
     w.show();
-
-    cout<<"Hello World"<<endl;
-
 
     QTextStream qout(stdout);
     Login loginSystem;
@@ -43,7 +30,6 @@ int main(int argc, char *argv[]) {
     qout << "Unknown user: " << (loginSystem.verify("Charlie", "somepass") ? "Success" : "Failure") << "\n";
 
     qout.flush();
-
 
     return a.exec();
 }
