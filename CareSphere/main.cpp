@@ -2,27 +2,13 @@
 #include <QDebug>
 #include <QApplication>
 #include <QTextStream>
-<<<<<<< Updated upstream
-#include <iostream>
 #include "login.h"
-=======
-#include<iostream>
-using namespace std;
->>>>>>> Stashed changes
 
 using namespace std;
-
-
 
 int main(int argc, char *argv[]) {
     QApplication a(argc, argv);
     CareSphere w;
-
-
-    cout << "Hello from qout!";
-
-    qInfo() << "Hello from qInfo()";     // Using qInfo() for comparison
-
     w.show();
 
     QTextStream qout(stdout);
