@@ -6,19 +6,22 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>416</width>
+    <height>406</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>CareSphere</string>
   </property>
+  <property name="whatsThis">
+   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;fffffff&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>270</x>
-      <y>330</y>
+      <x>117</x>
+      <y>246</y>
       <width>201</width>
       <height>51</height>
      </rect>
@@ -30,18 +33,21 @@
    <widget class="QTextEdit" name="textEdit">
     <property name="geometry">
      <rect>
-      <x>223</x>
-      <y>124</y>
+      <x>70</x>
+      <y>40</y>
       <width>281</width>
       <height>41</height>
      </rect>
+    </property>
+    <property name="whatsThis">
+     <string>gggg</string>
     </property>
    </widget>
    <widget class="QTextEdit" name="textEdit_2">
     <property name="geometry">
      <rect>
-      <x>223</x>
-      <y>224</y>
+      <x>70</x>
+      <y>140</y>
       <width>281</width>
       <height>41</height>
      </rect>
@@ -53,7 +59,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>416</width>
      <height>27</height>
     </rect>
    </property>
