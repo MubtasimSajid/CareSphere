@@ -1,7 +1,7 @@
 #include "login.h"
 
 Login::Login() {
-    cout << "Hello From Login Class" << endl;
+
 }
 
 // Function to register a user by saving credentials to a CSV file
