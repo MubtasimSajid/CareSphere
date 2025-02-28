@@ -81,15 +81,12 @@
      <rect>
       <x>150</x>
       <y>330</y>
-<<<<<<< HEAD:CareSphere/caresphere.ui
       <width>231</width>
       <height>41</height>
       <width>201</width>
       <height>30</height>
-=======
       <width>201</width>
       <height>41</height>
->>>>>>> a5b9c4205b0525a7d420f9ad105b34fac3a197bd:CareSphere/login.ui
      </rect>
     </property>
     <property name="text">
