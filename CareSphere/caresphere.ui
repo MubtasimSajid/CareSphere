@@ -81,13 +81,10 @@
      <rect>
       <x>150</x>
       <y>330</y>
-<<<<<<< HEAD
       <width>231</width>
       <height>41</height>
-=======
       <width>201</width>
       <height>30</height>
->>>>>>> 2058afbc08ac57573aa6780a3128ba2105661e84
      </rect>
     </property>
     <property name="text">
