@@ -1,31 +1,55 @@
 #include "login.h"
+#include "ui_login.h"
+#include <qwidget.h>
+#include <QMessageBox>
+#include <QKeyEvent>
+#include <qdebug.h>
 
-Login::Login() {
+Login::Login(QWidget *parent)
+    : QMainWindow(parent)
+    , ui(new Ui::Login)
+{
+    ui->setupUi(this);
+    loginSystem = nullptr;
 
+    setTabOrder(ui->usernameLineEdit, ui->passwordLineEdit);
+    setTabOrder(ui->passwordLineEdit, ui->loginButton);
+    setTabOrder(ui->loginButton, ui->registerButton);
+
+    ui->passwordLineEdit->setEchoMode(QLineEdit::Password);
+\
+    connect(ui->loginButton, &QPushButton::clicked, this, &Login::on_loginButton_clicked);
+\
+    this->installEventFilter(this);
+
+    qInfo() << "Login Code Working";
 }
 
-// Function to register a user by saving credentials to a CSV file
-void Login::Register(string name, string password) {
-    ifstream fileRead(filename);  // Open file to check for existing users
+Login::~Login() {
+    delete ui;
+    delete loginSystem;
+}
+
+void Login::registerUser(string name, string password) {
+    ifstream fileRead(filename);
     string line, uname, pass;
 
     if (fileRead.is_open()) {
         while (getline(fileRead, line)) {
             stringstream ss(line);
-            getline(ss, uname, ',');  // Read username
-            getline(ss, pass, ',');   // Read password (not needed for checking)
+            getline(ss, uname, ',');
+            getline(ss, pass, ',');
 
-            if (uname == name) {  // If username already exists
+            if (uname == name) {
                 cout << "Error: Username '" << name << "' already exists. Choose a different one.\n";
                 fileRead.close();
-                return;  // Exit function early
+                return;
             }
         }
         fileRead.close();
     }
 
-    // If username is not found, proceed with registration
-    ofstream fileWrite(filename, ios::out | ios::app);  // Open file in append mode
+    ofstream fileWrite(filename, ios::out | ios::app);
     if (!fileWrite) {
         cout << "Error: Unable to open file for writing!\n";
         return;
@@ -38,7 +62,6 @@ void Login::Register(string name, string password) {
 
 
 
-// Function to verify user credentials by reading from the CSV file
 bool Login::verify(string name, string password) {
     ifstream file(filename);
     string line, uname, pass;
@@ -46,17 +69,59 @@ bool Login::verify(string name, string password) {
     if (file.is_open()) {
         while (getline(file, line)) {
             stringstream ss(line);
-            getline(ss, uname, ',');  // Read username
-            getline(ss, pass, ',');   // Read password
+            getline(ss, uname, ',');
+            getline(ss, pass, ',');
 
             if (uname == name && pass == password) {
                 file.close();
-                return true; // Match found
+                return true;
             }
         }
         file.close();
     } else {
         cout << "Error: Unable to open file for reading!\n";
     }
-    return false; // No match found
+    return false;
+}
+
+void Login::on_loginButton_clicked(){
+    QString username = ui->usernameLineEdit->text();
+    QString password = ui->passwordLineEdit->text();
+
+    if (username.isEmpty() || password.isEmpty()) {
+        QMessageBox::warning(this, "Login Error", "Both fields must be filled!");
+        return;
+    }
+
+    std::string user = username.toStdString();
+    std::string pass = password.toStdString();
+
+    if (verify(user, pass)) {
+        QMessageBox::information(this, "Login Successful", "Welcome, " + username + "!");
+    } else {
+        QMessageBox::information(this, "Login failed", "Invalid username or password");
+    }
+}
+
+bool Login::eventFilter(QObject *obj, QEvent *event) {
+    if (event->type() == QEvent::KeyPress) {
+        QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
+        if (keyEvent->key() == Qt::Key_Return || keyEvent->key() == Qt::Key_Enter) {
+            if (ui->loginButton->hasFocus() || ui->usernameLineEdit->hasFocus() || ui->passwordLineEdit->hasFocus()) {
+                on_loginButton_clicked();
+            } else if (ui->registerButton->hasFocus()) {
+                on_registerButton_clicked();
+            }
+            return true;
+        }
+    }
+    return QMainWindow::eventFilter(obj, event);
+}
+
+
+void Login::on_registerButton_clicked()
+{
+    Registration *registerWindow = new Registration();
+    registerWindow->show();
+    this->close();
 }

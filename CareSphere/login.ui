@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>CareSphere</class>
- <widget class="QMainWindow" name="CareSphere">
+ <class>Login</class>
+ <widget class="QMainWindow" name="Login">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>CareSphere</string>
+   <string>Login - CareSphere   </string>
   </property>
   <property name="whatsThis">
    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -81,10 +81,15 @@
      <rect>
       <x>150</x>
       <y>330</y>
+<<<<<<< HEAD:CareSphere/caresphere.ui
       <width>231</width>
       <height>41</height>
       <width>201</width>
       <height>30</height>
+=======
+      <width>201</width>
+      <height>41</height>
+>>>>>>> a5b9c4205b0525a7d420f9ad105b34fac3a197bd:CareSphere/login.ui
      </rect>
     </property>
     <property name="text">

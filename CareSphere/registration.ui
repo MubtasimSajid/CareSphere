@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Register - CareSphere</string>
   </property>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="registerPushButton">
    <property name="geometry">
     <rect>
      <x>340</x>
@@ -40,14 +40,14 @@
      <number>30</number>
     </property>
     <item>
-     <widget class="QLabel" name="RegUsernameLabel">
+     <widget class="QLabel" name="regUsernameLabel">
       <property name="text">
        <string>Username :</string>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QLabel" name="RegPasswordLabel">
+     <widget class="QLabel" name="regPasswordLabel">
       <property name="text">
        <string>Password :</string>
       </property>
@@ -75,7 +75,7 @@
      <number>30</number>
     </property>
     <item>
-     <widget class="QLineEdit" name="RegUsernameLineEdit">
+     <widget class="QLineEdit" name="regUsernameLineEdit">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
         <horstretch>0</horstretch>
@@ -85,7 +85,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QLineEdit" name="RegPasswordLineEdit">
+     <widget class="QLineEdit" name="regPasswordLineEdit">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
         <horstretch>0</horstretch>

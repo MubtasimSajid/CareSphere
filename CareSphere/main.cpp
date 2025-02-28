@@ -1,11 +1,13 @@
-#include <QApplication>  // Use QApplication for GUI applications
-#include "caresphere.h"  // Include the main window header file
+#include <QApplication>
+#include "caresphere.h"
+#include "login.h"
+#include "registration.h"
 
 int main(int argc, char *argv[]) {
-    QApplication a(argc, argv);  // Use QApplication for GUI applications
+    QApplication a(argc, argv);
 
-    CareSphere w;  // Create the main window
-    w.show();      // Show the window
+    Login w;
+    w.show();
 
-    return a.exec();  // Start the event loop
+    return a.exec();
 }
