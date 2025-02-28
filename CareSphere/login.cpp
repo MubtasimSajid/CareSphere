@@ -12,6 +12,10 @@ Login::Login(QWidget *parent)
     ui->setupUi(this);
     loginSystem = nullptr;
 
+    setTabOrder(ui->usernameLineEdit, ui->passwordLineEdit);
+    setTabOrder(ui->passwordLineEdit, ui->loginButton);
+    setTabOrder(ui->loginButton, ui->registerButton);
+
     ui->passwordLineEdit->setEchoMode(QLineEdit::Password);
 
     // Connect login button to login function (not necessary)
@@ -105,7 +109,11 @@ bool Login::eventFilter(QObject *obj, QEvent *event) {
     if (event->type() == QEvent::KeyPress) {
         QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
         if (keyEvent->key() == Qt::Key_Return || keyEvent->key() == Qt::Key_Enter) {
-            on_loginButton_clicked();
+            if (ui->loginButton->hasFocus() || ui->usernameLineEdit->hasFocus() || ui->passwordLineEdit->hasFocus()) {
+                on_loginButton_clicked();
+            } else if (ui->registerButton->hasFocus()) {
+                on_registerButton_clicked();
+            }
             return true;
         }
     }
