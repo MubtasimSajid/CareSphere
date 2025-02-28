@@ -17,11 +17,9 @@ Login::Login(QWidget *parent)
     setTabOrder(ui->loginButton, ui->registerButton);
 
     ui->passwordLineEdit->setEchoMode(QLineEdit::Password);
-
-    // Connect login button to login function (not necessary)
+\
     connect(ui->loginButton, &QPushButton::clicked, this, &Login::on_loginButton_clicked);
-
-    // Install event filter on the whole window to detect Enter key
+\
     this->installEventFilter(this);
 
     qInfo() << "Login Code Working";
