@@ -16,7 +16,7 @@ set(PROJECT_SOURCES
         main.cpp
         caresphere.cpp
         caresphere.h
-        caresphere.ui
+        login.ui
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

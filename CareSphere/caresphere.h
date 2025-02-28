@@ -5,30 +5,12 @@
 #include "login.h"
 #include "registration.h"
 
-QT_BEGIN_NAMESPACE
-namespace Ui {
-class Login;
-}
-QT_END_NAMESPACE
-
 class CareSphere : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    CareSphere(QWidget *parent = nullptr);
+    CareSphere();
     ~CareSphere();
-
-protected:
-    bool eventFilter(QObject *obj, QEvent *event) override;  // 🔹 Declare eventFilter
-
-private slots:
-    void on_loginButton_clicked();
-
-    void on_registerButton_clicked();
-
-private:
-    Ui::Login *ui;
-    Login loginSystem;
 };
-#endif // CARESPHERE_H
+#endif
