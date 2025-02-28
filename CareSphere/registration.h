@@ -19,4 +19,4 @@ private:
     Ui::Registration *ui;
 };
 
-#endif // REGISTRATION_H
+#endif
