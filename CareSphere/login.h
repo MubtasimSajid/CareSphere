@@ -31,7 +31,7 @@ private slots:
 public:
     explicit Login(QWidget *parent = nullptr);
     ~Login();
-    void Register(string name, string password);
+    void registerUser(string name, string password);
     bool verify(string name, string password);
 };
 

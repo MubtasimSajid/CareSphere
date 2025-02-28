@@ -28,7 +28,7 @@ Login::~Login() {
     delete loginSystem;
 }
 
-void Login::Register(string name, string password) {
+void Login::registerUser(string name, string password) {
     ifstream fileRead(filename);
     string line, uname, pass;
 
