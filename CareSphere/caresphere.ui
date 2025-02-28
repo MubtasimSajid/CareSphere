@@ -76,13 +76,18 @@
      </rect>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="registerButton">
     <property name="geometry">
      <rect>
-      <x>140</x>
+      <x>150</x>
       <y>330</y>
+<<<<<<< HEAD
       <width>231</width>
       <height>41</height>
+=======
+      <width>201</width>
+      <height>30</height>
+>>>>>>> 2058afb (Registration page done)
      </rect>
     </property>
     <property name="text">

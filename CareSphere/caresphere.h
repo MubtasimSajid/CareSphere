@@ -3,10 +3,11 @@
 
 #include <QMainWindow>
 #include "login.h"
+#include "registration.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
-class CareSphere;
+class Login;
 }
 QT_END_NAMESPACE
 
@@ -24,8 +25,10 @@ protected:
 private slots:
     void on_loginButton_clicked();
 
+    void on_registerButton_clicked();
+
 private:
-    Ui::CareSphere *ui;
+    Ui::Login *ui;
     Login loginSystem;
 };
 #endif // CARESPHERE_H

@@ -24,8 +24,8 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
         login.h login.cpp
-        Registration.h Registration.cpp Registration.ui
-        login1.h login1.cpp login1.ui
+        registration.h registration.cpp registration.ui
+
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET CareSphere APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR

@@ -6,7 +6,7 @@
 
 CareSphere::CareSphere(QWidget *parent)
     : QMainWindow(parent)
-    , ui(new Ui::CareSphere)
+    , ui(new Ui::Login)
 {
     ui->setupUi(this);
 
@@ -53,3 +53,12 @@ bool CareSphere::eventFilter(QObject *obj, QEvent *event) {
     }
     return QMainWindow::eventFilter(obj, event);  // Pass to base class
 }
+
+
+void CareSphere::on_registerButton_clicked()
+{
+    Registration *registerWindow = new Registration();
+    registerWindow->show();
+    this->close();
+}
+
