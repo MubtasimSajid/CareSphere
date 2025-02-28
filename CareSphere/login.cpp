@@ -1,6 +1,8 @@
 #include "login.h"
+#include <qwidget.h>
 
-Login::Login() {
+Login::Login()
+{
 
 }
 

@@ -16,8 +16,8 @@
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>330</x>
-     <y>540</y>
+     <x>340</x>
+     <y>430</y>
      <width>131</width>
      <height>51</height>
     </rect>
@@ -29,23 +29,16 @@
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>140</x>
-     <y>230</y>
-     <width>151</width>
-     <height>241</height>
+     <x>170</x>
+     <y>260</y>
+     <width>111</width>
+     <height>121</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout_2">
     <property name="spacing">
      <number>30</number>
     </property>
-    <item>
-     <widget class="QLabel" name="RegNameLabel">
-      <property name="text">
-       <string>Name :</string>
-      </property>
-     </widget>
-    </item>
     <item>
      <widget class="QLabel" name="RegUsernameLabel">
       <property name="text">
@@ -65,10 +58,10 @@
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>320</x>
-     <y>230</y>
+     <x>310</x>
+     <y>260</y>
      <width>321</width>
-     <height>241</height>
+     <height>121</height>
     </rect>
    </property>
    <property name="sizePolicy">
@@ -81,16 +74,6 @@
     <property name="spacing">
      <number>30</number>
     </property>
-    <item>
-     <widget class="QLineEdit" name="RegNamelineEdit">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-     </widget>
-    </item>
     <item>
      <widget class="QLineEdit" name="RegUsernameLineEdit">
       <property name="sizePolicy">
