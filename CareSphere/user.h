@@ -28,33 +28,31 @@ private:
     string id;
     string name;
     string email;
-    string Phone_NO;
+    string phoneNo;
     Gender gender;
     Religion religion;
     string DOB;
 public:
-    User(string id, string name, string email="", string Phone_NO="", Gender gender=N_A, Religion religion=Other, string DOB="");
-    // Getter and Setters
+    User(string id, string name, string email = "", string phoneNo = "", Gender gender = N_A, Religion religion = Other, string DOB = "");
     string getId() const;
     void setId(const string &inputID);
     string getName() const;
     void setName(const string &inputName);
-    string getemail() const;
-    void set_email(string email);
-    string get_Phone_No() const;
-    void set_Phone_No(string Phone_No);
-    Gender get_Gender() const;
-    void set_Gender(Gender InputGender);
-    Religion get_Religion() const;
-    void set_Religion(Religion InputReligion);
-    string get_DOB() const;
-    void set_DOB(string Input_DOB);
-    // Files operations functions
+    string getEmail() const;
+    void setEmail(string email);
+    string getPhoneNo() const;
+    void setPhoneNo(string phoneNo);
+    Gender getGender() const;
+    void setGender(Gender inputGender);
+    Religion getReligion() const;
+    void setReligion(Religion inputReligion);
+    string getDOB() const;
+    void setDOB(string inputDOB);
 
 };
 
-void save_users(const vector<User>& users);  // Save multiple users to CSV
-vector<User> load_users();  // Load users from CSV
+void saveUsers(const vector<User>& users);  // Save multiple users to CSV
+vector<User> loadUsers();  // Load users from CSV
 
 
 #endif // USER_H

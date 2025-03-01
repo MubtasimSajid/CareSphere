@@ -43,22 +43,22 @@ int main(int argc, char *argv[]) {
 
     // **Step 2: Save Users to CSV**
     cout << "\nSaving users to CSV..." << endl;
-    save_users(users);
+    saveUsers(users);
 
     // **Step 3: Load Users from CSV**
     cout << "\nLoading users from CSV..." << endl;
-    vector<User> loaded_users = load_users();
+    vector<User> loadedUsers = loadUsers();
 
     // **Step 4: Display Loaded Users**
     cout << "\nDisplaying loaded users:\n";
-    for (const auto& user : loaded_users) {
+    for (const auto& user : loadedUsers) {
         cout << "User ID: " << user.getId() << endl;
         cout << "Name: " << user.getName() << endl;
-        cout << "Email: " << user.getemail() << endl;
-        cout << "Phone Number: " << user.get_Phone_No() << endl;
-        cout << "Gender: " << (user.get_Gender() == male ? "Male" : "Female") << endl;
-        cout << "Religion: " << user.get_Religion() << endl;  // Enum will return integer
-        cout << "Date of Birth: " << user.get_DOB() << endl;
+        cout << "Email: " << user.getEmail() << endl;
+        cout << "Phone Number: " << user.getPhoneNo() << endl;
+        cout << "Gender: " << (user.getGender() == male ? "Male" : "Female") << endl;
+        cout << "Religion: " << user.getReligion() << endl;  // Enum will return integer
+        cout << "Date of Birth: " << user.getDOB() << endl;
         cout << "---------------------\n";
     }
 

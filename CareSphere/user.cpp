@@ -19,7 +19,7 @@ void createFolderIfNotExists() {
     }
 }
 // Save multiple users to a CSV file
-void save_users(const vector<User>& users) {
+void saveUsers(const vector<User>& users) {
     createFolderIfNotExists();  // Ensure folder exists
 
     ofstream file(FILE_NAME);  // Open file for writing
@@ -35,11 +35,11 @@ void save_users(const vector<User>& users) {
     for (const auto& user : users) {
         file << user.getId() << ","
              << user.getName() << ","
-             << user.getemail() << ","
-             << "\"=\"" << user.get_Phone_No() << "\"\","  // Fixes phone number gibberish
-             << user.get_Gender() << ","
-             << user.get_Religion() << ","
-             << "\"=\"" << user.get_DOB() << "\"\""  // Fixes DOB hash issue
+             << user.getEmail() << ","
+             << "\"=\"" << user.getPhoneNo() << "\"\","  // Fixes phone number gibberish
+             << user.getGender() << ","
+             << user.getReligion() << ","
+             << "\"=\"" << user.getDOB() << "\"\""  // Fixes DOB hash issue
              << "\n";
     }
 
@@ -50,7 +50,7 @@ void save_users(const vector<User>& users) {
 
 
 // Load users from the CSV file
-vector<User> load_users() {
+vector<User> loadUsers() {
     vector<User> users;
     ifstream file(FILE_NAME);  // Open file for reading
 
@@ -86,9 +86,9 @@ vector<User> load_users() {
 }
 
 
-User::User(string id, string name, string email, string Phone_NO, Gender gender, Religion religion, string DOB)
+User::User(string id, string name, string email, string phoneNo, Gender gender, Religion religion, string DOB)
 {
-    if (id.empty() || name.empty() || Phone_NO.empty()) {
+    if (id.empty() || name.empty() || phoneNo.empty()) {
         cout << "Error: User object cannot be initialized without an ID, Name, and Phone Number!" << endl;
         return; // Exit constructor early
     }
@@ -96,7 +96,7 @@ User::User(string id, string name, string email, string Phone_NO, Gender gender,
     this->id = id;
     this->name = name;
     this->email = email;
-    this->Phone_NO = Phone_NO;
+    this->phoneNo = phoneNo;
     this->gender = gender;
     this->religion = religion;
     this->DOB = DOB;
@@ -123,52 +123,52 @@ void User::setName(const string &inputName)
     name = inputName;
 }
 
-string User::getemail() const
+string User::getEmail() const
 {
     return email;
 }
 
-void User::set_email(string email)
+void User::setEmail(string email)
 {
-    this->email =email;
+    this->email = email;
 }
 
-string User::get_Phone_No() const
+string User::getPhoneNo() const
 {
-    return Phone_NO;
+    return phoneNo;
 }
 
-void User::set_Phone_No(string Phone_No)
+void User::setPhoneNo(string phoneNo)
 {
-    this->Phone_NO = Phone_No;
+    this->phoneNo = phoneNo;
 }
 
-Gender User::get_Gender() const
+Gender User::getGender() const
 {
     return gender;
 }
 
-void User::set_Gender(Gender InputGender)
+void User::setGender(Gender inputGender)
 {
-    gender = InputGender;
+    gender = inputGender;
 }
 
-Religion User::get_Religion() const
+Religion User::getReligion() const
 {
     return religion;
 }
 
-void User::set_Religion(Religion InputReligion)
+void User::setReligion(Religion inputReligion)
 {
-    religion = InputReligion;
+    religion = inputReligion;
 }
 
-string User::get_DOB() const
+string User::getDOB() const
 {
     return DOB;
 }
 
-void User::set_DOB(string Input_DOB)
+void User::setDOB(string inputDOB)
 {
-    DOB= Input_DOB;
+    DOB = inputDOB;
 }

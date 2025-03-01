@@ -1,4 +1,5 @@
 #include "registration.h"
+#include "login.h"
 #include "ui_registration.h"
 
 Registration::Registration(QWidget *parent)
@@ -14,3 +15,11 @@ Registration::~Registration()
 {
     delete ui;
 }
+
+void Registration::on_regBackToLoginButton_clicked()
+{
+    Login *loginWindow = new Login();
+    loginWindow->show();
+    this->close();
+}
+
