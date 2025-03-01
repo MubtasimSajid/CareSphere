@@ -36,15 +36,17 @@ void save_users(const vector<User>& users) {
         file << user.getId() << ","
              << user.getName() << ","
              << user.getemail() << ","
-             << user.get_Phone_No() << ","
+             << "\"=\"" << user.get_Phone_No() << "\"\","  // Fixes phone number gibberish
              << user.get_Gender() << ","
              << user.get_Religion() << ","
-             << "\"" << user.get_DOB() << "\"" << "\n";  // Wrap DOB in quotes
+             << "\"=\"" << user.get_DOB() << "\"\""  // Fixes DOB hash issue
+             << "\n";
     }
 
     file.close();
     cout << "User details saved successfully to " << FILE_NAME << endl;
 }
+
 
 
 // Load users from the CSV file
