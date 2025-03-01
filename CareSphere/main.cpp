@@ -3,7 +3,6 @@
 #include "login.h"
 #include "registration.h"
 #include "user.h"
-
 string genderToString(Gender gender) {
     switch (gender) {
     case male: return "Male";
@@ -34,33 +33,34 @@ int main(int argc, char *argv[]) {
     Login w;
     w.show();
 
-    // Create a User object with test values
-    User user1("U123", "John Doe", "johndoe@example.com", "1234567890", male, Christianity, "01-01-1990");
-    // Display user details using getter methods
-    cout << "User ID: " << user1.getId() << endl;
-    cout << "Name: " << user1.getName() << endl;
-    cout << "Email: " << user1.getemail() << endl;
-    cout << "Phone Number: " << user1.get_Phone_No() << endl;
-    cout << "Gender: " << genderToString(user1.get_Gender()) << endl;
-    cout << "Religion: " << religionToString(user1.get_Religion()) << endl;
-    cout << "Date of Birth: " << user1.get_DOB() << endl;
+    vector<User> users;
 
-    // Modify user details using setter methods
-    user1.setName("Jane Doe");
-    user1.set_email("janedoe@example.com");
-    user1.set_Phone_No("9876543210");
-    user1.set_Gender(female);
-    user1.set_Religion(Hinduism);
-    user1.set_DOB("02-02-1992");
+    // **Step 1: Create and Display Users**
+    cout << "Creating users..." << endl;
+    users.push_back(User("U001", "Alice Johnson", "alice@example.com", "1234567890", female, Christianity, "1995-06-10"));
+    users.push_back(User("U002", "Bob Smith", "bob@example.com", "9876543210", male, Islam, "1992-04-15"));
+    users.push_back(User("U003", "Charlie Adams", "charlie@example.com", "5551234567", male, Atheism, "1990-12-05"));
 
-    // Display updated details
-    cout << "\nUpdated User Information:\n";
-    cout << "Name: " << user1.getName() << endl;
-    cout << "Email: " << user1.getemail() << endl;
-    cout << "Phone Number: " << user1.get_Phone_No() << endl;
-    cout << "Gender: " << genderToString(user1.get_Gender()) << endl;
-    cout << "Religion: " << religionToString(user1.get_Religion()) << endl;
-    cout << "Date of Birth: " << user1.get_DOB() << endl;
+    // **Step 2: Save Users to CSV**
+    cout << "\nSaving users to CSV..." << endl;
+    save_users(users);
+
+    // **Step 3: Load Users from CSV**
+    cout << "\nLoading users from CSV..." << endl;
+    vector<User> loaded_users = load_users();
+
+    // **Step 4: Display Loaded Users**
+    cout << "\nDisplaying loaded users:\n";
+    for (const auto& user : loaded_users) {
+        cout << "User ID: " << user.getId() << endl;
+        cout << "Name: " << user.getName() << endl;
+        cout << "Email: " << user.getemail() << endl;
+        cout << "Phone Number: " << user.get_Phone_No() << endl;
+        cout << "Gender: " << (user.get_Gender() == male ? "Male" : "Female") << endl;
+        cout << "Religion: " << user.get_Religion() << endl;  // Enum will return integer
+        cout << "Date of Birth: " << user.get_DOB() << endl;
+        cout << "---------------------\n";
+    }
 
 
 
