@@ -23,3 +23,10 @@ void Registration::on_regBackToLoginButton_clicked()
     this->close();
 }
 
+
+void Registration::on_registerPushButton_clicked()
+{
+    QString regUsername = ui->regUsernameLineEdit->text();
+    QString regPassword = ui->regPasswordLineEdit->text();
+}
+
