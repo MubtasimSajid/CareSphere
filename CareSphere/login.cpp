@@ -3,7 +3,6 @@
 #include <qwidget.h>
 #include <QMessageBox>
 #include <QKeyEvent>
-#include <qdebug.h>
 
 Login::Login(QWidget *parent)
     : QMainWindow(parent)
@@ -21,8 +20,6 @@ Login::Login(QWidget *parent)
     connect(ui->loginButton, &QPushButton::clicked, this, &Login::on_loginButton_clicked);
 \
     this->installEventFilter(this);
-
-    qInfo() << "Login Code Working";
 }
 
 Login::~Login() {
@@ -41,7 +38,7 @@ void Login::registerUser(string name, string password) {
             getline(ss, pass, ',');
 
             if (uname == name) {
-                cout << "Error: Username '" << name << "' already exists. Choose a different one.\n";
+                cout << "Error: Username: '" << name << "' already exists. Choose a different one.\n";
                 fileRead.close();
                 return;
             }
@@ -51,7 +48,7 @@ void Login::registerUser(string name, string password) {
 
     ofstream fileWrite(filename, ios::out | ios::app);
     if (!fileWrite) {
-        cout << "Error: Unable to open file for writing!\n";
+        cout << "Error: Unable to open file for writing!";
         return;
     }
     fileWrite << name << "," << password << "\n";
@@ -89,7 +86,11 @@ void Login::on_loginButton_clicked(){
     QString password = ui->passwordLineEdit->text();
 
     if (username.isEmpty() || password.isEmpty()) {
-        QMessageBox::warning(this, "Login Error", "Both fields must be filled!");
+        QMessageBox msgBox;
+        msgBox.setIcon(QMessageBox::Warning);
+        msgBox.setWindowTitle("Login Error");
+        msgBox.setText("Invalid username or password");
+        msgBox.exec();
         return;
     }
 
