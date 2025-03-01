@@ -3,6 +3,7 @@
 #include <qwidget.h>
 #include <QMessageBox>
 #include <QKeyEvent>
+#include <QTimer>
 
 Login::Login(QWidget *parent)
     : QMainWindow(parent)
@@ -14,6 +15,9 @@ Login::Login(QWidget *parent)
     setTabOrder(ui->usernameLineEdit, ui->passwordLineEdit);
     setTabOrder(ui->passwordLineEdit, ui->loginButton);
     setTabOrder(ui->loginButton, ui->registerButton);
+
+    ui->loginButton->setAutoDefault(false);
+    ui->loginButton->setDefault(false);
 
     ui->passwordLineEdit->setEchoMode(QLineEdit::Password);
 \
@@ -81,16 +85,17 @@ bool Login::verify(string name, string password) {
     return false;
 }
 
-void Login::on_loginButton_clicked(){
+void Login::on_loginButton_clicked() {
+    ui->loginButton->clearFocus();
+    this->setFocus();
+
     QString username = ui->usernameLineEdit->text();
     QString password = ui->passwordLineEdit->text();
 
     if (username.isEmpty() || password.isEmpty()) {
-        QMessageBox msgBox;
-        msgBox.setIcon(QMessageBox::Warning);
-        msgBox.setWindowTitle("Login Error");
-        msgBox.setText("Invalid username or password");
-        msgBox.exec();
+        ui->errorLabel->setText("Invalid username or password");
+        ui->errorLabel->setStyleSheet("color: red;");
+        ui->errorLabel->show();
         return;
     }
 
@@ -99,8 +104,11 @@ void Login::on_loginButton_clicked(){
 
     if (verify(user, pass)) {
         QMessageBox::information(this, "Login Successful", "Welcome, " + username + "!");
+        ui->errorLabel->hide();
     } else {
-        QMessageBox::information(this, "Login failed", "Invalid username or password");
+        ui->errorLabel->setText("Invalid username or password");
+        ui->errorLabel->setStyleSheet("color: red;");
+        ui->errorLabel->show();
     }
 }
 
