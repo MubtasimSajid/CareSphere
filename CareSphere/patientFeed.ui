@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>540</width>
-    <height>431</height>
+    <width>561</width>
+    <height>401</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,7 +18,7 @@
     <rect>
      <x>54</x>
      <y>170</y>
-     <width>221</width>
+     <width>121</width>
      <height>131</height>
     </rect>
    </property>
@@ -29,13 +29,16 @@
     <enum>QTabWidget::TabShape::Rounded</enum>
    </property>
    <property name="currentIndex">
-    <number>1</number>
+    <number>0</number>
    </property>
-   <property name="iconSize">
-    <size>
-     <width>30</width>
-     <height>30</height>
-    </size>
+   <property name="documentMode">
+    <bool>false</bool>
+   </property>
+   <property name="tabsClosable">
+    <bool>false</bool>
+   </property>
+   <property name="tabBarAutoHide">
+    <bool>false</bool>
    </property>
    <widget class="QWidget" name="prescriptionTab">
     <attribute name="title">
@@ -51,9 +54,9 @@
   <widget class="QTabWidget" name="tabWidget_2">
    <property name="geometry">
     <rect>
-     <x>280</x>
+     <x>290</x>
      <y>170</y>
-     <width>211</width>
+     <width>141</width>
      <height>131</height>
     </rect>
    </property>
@@ -73,7 +76,7 @@
    </widget>
    <widget class="QWidget" name="notesTab">
     <attribute name="title">
-     <string>Notes</string>
+     <string>Notes </string>
     </attribute>
    </widget>
   </widget>
