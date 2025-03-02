@@ -37,12 +37,12 @@
      <height>30</height>
     </size>
    </property>
-   <widget class="QWidget" name="Prescription">
+   <widget class="QWidget" name="prescriptionTab">
     <attribute name="title">
      <string>Prescription</string>
     </attribute>
    </widget>
-   <widget class="QWidget" name="Reminders">
+   <widget class="QWidget" name="remindersTab">
     <attribute name="title">
      <string>Reminders</string>
     </attribute>
@@ -58,7 +58,7 @@
     </rect>
    </property>
    <property name="currentIndex">
-    <number>1</number>
+    <number>0</number>
    </property>
    <property name="iconSize">
     <size>
@@ -66,12 +66,12 @@
      <height>30</height>
     </size>
    </property>
-   <widget class="QWidget" name="Appointments">
+   <widget class="QWidget" name="appointmentsTab">
     <attribute name="title">
      <string>Appointments </string>
     </attribute>
    </widget>
-   <widget class="QWidget" name="Notes">
+   <widget class="QWidget" name="notesTab">
     <attribute name="title">
      <string>Notes</string>
     </attribute>
