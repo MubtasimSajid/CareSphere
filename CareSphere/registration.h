@@ -2,6 +2,7 @@
 #define REGISTRATION_H
 
 #include <QWidget>
+#include <QString>
 
 namespace Ui {
 class Registration;
@@ -17,6 +18,8 @@ public:
 
 private slots:
     void on_regBackToLoginButton_clicked();
+
+    void on_registerPushButton_clicked();
 
 private:
     Ui::Registration *ui;
