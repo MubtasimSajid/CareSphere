@@ -1,5 +1,5 @@
-#include "patientfeed.h"
-#include "ui_patientfeed.h"
+#include "patientFeed.h"
+#include "ui_patientFeed.h"
 
 patientFeed::patientFeed(QWidget *parent)
     : QWidget(parent)

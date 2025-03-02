@@ -19,4 +19,4 @@ private:
     Ui::patientFeed *ui;
 };
 
-#endif // PATIENTFEED_H
+#endif
