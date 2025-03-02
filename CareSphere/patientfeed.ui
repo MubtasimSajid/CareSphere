@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>540</width>
-    <height>431</height>
+    <width>561</width>
+    <height>401</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,7 +18,7 @@
     <rect>
      <x>54</x>
      <y>170</y>
-     <width>221</width>
+     <width>121</width>
      <height>131</height>
     </rect>
    </property>
@@ -29,51 +29,89 @@
     <enum>QTabWidget::TabShape::Rounded</enum>
    </property>
    <property name="currentIndex">
-    <number>1</number>
+    <number>0</number>
    </property>
-   <property name="iconSize">
-    <size>
-     <width>30</width>
-     <height>30</height>
-    </size>
+   <property name="documentMode">
+    <bool>false</bool>
+   </property>
+   <property name="tabsClosable">
+    <bool>false</bool>
+   </property>
+   <property name="tabBarAutoHide">
+    <bool>false</bool>
    </property>
    <widget class="QWidget" name="Prescription">
     <attribute name="title">
      <string>Prescription</string>
     </attribute>
    </widget>
-   <widget class="QWidget" name="Reminders">
-    <attribute name="title">
-     <string>Reminders</string>
-    </attribute>
-   </widget>
   </widget>
   <widget class="QTabWidget" name="tabWidget_2">
    <property name="geometry">
     <rect>
-     <x>280</x>
+     <x>290</x>
      <y>170</y>
-     <width>211</width>
+     <width>141</width>
      <height>131</height>
     </rect>
    </property>
    <property name="currentIndex">
-    <number>1</number>
-   </property>
-   <property name="iconSize">
-    <size>
-     <width>30</width>
-     <height>30</height>
-    </size>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="Appointments">
     <attribute name="title">
      <string>Appointments </string>
     </attribute>
    </widget>
+  </widget>
+  <widget class="QTabWidget" name="tabWidget_3">
+   <property name="geometry">
+    <rect>
+     <x>170</x>
+     <y>170</y>
+     <width>121</width>
+     <height>131</height>
+    </rect>
+   </property>
+   <property name="tabPosition">
+    <enum>QTabWidget::TabPosition::North</enum>
+   </property>
+   <property name="tabShape">
+    <enum>QTabWidget::TabShape::Rounded</enum>
+   </property>
+   <property name="currentIndex">
+    <number>0</number>
+   </property>
+   <property name="documentMode">
+    <bool>false</bool>
+   </property>
+   <property name="tabsClosable">
+    <bool>false</bool>
+   </property>
+   <property name="tabBarAutoHide">
+    <bool>false</bool>
+   </property>
+   <widget class="QWidget" name="Reminders">
+    <attribute name="title">
+     <string>Reminders</string>
+    </attribute>
+   </widget>
+  </widget>
+  <widget class="QTabWidget" name="tabWidget_4">
+   <property name="geometry">
+    <rect>
+     <x>430</x>
+     <y>170</y>
+     <width>81</width>
+     <height>131</height>
+    </rect>
+   </property>
+   <property name="currentIndex">
+    <number>0</number>
+   </property>
    <widget class="QWidget" name="Notes">
     <attribute name="title">
-     <string>Notes</string>
+     <string>Notes </string>
     </attribute>
    </widget>
   </widget>
