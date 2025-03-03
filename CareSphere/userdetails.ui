@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Registration</class>
- <widget class="QWidget" name="Registration">
+ <class>UserDetails</class>
+ <widget class="QWidget" name="UserDetails">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Register - CareSphere</string>
   </property>
-  <widget class="QPushButton" name="registerButton">
+  <widget class="QPushButton" name="registerDetailsButton">
    <property name="geometry">
     <rect>
      <x>300</x>
@@ -26,7 +26,7 @@
     <string>Register</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="regBackToLoginButton">
+  <widget class="QPushButton" name="detailsBackToReg">
    <property name="geometry">
     <rect>
      <x>20</x>
@@ -49,7 +49,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QRadioButton" name="malebutton">
+  <widget class="QRadioButton" name="maleButton">
    <property name="geometry">
     <rect>
      <x>250</x>
@@ -62,7 +62,7 @@
     <string>Male</string>
    </property>
   </widget>
-  <widget class="QLabel" name="userdetailsphoneLabel">
+  <widget class="QLabel" name="userDetailsPhoneLabel">
    <property name="geometry">
     <rect>
      <x>100</x>
@@ -75,7 +75,7 @@
     <string>Phone No. :</string>
    </property>
   </widget>
-  <widget class="QLabel" name="userdetailsgenderLabel">
+  <widget class="QLabel" name="userDetailsGenderLabel">
    <property name="geometry">
     <rect>
      <x>100</x>
@@ -88,7 +88,7 @@
     <string>Gender :</string>
    </property>
   </widget>
-  <widget class="QLabel" name="userdetailsemailLabel">
+  <widget class="QLabel" name="userDetailsEmaillLabel">
    <property name="geometry">
     <rect>
      <x>100</x>
@@ -101,7 +101,7 @@
     <string>E-mail :</string>
    </property>
   </widget>
-  <widget class="QLabel" name="userdetailsnameLabel">
+  <widget class="QLabel" name="userDetailsNameLabel">
    <property name="geometry">
     <rect>
      <x>100</x>
@@ -114,7 +114,7 @@
     <string>Name :</string>
    </property>
   </widget>
-  <widget class="QRadioButton" name="femalebutton">
+  <widget class="QRadioButton" name="femaleButton">
    <property name="geometry">
     <rect>
      <x>400</x>
@@ -127,7 +127,7 @@
     <string>Female</string>
    </property>
   </widget>
-  <widget class="QLabel" name="userdetailsdobLabel">
+  <widget class="QLabel" name="userDetailsDOBLabel">
    <property name="geometry">
     <rect>
      <x>100</x>
@@ -140,7 +140,7 @@
     <string>Date of Birth :</string>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>250</x>
@@ -154,7 +154,7 @@
      <number>15</number>
     </property>
     <item>
-     <widget class="QLineEdit" name="lineEdit">
+     <widget class="QLineEdit" name="udNameEdit">
       <property name="minimumSize">
        <size>
         <width>319</width>
@@ -176,7 +176,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QLineEdit" name="regPasswordLineEdit">
+     <widget class="QLineEdit" name="udEmailEdit">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
         <horstretch>0</horstretch>
@@ -204,7 +204,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QLineEdit" name="regUsernameLineEdit">
+     <widget class="QLineEdit" name="udPhoneEdit">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
         <horstretch>0</horstretch>

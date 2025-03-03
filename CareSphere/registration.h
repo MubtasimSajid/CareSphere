@@ -5,7 +5,7 @@
 #include <QString>
 
 namespace Ui {
-class UserDetails;
+class Registration;
 }
 
 class Registration : public QWidget
@@ -22,7 +22,7 @@ private slots:
     void on_registerPushButton_clicked();
 
 private:
-    Ui::UserDetails *ui;
+    Ui::Registration *ui;
 };
 
 #endif

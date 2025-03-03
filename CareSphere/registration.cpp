@@ -4,7 +4,7 @@
 
 Registration::Registration(QWidget *parent)
     : QWidget(parent)
-    , ui(new Ui::UserDetails)
+    , ui(new Ui::Registration)
 {
     ui->setupUi(this);
 
