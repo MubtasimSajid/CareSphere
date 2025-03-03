@@ -51,8 +51,8 @@ public:
 
 };
 
-void saveUsers(const vector<User>& users);  // Save multiple users to CSV
-vector<User> loadUsers();  // Load users from CSV
+void saveUsers(const vector<User>& users);
+vector<User> loadUsers();
 
 
-#endif // USER_H
+#endif

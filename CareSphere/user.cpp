@@ -1,7 +1,7 @@
 #include "user.h"
 #include <iostream>
-#include <fstream>   // File handling
-#include <vector>    // To store multiple users
+#include <fstream>
+#include <vector>
 #include <sstream>   // String stream for CSV parsing
 #include <sys/stat.h> // For creating directories
 
