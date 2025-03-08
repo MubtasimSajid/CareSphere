@@ -46,6 +46,9 @@ int main(int argc, char *argv[]) {
         cout << "---------------------\n";
     }
 
+    // **Step 5: Run MySQL**
+    connectAndRunQuery();
+
 
 
     return a.exec();
