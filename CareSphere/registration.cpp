@@ -35,7 +35,7 @@ bool Registration::registerUser(string name, string password) {
             getline(ss, pass, ',');
 
             if (uname == name) {
-                cout << "Error: Username: '" << name << "' already exists. Choose a different one.\n";
+                qInfo() << "Error: Username: '" << name << "' already exists. Choose a different one.\n";
                 fileRead.close();
                 return false;
             }
@@ -45,13 +45,13 @@ bool Registration::registerUser(string name, string password) {
 
     ofstream fileWrite(filename, ios::out | ios::app);
     if (!fileWrite) {
-        cout << "Error: Unable to open file for writing!";
+        qInfo() << "Error: Unable to open file for writing!";
         return false;
     }
     fileWrite << name << "," << password << "\n";
     fileWrite.flush();
     fileWrite.close();
-    cout << "User '" << name << "' registered successfully!\n";
+    qInfo() << "User '" << name << "' registered successfully!\n";
     return true;
 }
 
