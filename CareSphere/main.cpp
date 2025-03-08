@@ -4,6 +4,7 @@
 #include "registration.h"
 #include "user.h"
 #include "utilities.h"
+#include"MySQL_utilities.h"
 #include <QCoreApplication>
 #include <QSqlDatabase>
 #include <QSqlError>
@@ -47,7 +48,12 @@ int main(int argc, char *argv[]) {
     }
 
     // **Step 5: Run MySQL**
-    connectAndRunQuery();
+    MySQLinit();
+    QSqlQuery query;
+    QString insertQuery = "INSERT INTO users (name, email, password) VALUES ('Farhan', 'ayon55928@gmail.com', '123456')";
+    QString updateQuery = "UPDATE users SET password = 'successful' WHERE password = '123456' ";
+    MySQL_Insert(insertQuery);
+    MySQL_Update(updateQuery);
 
 
 
