@@ -3,7 +3,6 @@
 
 #include <QWidget>
 #include <QString>
-#include "login.h"
 
 using namespace std;
 
