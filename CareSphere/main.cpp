@@ -52,8 +52,11 @@ int main(int argc, char *argv[]) {
     QSqlQuery query;
     QString insertQuery = "INSERT INTO users (name, email, password) VALUES ('Farhan', 'ayon55928@gmail.com', '123456')";
     QString updateQuery = "UPDATE users SET password = 'successful' WHERE password = '123456' ";
+    QString FetchQuery = "SELECT password FROM users WHERE name = 'Farhan'";
     MySQL_Insert(insertQuery);
     MySQL_Update(updateQuery);
+    QString password = MySQL_Fetch(FetchQuery);
+    qInfo() << "QString output:" << password;
 
 
 

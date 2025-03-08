@@ -45,5 +45,19 @@ void MySQL_Update(QString query_update) {
     }
 }
 
+QString MySQL_Fetch(QString query_fetch) {
+    QSqlQuery query;
+    if (query.exec(query_fetch)) {
+        if (query.next()) { // Fetch the first row
+            return query.value(0).toString(); // Return the first column's value
+        } else {
+            qDebug() << "❌ No results found.";
+            return ""; // Return an empty string if no data is found
+        }
+    } else {
+        qDebug() << "❌ Query execution failed:" << query.lastError().text();
+        return "";
+    }
+}
 
 #endif // MYSQL_UTILITIES_H
