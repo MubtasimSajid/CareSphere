@@ -1,12 +1,15 @@
 #ifndef UTILITIES_H
 #define UTILITIES_H
-#include<string>
+
+#include "user.h"
+#include <string>
 #include <QCoreApplication>
 #include <QSqlDatabase>
 #include <QSqlError>
 #include <QSqlQuery>
 #include <QDebug>
 using namespace std;
+
 string genderToString(Gender gender) {
     switch (gender) {
     case male: return "Male";
@@ -15,7 +18,6 @@ string genderToString(Gender gender) {
     }
 }
 
-// Function to convert Religion enum to string
 string religionToString(Religion religion) {
     switch (religion) {
     case Islam: return "Islam";
@@ -30,4 +32,5 @@ string religionToString(Religion religion) {
     default: return "Unknown";
     }
 }
-#endif // UTILITIES_H
+
+#endif

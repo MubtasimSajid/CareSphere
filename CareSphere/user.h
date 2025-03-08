@@ -54,5 +54,4 @@ public:
 void saveUsers(const vector<User>& users);
 vector<User> loadUsers();
 
-
 #endif

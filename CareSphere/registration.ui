@@ -109,6 +109,19 @@
     <string>Back</string>
    </property>
   </widget>
+  <widget class="QLabel" name="regErrorLabel">
+   <property name="geometry">
+    <rect>
+     <x>146</x>
+     <y>280</y>
+     <width>211</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

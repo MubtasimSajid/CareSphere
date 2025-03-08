@@ -17,9 +17,9 @@ class Login : public QMainWindow {
     Q_OBJECT
 
 private:
-    const string filename = "credentials.csv";
     Ui::Login *ui;
     Login *loginSystem;
+    const string filename = "credentials.csv";
 
 protected:
     bool eventFilter(QObject *obj, QEvent *event) override;
@@ -31,7 +31,6 @@ private slots:
 public:
     explicit Login(QWidget *parent = nullptr);
     ~Login();
-    void registerUser(string name, string password);
     bool verify(string name, string password);
 };
 

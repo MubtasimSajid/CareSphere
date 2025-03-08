@@ -31,38 +31,6 @@ Login::~Login() {
     delete loginSystem;
 }
 
-void Login::registerUser(string name, string password) {
-    ifstream fileRead(filename);
-    string line, uname, pass;
-
-    if (fileRead.is_open()) {
-        while (getline(fileRead, line)) {
-            stringstream ss(line);
-            getline(ss, uname, ',');
-            getline(ss, pass, ',');
-
-            if (uname == name) {
-                cout << "Error: Username: '" << name << "' already exists. Choose a different one.\n";
-                fileRead.close();
-                return;
-            }
-        }
-        fileRead.close();
-    }
-
-    ofstream fileWrite(filename, ios::out | ios::app);
-    if (!fileWrite) {
-        cout << "Error: Unable to open file for writing!";
-        return;
-    }
-    fileWrite << name << "," << password << "\n";
-    fileWrite.flush();
-    fileWrite.close();
-    cout << "User '" << name << "' registered successfully!\n";
-}
-
-
-
 bool Login::verify(string name, string password) {
     ifstream file(filename);
     string line, uname, pass;

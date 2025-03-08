@@ -3,6 +3,9 @@
 
 #include <QWidget>
 #include <QString>
+#include "login.h"
+
+using namespace std;
 
 namespace Ui {
 class Registration;
@@ -18,11 +21,12 @@ public:
 
 private slots:
     void on_regBackToLoginButton_clicked();
-
+    bool registerUser(string name, string password);
     void on_registerPushButton_clicked();
 
 private:
     Ui::Registration *ui;
+    const string filename = "credentials.csv";
 };
 
 #endif
