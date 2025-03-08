@@ -3,6 +3,11 @@
 #include "login.h"
 #include "registration.h"
 #include "user.h"
+#include <QCoreApplication>
+#include <QSqlDatabase>
+#include <QSqlError>
+#include <QSqlQuery>
+#include <QDebug>
 string genderToString(Gender gender) {
     switch (gender) {
     case male: return "Male";
