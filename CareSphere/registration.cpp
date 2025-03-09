@@ -9,6 +9,10 @@ Registration::Registration(QWidget *parent)
 {
     ui->setupUi(this);
 
+    setTabOrder(ui->regUsernameLineEdit, ui->regPasswordLineEdit);
+    setTabOrder(ui->regPasswordLineEdit, ui->registerPushButton);
+    setTabOrder(ui->registerPushButton, ui->regBackToLoginButton);
+
     ui->regPasswordLineEdit->setEchoMode(QLineEdit::Password);
 }
 
@@ -71,8 +75,10 @@ void Registration::on_registerPushButton_clicked()
     std::string pass = regPassword.toStdString();
 
     if (Registration::registerUser(user, pass)) {
-        QMessageBox::information(this, "Registration Successful", "Welcome, " + regUsername + "!");
         ui->regErrorLabel->hide();
+        RegUserDetails *regUserDetailsWindow = new RegUserDetails();
+        regUserDetailsWindow->show();
+        this->close();
 
     } else {
         ui->regErrorLabel->setText("Invalid username or password");

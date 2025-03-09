@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QString>
+#include "reguserdetails.h"
 
 using namespace std;
 
