@@ -15,7 +15,7 @@ const string FILE_NAME = FOLDER_NAME + "/users.csv";
 void saveUser(const User &user)
 {
     QSqlQuery query;
-    QString insert_user = "INSERT INTO users (name, email) VALUES ('"+QString::fromStdString(user.getName())+"', '"+QString::fromStdString(user.getEmail())+"' )";
+    QString insert_user = "INSERT INTO users (name, email, phoneNo) VALUES ('"+QString::fromStdString(user.getName())+"', '"+QString::fromStdString(user.getEmail())+"', '"+QString::fromStdString(user.getPhoneNo())+"'  )";
     MySQL_Insert(insert_user);
 }
 
@@ -23,38 +23,30 @@ void saveUser(const User &user)
 // Load users from the CSV file
 vector<User> loadUsers() {
     vector<User> users;
-    ifstream file(FILE_NAME);  // Open file for reading
+    QSqlQuery query;
 
-    if (!file) {
-        qInfo() << "Error: Could not open file for reading!\n";
-        return users;
+    // Execute the query to fetch all users
+    if (query.exec("SELECT id, name, email, phoneNo, gender, religion, DOB FROM users")) {
+        while (query.next()) {
+            string id = query.value(0).toString().toStdString();
+            string name = query.value(1).toString().toStdString();
+            string email = query.value(2).toString().toStdString();
+            string phoneNo = query.value(3).toString().toStdString();
+            Gender gender = static_cast<Gender>(query.value(4).toInt()); // Convert int to Gender enum
+            Religion religion = static_cast<Religion>(query.value(5).toInt()); // Convert int to Religion enum
+            string DOB = query.value(6).toString().toStdString();
+
+            // Create a User object and add it to the vector
+            users.push_back(User(id, name, email, phoneNo, gender, religion, DOB));
+        }
+        qInfo() << "✅ Users loaded successfully from MySQL!";
+    } else {
+        qInfo() << "❌ Error fetching users:" << query.lastError().text();
     }
 
-    string line, id, name, email, phone, dob;
-    int gender, religion;
-
-    getline(file, line);  // Skip the header line
-
-    while (getline(file, line)) {
-        stringstream ss(line);
-        string temp;
-
-        getline(ss, id, ',');
-        getline(ss, name, ',');
-        getline(ss, email, ',');
-        getline(ss, phone, ',');
-        getline(ss, temp, ','); gender = stoi(temp);
-        getline(ss, temp, ','); religion = stoi(temp);
-        getline(ss, dob, ',');
-
-        // Create User object and add to vector
-        users.push_back(User(id, name, email, phone, static_cast<Gender>(gender), static_cast<Religion>(religion), dob));
-    }
-
-    file.close();
-    qInfo() << "User details loaded successfully from " << FILE_NAME << "\n";
     return users;
 }
+
 
 
 User::User(string id, string name, string email, string phoneNo, Gender gender, Religion religion, string DOB)
@@ -142,6 +134,17 @@ string User::getDOB() const
 void User::setDOB(string inputDOB)
 {
     DOB = inputDOB;
+}
+
+void User::details()
+{
+    qDebug() << "---------------------------";
+    qDebug() << "User Details:";
+    qDebug() << "ID:" << QString::fromStdString(id);
+    qDebug() << "Name:" << QString::fromStdString(name);
+    qDebug() << "Email:" << QString::fromStdString(email);
+    qDebug() << "Phone Number:" << QString::fromStdString(phoneNo);
+
 }
 
 

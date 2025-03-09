@@ -34,7 +34,7 @@ private:
     Religion religion;
     string DOB;
 public:
-    User(string id, string name, string email, string phoneNo = "", Gender gender = N_A, Religion religion = Other, string DOB = "");
+    User(string id, string name, string email, string phoneNo, Gender gender = N_A, Religion religion = Other, string DOB = "");
     string getId() const;
     void setId(const string &inputID);
     string getName() const;
@@ -49,6 +49,7 @@ public:
     void setReligion(Religion inputReligion);
     string getDOB() const;
     void setDOB(string inputDOB);
+    void details();
 
 };
 

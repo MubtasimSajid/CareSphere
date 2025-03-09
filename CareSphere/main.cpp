@@ -18,11 +18,16 @@ int main(int argc, char *argv[]) {
     Login loginWindow;
     loginWindow.show();
 
+    // Testing the User Class using the MySQL DB. SUCCESSFUL .......
     vector<User> users;
-
     MySQLinit();
     User test("01", "Farhan", "ayon55928@gmail.com", "01735429709");
     saveUser(test);
+    users = loadUsers();
+    // Printing the vector
+    for(auto user: users){
+        user.details();
+    }
 
     return a.exec();
 }
