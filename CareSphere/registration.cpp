@@ -86,4 +86,3 @@ void Registration::on_registerPushButton_clicked()
         ui->regErrorLabel->show();
     }
 }
-
