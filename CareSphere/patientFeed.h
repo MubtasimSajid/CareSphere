@@ -4,19 +4,19 @@
 #include <QWidget>
 
 namespace Ui {
-class PatientFeed;
+class patientFeed;
 }
 
-class PatientFeed : public QWidget
+class patientFeed : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit PatientFeed(QWidget *parent = nullptr);
-    ~PatientFeed();
+    explicit patientFeed(QWidget *parent = nullptr);
+    ~patientFeed();
 
 private:
-    Ui::PatientFeed *ui;
+    Ui::patientFeed *ui;
 };
 
-#endif
+#endif // PATIENTFEED_H

@@ -24,7 +24,7 @@ void saveUsers(const vector<User>& users) {
 
     ofstream file(FILE_NAME);  // Open file for writing
     if (!file) {
-        qInfo() << "Error: Could not open file for writing!" << endl;
+        qInfo() << "Error: Could not open file for writing!\n";
         return;
     }
 
@@ -44,7 +44,7 @@ void saveUsers(const vector<User>& users) {
     }
 
     file.close();
-    qInfo() << "User details saved successfully to " << FILE_NAME << endl;
+    qInfo() << "User details saved successfully to " << FILE_NAME << "\n";
 }
 
 
@@ -55,7 +55,7 @@ vector<User> loadUsers() {
     ifstream file(FILE_NAME);  // Open file for reading
 
     if (!file) {
-        qInfo() << "Error: Could not open file for reading!" << endl;
+        qInfo() << "Error: Could not open file for reading!\n";
         return users;
     }
 
@@ -81,7 +81,7 @@ vector<User> loadUsers() {
     }
 
     file.close();
-    qInfo() << "User details loaded successfully from " << FILE_NAME << endl;
+    qInfo() << "User details loaded successfully from " << FILE_NAME << "\n";
     return users;
 }
 
@@ -89,7 +89,7 @@ vector<User> loadUsers() {
 User::User(string id, string name, string email, string phoneNo, Gender gender, Religion religion, string DOB)
 {
     if (id.empty() || name.empty() || phoneNo.empty()) {
-        qInfo() << "Error: User object cannot be initialized without an ID, Name, and Phone Number!" << endl;
+        qInfo() << "Error: User object cannot be initialized without an ID, Name, and Phone Number!\n";
         return;
     }
 

@@ -2,21 +2,24 @@
 #define REGUSERDETAILS_H
 
 #include <QWidget>
+#include <QString>
+
+using namespace std;
 
 namespace Ui {
-class regUserDetails;
+class RegUserDetails;
 }
 
-class regUserDetails : public QWidget
+class RegUserDetails : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit regUserDetails(QWidget *parent = nullptr);
-    ~regUserDetails();
+    explicit RegUserDetails(QWidget *parent = nullptr);
+    ~RegUserDetails();
 
 private:
-    Ui::regUserDetails *ui;
+    Ui::RegUserDetails *ui;
 };
 
-#endif // REGUSERDETAILS_H
+#endif

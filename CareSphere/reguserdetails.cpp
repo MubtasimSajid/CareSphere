@@ -1,14 +1,14 @@
 #include "reguserdetails.h"
 #include "ui_reguserdetails.h"
 
-regUserDetails::regUserDetails(QWidget *parent)
+RegUserDetails::RegUserDetails(QWidget *parent)
     : QWidget(parent)
-    , ui(new Ui::regUserDetails)
+    , ui(new Ui::RegUserDetails)
 {
     ui->setupUi(this);
 }
 
-regUserDetails::~regUserDetails()
+RegUserDetails::~RegUserDetails()
 {
     delete ui;
 }

@@ -1,14 +1,14 @@
-#include "patientFeed.h"
-#include "ui_patientFeed.h"
+#include "patientfeed.h"
+#include "ui_patientfeed.h"
 
-PatientFeed::PatientFeed(QWidget *parent)
+patientFeed::patientFeed(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::patientFeed)
 {
     ui->setupUi(this);
 }
 
-PatientFeed::~PatientFeed()
+patientFeed::~patientFeed()
 {
     delete ui;
 }
