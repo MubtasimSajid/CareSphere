@@ -1,4 +1,5 @@
 #include <QApplication>
+
 #include "caresphere.h"
 #include "login.h"
 #include "registration.h"
@@ -20,7 +21,8 @@ int main(int argc, char *argv[]) {
     vector<User> users;
 
     MySQLinit();
-    QSqlQuery query;
+    User test("01", "Farhan", "ayon55928@gmail.com", "01735429709");
+    saveUser(test);
 
     return a.exec();
 }

@@ -1,5 +1,6 @@
 #ifndef MYSQL_UTILITIES_H
 #define MYSQL_UTILITIES_H
+
 #include<string>
 #include <QCoreApplication>
 #include <QSqlDatabase>
@@ -7,7 +8,7 @@
 #include <QSqlQuery>
 #include <QDebug>
 using namespace std;
-void MySQLinit(){
+inline void MySQLinit(){
     // Create a MySQL database connection
     QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
     db.setHostName("localhost");
@@ -25,7 +26,7 @@ void MySQLinit(){
     qDebug() << "✅ Connected to MySQL Database Successfully!";
 }
 
-void MySQL_Insert(QString query_insert) {
+inline void MySQL_Insert(QString query_insert) {
     QSqlQuery query;
 
     if (query.exec(query_insert)) {
@@ -35,7 +36,7 @@ void MySQL_Insert(QString query_insert) {
     }
 }
 
-void MySQL_Update(QString query_update) {
+inline void MySQL_Update(QString query_update) {
     QSqlQuery query;
 
     if (query.exec(query_update)) {
@@ -45,7 +46,7 @@ void MySQL_Update(QString query_update) {
     }
 }
 
-QString MySQL_Fetch(QString query_fetch) {
+inline QString MySQL_Fetch(QString query_fetch) {
     QSqlQuery query;
     if (query.exec(query_fetch)) {
         if (query.next()) { // Fetch the first row

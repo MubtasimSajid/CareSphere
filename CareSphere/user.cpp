@@ -1,4 +1,5 @@
 #include "user.h"
+#include "MySQL_utilities.h"
 #include <QDebug>
 #include <fstream>
 #include <vector>
@@ -11,42 +12,12 @@ const string FOLDER_NAME = "User Details";
 const string FILE_NAME = FOLDER_NAME + "/users.csv";
 
 
-// Function to create the folder if it doesn't exist
-void createFolderIfNotExists() {
-    struct stat info;
-    if (stat(FOLDER_NAME.c_str(), &info) != 0) {
-        system(("mkdir \"" + FOLDER_NAME + "\"").c_str());  // Create folder (Windows/Linux)
-    }
+void saveUser(const User &user)
+{
+    QSqlQuery query;
+    QString insert_user = "INSERT INTO users (name, email) VALUES ('"+QString::fromStdString(user.getName())+"', '"+QString::fromStdString(user.getEmail())+"' )";
+    MySQL_Insert(insert_user);
 }
-// Save multiple users to a CSV file
-void saveUsers(const vector<User>& users) {
-    createFolderIfNotExists();  // Ensure folder exists
-
-    ofstream file(FILE_NAME);  // Open file for writing
-    if (!file) {
-        qInfo() << "Error: Could not open file for writing!\n";
-        return;
-    }
-
-    // Write CSV Header
-    file << "ID,Name,Email,Phone Number,Gender,Religion,DOB\n";
-
-    // Write user details
-    for (const auto& user : users) {
-        file << user.getId() << ","
-             << user.getName() << ","
-             << user.getEmail() << ","
-             << "\"=\"" << user.getPhoneNo() << "\"\","  // Fixes phone number gibberish
-             << user.getGender() << ","
-             << user.getReligion() << ","
-             << "\"=\"" << user.getDOB() << "\"\""  // Fixes DOB hash issue
-             << "\n";
-    }
-
-    file.close();
-    qInfo() << "User details saved successfully to " << FILE_NAME << "\n";
-}
-
 
 
 // Load users from the CSV file
@@ -172,3 +143,5 @@ void User::setDOB(string inputDOB)
 {
     DOB = inputDOB;
 }
+
+
