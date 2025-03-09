@@ -1,6 +1,6 @@
 #ifndef USER_H
 #define USER_H
-#include<iostream>
+
 #include<string>
 #include <vector>
 using namespace std;
@@ -10,6 +10,7 @@ enum Gender {
     female,
     N_A
 };
+
 enum Religion {
     Islam,
     Atheism,

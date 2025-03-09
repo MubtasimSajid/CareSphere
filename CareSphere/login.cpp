@@ -48,7 +48,7 @@ bool Login::verify(string name, string password) {
         }
         file.close();
     } else {
-        cout << "Error: Unable to open file for reading!\n";
+        qInfo() << "Error: Unable to open file for reading!\n";
     }
     return false;
 }

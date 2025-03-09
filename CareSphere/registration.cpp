@@ -71,8 +71,9 @@ void Registration::on_registerPushButton_clicked()
     std::string pass = regPassword.toStdString();
 
     if (Registration::registerUser(user, pass)) {
-        QMessageBox::information(this, "Login Successful", "Welcome, " + regUsername + "!");
+        QMessageBox::information(this, "Registration Successful", "Welcome, " + regUsername + "!");
         ui->regErrorLabel->hide();
+
     } else {
         ui->regErrorLabel->setText("Invalid username or password");
         ui->regErrorLabel->setStyleSheet("color: red;");

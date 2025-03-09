@@ -1,7 +1,6 @@
 #ifndef LOGIN_H
 #define LOGIN_H
 
-#include <iostream>
 #include <fstream>
 #include <sstream>
 #include <string>

@@ -25,9 +25,12 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         registration.h registration.cpp registration.ui
         user.h user.cpp
         patientFeed.h patientFeed.cpp patientFeed.ui
-        userdetails.ui
+
         utilities.h
         MySQL_utilities.h
+
+
+        reguserdetails.h reguserdetails.cpp reguserdetails.ui
 
     )
 # Define target properties for Android with Qt 6 as:

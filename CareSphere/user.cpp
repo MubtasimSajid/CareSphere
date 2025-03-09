@@ -1,5 +1,5 @@
 #include "user.h"
-#include <iostream>
+#include <QDebug>
 #include <fstream>
 #include <vector>
 #include <sstream>   // String stream for CSV parsing
@@ -24,7 +24,7 @@ void saveUsers(const vector<User>& users) {
 
     ofstream file(FILE_NAME);  // Open file for writing
     if (!file) {
-        cout << "Error: Could not open file for writing!" << endl;
+        qInfo() << "Error: Could not open file for writing!" << endl;
         return;
     }
 
@@ -44,7 +44,7 @@ void saveUsers(const vector<User>& users) {
     }
 
     file.close();
-    cout << "User details saved successfully to " << FILE_NAME << endl;
+    qInfo() << "User details saved successfully to " << FILE_NAME << endl;
 }
 
 
@@ -55,7 +55,7 @@ vector<User> loadUsers() {
     ifstream file(FILE_NAME);  // Open file for reading
 
     if (!file) {
-        cout << "Error: Could not open file for reading!" << endl;
+        qInfo() << "Error: Could not open file for reading!" << endl;
         return users;
     }
 
@@ -81,7 +81,7 @@ vector<User> loadUsers() {
     }
 
     file.close();
-    cout << "User details loaded successfully from " << FILE_NAME << endl;
+    qInfo() << "User details loaded successfully from " << FILE_NAME << endl;
     return users;
 }
 
@@ -89,8 +89,8 @@ vector<User> loadUsers() {
 User::User(string id, string name, string email, string phoneNo, Gender gender, Religion religion, string DOB)
 {
     if (id.empty() || name.empty() || phoneNo.empty()) {
-        cout << "Error: User object cannot be initialized without an ID, Name, and Phone Number!" << endl;
-        return; // Exit constructor early
+        qInfo() << "Error: User object cannot be initialized without an ID, Name, and Phone Number!" << endl;
+        return;
     }
 
     this->id = id;
