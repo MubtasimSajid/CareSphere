@@ -18,6 +18,9 @@ public:
     explicit RegUserDetails(QWidget *parent = nullptr);
     ~RegUserDetails();
 
+private slots:
+    void on_detailsBackToReg_clicked();
+
 private:
     Ui::RegUserDetails *ui;
 };

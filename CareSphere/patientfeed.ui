@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>patientFeed</class>
- <widget class="QWidget" name="patientFeed">
+ <class>patientfeed</class>
+ <widget class="QWidget" name="patientfeed">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -86,7 +86,20 @@
     <string>CareSphere</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="feedToProfileButton">
+   <property name="geometry">
+    <rect>
+     <x>300</x>
+     <y>10</y>
+     <width>61</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Profile</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="logOutButton">
    <property name="geometry">
     <rect>
      <x>370</x>
@@ -96,7 +109,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Profile</string>
+    <string>Log Out</string>
    </property>
   </widget>
  </widget>

@@ -12,3 +12,11 @@ RegUserDetails::~RegUserDetails()
 {
     delete ui;
 }
+
+void RegUserDetails::on_detailsBackToReg_clicked()
+{
+    Registration *registrationWindow = new Registration();
+    registrationWindow->show();
+    this->close();
+}
+

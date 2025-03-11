@@ -24,18 +24,12 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         login.h login.cpp
         registration.h registration.cpp registration.ui
         user.h user.cpp
-        patientFeed.h patientFeed.cpp patientFeed.ui
-
         utilities.h
         MySQL_utilities.h
-
-
         reguserdetails.h reguserdetails.cpp reguserdetails.ui
         patientfeed.h patientfeed.cpp patientfeed.ui
-        PatientProfile.ui
-        image.ui
+        patientProfile.ui
         caresphere.qrc
-
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET CareSphere APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
