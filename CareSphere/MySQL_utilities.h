@@ -14,7 +14,7 @@ inline void MySQLinit(){
     db.setHostName("localhost");
     db.setDatabaseName("CareSphereDB"); // Database created in Step 1
     db.setUserName("root"); // Replace with your MySQL username
-    db.setPassword("sql1234567890#SQL"); // Replace with your MySQL password
+    db.setPassword("220041259"); // Replace with your MySQL password
     db.setPort(3306); // MySQL default port
 
     // Try to open the database
