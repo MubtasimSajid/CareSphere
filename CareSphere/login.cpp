@@ -1,9 +1,14 @@
 #include "login.h"
 #include "ui_login.h"
-#include <qwidget.h>
 #include <QMessageBox>
 #include <QKeyEvent>
 #include <QTimer>
+#include <QFile>
+#include <QTextStream>
+#include <QGraphicsScene>
+#include <QGraphicsPixmapItem>
+#include <QDebug>
+
 
 Login::Login(QWidget *parent)
     : QMainWindow(parent)
