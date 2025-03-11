@@ -5,11 +5,11 @@
 **In the header class, the following changes have been done.**
 
 1. Added the details function declaration
-2. changed the Default parameter for the User Class. Now, only the Gender, Religion and the DOB are set as default values
+2. Change the default parameter for the user class. Now, only the Gender, Religion and the DOB are set as default values
 
 ## User.cpp
 
-**Ok, so the primary changes have been made to the SaveUsers and the Loadusers Function. Both of them now uses the MySQL DB to both store a user into the DB as handeld by the SaveUser and then Loading the Users from the DB and into a Vector using the LoadUsers Function. The codes are given below:**
+**Ok, the primary changes have been made to the SaveUsers and the LoadUsers function. Both of them now uses the MySQL DB to both store a user into the DB as handled by the SaveUser and then load the Users from the DB and into a Vector using the LoadUsers Function. The codes are given below:**
 
 ```cpp
 void saveUser(const User &user)
