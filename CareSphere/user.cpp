@@ -20,12 +20,10 @@ void saveUser(const User &user)
 }
 
 
-// Load users from the CSV file
 vector<User> loadUsers() {
     vector<User> users;
     QSqlQuery query;
 
-    // Execute the query to fetch all users
     if (query.exec("SELECT id, name, email, phoneNo, gender, religion, DOB FROM users")) {
         while (query.next()) {
             string id = query.value(0).toString().toStdString();
@@ -36,12 +34,8 @@ vector<User> loadUsers() {
             Religion religion = static_cast<Religion>(query.value(5).toInt()); // Convert int to Religion enum
             string DOB = query.value(6).toString().toStdString();
 
-            // Create a User object and add it to the vector
             users.push_back(User(id, name, email, phoneNo, gender, religion, DOB));
         }
-        qInfo() << "✅ Users loaded successfully from MySQL!";
-    } else {
-        qInfo() << "❌ Error fetching users:" << query.lastError().text();
     }
 
     return users;
@@ -52,7 +46,6 @@ vector<User> loadUsers() {
 User::User(string id, string name, string email, string phoneNo, Gender gender, Religion religion, string DOB)
 {
     if (id.empty() || name.empty() || phoneNo.empty()) {
-        qInfo() << "Error: User object cannot be initialized without an ID, Name, and Phone Number!\n";
         return;
     }
 
@@ -144,7 +137,6 @@ void User::details()
     qDebug() << "Name:" << QString::fromStdString(name);
     qDebug() << "Email:" << QString::fromStdString(email);
     qDebug() << "Phone Number:" << QString::fromStdString(phoneNo);
-
 }
 
 

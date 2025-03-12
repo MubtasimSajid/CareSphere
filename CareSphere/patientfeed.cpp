@@ -18,3 +18,9 @@ void patientfeed::on_logOutButton_clicked()
 
 }
 
+
+void patientfeed::on_feedToProfileButton_clicked()
+{
+
+}
+

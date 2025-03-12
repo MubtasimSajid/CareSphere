@@ -20,6 +20,10 @@ public:
 
 private slots:
     void on_detailsBackToReg_clicked();
+    bool validateInputs(const QString &name, const QString &email,
+                        const QString &phone, const QString &gender,
+                        const QDate &dob, const QString &bloodGroup);
+    void on_registerDetailsButton_clicked();
 
 private:
     Ui::RegUserDetails *ui;
