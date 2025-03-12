@@ -4,19 +4,22 @@
 #include <QWidget>
 
 namespace Ui {
-class patientProfile;
+class patientprofile;
 }
 
-class patientProfile : public QWidget
+class patientprofile : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit patientProfile(QWidget *parent = nullptr);
-    ~patientProfile();
+    explicit patientprofile(QWidget *parent = nullptr);
+    ~patientprofile();
+
+private slots:
+    void on_detailsBackToPatientFeed_clicked();
 
 private:
-    Ui::patientProfile *ui;
+    Ui::patientprofile *ui;
 };
 
-#endif // PATIENTPROFILE_H
+#endif

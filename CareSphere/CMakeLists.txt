@@ -28,7 +28,6 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         MySQL_utilities.h
         reguserdetails.h reguserdetails.cpp reguserdetails.ui
         patientfeed.h patientfeed.cpp patientfeed.ui
-        patientprofile.ui
         caresphere.qrc
         patientprofile.h patientprofile.cpp patientprofile.ui
         patientprofile.h patientprofile.cpp patientprofile.ui

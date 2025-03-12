@@ -17,6 +17,7 @@ public:
 
 private slots:
     void on_logOutButton_clicked();
+    void on_feedToProfileButton_clicked();
 
 private:
     Ui::patientfeed *ui;
