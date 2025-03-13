@@ -35,6 +35,26 @@ inline string religionToString(Religion religion) {
     }
 }
 
+inline Gender stringToGender(const string& genderStr) {
+    if (genderStr == "male") return male;
+    if (genderStr == "female") return female;
+    return N_A; // Default case
+}
+
+inline Religion stringToReligion(const string& religionStr) {
+    if (religionStr == "Islam") return Islam;
+    if (religionStr == "Atheism") return Atheism;
+    if (religionStr == "Buddhism") return Buddhism;
+    if (religionStr == "Christianity") return Christianity;
+    if (religionStr == "Hinduism") return Hinduism;
+    if (religionStr == "Judaism") return Judaism;
+    if (religionStr == "Sikhism") return Sikhism;
+    if (religionStr == "Zoroastrianism") return Zoroastrianism;
+    return Other; // Default case
+}
+
+
+
 // Function to encrypt the password
 inline string encryptPassword(const string& password) {
     string encrypted = password;

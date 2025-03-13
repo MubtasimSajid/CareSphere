@@ -66,3 +66,4 @@ CREATE TABLE users (
 delete from users;
 ALTER TABLE users AUTO_INCREMENT = 1;
 ```
+

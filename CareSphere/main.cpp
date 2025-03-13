@@ -21,24 +21,19 @@ int main(int argc, char *argv[]) {
     // Testing the User Class using the MySQL DB. SUCCESSFUL .......
     vector<User> users;
     MySQLinit();
-    User test("01", "Farhan", "ayon55928@gmail.com", "01735429709");
+    User test("01", "Farhan", "ayon55928@gmail.com", "01735429709", stringToGender("male") , stringToReligion("Islam"), "01-12-2003");
     saveUser(test);
     users = loadUsers();
-    // // Printing the vector
-    // for(auto user: users){
-    //     user.details();
-    // }
     // Testing the GetUser Function... Remove if not needed
-    // User current_user = getUser(users, "Farhan");
-    // current_user.details();
+    User current_user = getUser(users, "Farhan");
+    qInfo()<<"Printing the details of the User Found using the function";
+    qInfo()<<"Name of the User: "<<current_user.getName();
+    qInfo() << "Email of the User: " << QString::fromStdString(current_user.getEmail());
+    qInfo() << "Phone Number of the User: " << QString::fromStdString(current_user.getPhoneNo());
+    qInfo() << "Gender of the User: " << genderToString(current_user.getGender());
+    qInfo() << "Religion of the User: " << religionToString( current_user.getReligion());
+    qInfo() << "Date of Birth of the User: " << QString::fromStdString(current_user.getDOB());
 
-    // Test Case for the Encryption and the Decryption of the password...To use, simply uncomment the codes below:
-    // string password = "MySecurePass123";
-    // string encrypted = encryptPassword(password);
-    // string decrypted = decryptPassword(encrypted);
-    // qInfo() << "Original Password: " << password;
-    // qInfo() << "Encrypted Password: " << encrypted;
-    // qInfo() << "Decrypted Password: " << decrypted;
 
 
 

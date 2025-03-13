@@ -1,5 +1,6 @@
 #include "user.h"
 #include "MySQL_utilities.h"
+#include"utilities.h"
 #include <QDebug>
 #include <fstream>
 #include <vector>
@@ -15,7 +16,14 @@ const string FILE_NAME = FOLDER_NAME + "/users.csv";
 void saveUser(const User &user)
 {
     QSqlQuery query;
-    QString insert_user = "INSERT INTO users (name, email, phoneNo) VALUES ('"+QString::fromStdString(user.getName())+"', '"+QString::fromStdString(user.getEmail())+"', '"+QString::fromStdString(user.getPhoneNo())+"'  )";
+    QString insert_user = "INSERT INTO users (name, email, phoneNo, gender, religion, DOB) VALUES ('"
+                          + QString::fromStdString(user.getName()) + "', '"
+                          + QString::fromStdString(user.getEmail()) + "', '"
+                          + QString::fromStdString(user.getPhoneNo()) + "', '"
+                          + QString::fromStdString(genderToString(user.getGender())) + "', '"
+                          + QString::fromStdString(religionToString(user.getReligion())) + "', '"
+                          + QString::fromStdString(user.getDOB()) + "' )";
+
     MySQL_Insert(insert_user);
 }
 
@@ -30,8 +38,10 @@ vector<User> loadUsers() {
             string name = query.value(1).toString().toStdString();
             string email = query.value(2).toString().toStdString();
             string phoneNo = query.value(3).toString().toStdString();
-            Gender gender = static_cast<Gender>(query.value(4).toInt()); // Convert int to Gender enum
-            Religion religion = static_cast<Religion>(query.value(5).toInt()); // Convert int to Religion enum
+            string genderStr = query.value(4).toString().toStdString();
+            string religionStr = query.value(5).toString().toStdString();
+            Gender gender  = stringToGender(genderStr);
+            Religion religion = stringToReligion(religionStr);
             string DOB = query.value(6).toString().toStdString();
 
             users.push_back(User(id, name, email, phoneNo, gender, religion, DOB));
