@@ -1,6 +1,7 @@
 #include "login.h"
 #include "ui_login.h"
 #include "utilities.h"
+#include "patientfeed.h"
 #include <QMessageBox>
 #include <QKeyEvent>
 #include <QTimer>
@@ -77,7 +78,9 @@ void Login::on_loginButton_clicked() {
     std::string pass = password.toStdString();
 
     if (verify(user, pass)) {
-        QMessageBox::information(this, "Login Successful", "Welcome, " + username + "!");
+        patientfeed *patientFeedWindow = new patientfeed();
+        patientFeedWindow->show();
+        this->close();
         ui->errorLabel->hide();
     } else {
         ui->errorLabel->setText("Invalid username or password");
