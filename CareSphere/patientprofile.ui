@@ -58,18 +58,18 @@
     <string>Patient Profile</string>
    </property>
   </widget>
-  <widget class="QWidget" name="layoutWidget">
+  <widget class="QWidget" name="">
    <property name="geometry">
     <rect>
-     <x>210</x>
-     <y>230</y>
-     <width>381</width>
+     <x>200</x>
+     <y>250</y>
+     <width>341</width>
      <height>341</height>
     </rect>
    </property>
-   <layout class="QVBoxLayout" name="verticalLayout">
+   <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout">
+     <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
        <widget class="QLabel" name="PatientProfileNameLabel">
         <property name="text">
@@ -78,34 +78,12 @@
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="PatientName">
-        <property name="text">
-         <string>TextLabel</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-    <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_2">
-      <item>
        <widget class="QLabel" name="PatientProfileEmaillLabel">
         <property name="text">
          <string>E-mail :</string>
         </property>
        </widget>
       </item>
-      <item>
-       <widget class="QLabel" name="Patientemail">
-        <property name="text">
-         <string>TextLabel</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-    <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_5">
       <item>
        <widget class="QLabel" name="PatientProfilePhoneLabel">
         <property name="text">
@@ -114,17 +92,6 @@
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="PatientPhone">
-        <property name="text">
-         <string>TextLabel</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-    <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_4">
-      <item>
        <widget class="QLabel" name="PatientProfileGenderLabel">
         <property name="text">
          <string>Gender :</string>
@@ -132,20 +99,48 @@
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="PatientGender">
+       <widget class="QLabel" name="PatientProfileDOBLabel">
         <property name="text">
-         <string>TextLabel</string>
+         <string>Date of Birth :</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="BloodGroupPatientProfile">
+        <property name="text">
+         <string>Blood Group :</string>
         </property>
        </widget>
       </item>
      </layout>
     </item>
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <layout class="QVBoxLayout" name="verticalLayout">
       <item>
-       <widget class="QLabel" name="PatientProfileDOBLabel">
+       <widget class="QLabel" name="PatientName">
         <property name="text">
-         <string>Date of Birth :</string>
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="Patientemail">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="PatientPhone">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="PatientGender">
+        <property name="text">
+         <string/>
         </property>
        </widget>
       </item>
@@ -155,7 +150,17 @@
          <bool>true</bool>
         </property>
         <property name="text">
-         <string>TextLabel</string>
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="bloodGroupLabel">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="text">
+         <string/>
         </property>
        </widget>
       </item>
