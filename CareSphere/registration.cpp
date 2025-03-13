@@ -2,6 +2,7 @@
 #include "registration.h"
 #include "login.h"
 #include "ui_registration.h"
+#include "utilities.h"
 
 Registration::Registration(QWidget *parent)
     : QWidget(parent)
@@ -46,7 +47,7 @@ bool Registration::registerUser(string name, string password) {
         }
         fileRead.close();
     }
-
+    password = encryptPassword(password);
     ofstream fileWrite(filename, ios::out | ios::app);
     if (!fileWrite) {
         qInfo() << "Error: Unable to open file for writing!";

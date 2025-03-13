@@ -1,6 +1,6 @@
 #ifndef USER_H
 #define USER_H
-
+#include<iostream>
 #include<string>
 #include <vector>
 using namespace std;
@@ -55,5 +55,6 @@ public:
 
 void saveUser(const User &user);
 vector<User> loadUsers();
+User getUser(const vector<User>& users, string name);
 
 #endif

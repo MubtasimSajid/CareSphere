@@ -140,3 +140,15 @@ void User::details()
 }
 
 
+
+User getUser(const vector<User> &users , string name)
+{
+    for(const auto &x: users){
+        if (x.getName() == name){
+            return x;
+            }
+    }
+
+    // Handle case when user is not found
+    throw runtime_error("User not found");
+}

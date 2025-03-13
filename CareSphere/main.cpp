@@ -24,10 +24,13 @@ int main(int argc, char *argv[]) {
     User test("01", "Farhan", "ayon55928@gmail.com", "01735429709");
     saveUser(test);
     users = loadUsers();
-    // Printing the vector
-    for(auto user: users){
-        user.details();
-    }
+    // // Printing the vector
+    // for(auto user: users){
+    //     user.details();
+    // }
+    // Testing the GetUser Function... Remove if not needed
+    // User current_user = getUser(users, "Farhan");
+    // current_user.details();
 
     // Test Case for the Encryption and the Decryption of the password...To use, simply uncomment the codes below:
     // string password = "MySecurePass123";

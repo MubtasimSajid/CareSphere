@@ -1,5 +1,6 @@
 #include "login.h"
 #include "ui_login.h"
+#include "utilities.h"
 #include <QMessageBox>
 #include <QKeyEvent>
 #include <QTimer>
@@ -46,7 +47,7 @@ bool Login::verify(string name, string password) {
             getline(ss, uname, ',');
             getline(ss, pass, ',');
 
-            if (uname == name && pass == password) {
+            if (uname == name && decryptPassword(pass) == password) {
                 file.close();
                 return true;
             }
