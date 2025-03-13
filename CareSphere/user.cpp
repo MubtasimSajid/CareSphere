@@ -20,8 +20,7 @@ void saveUser(const User &user)
                           + QString::fromStdString(user.getName()) + "', '"
                           + QString::fromStdString(user.getEmail()) + "', '"
                           + QString::fromStdString(user.getPhoneNo()) + "', '"
-                          + QString::fromStdString(genderToString(user.getGender())) + "', '"
-                          + QString::fromStdString(religionToString(user.getReligion())) + "', '"
+                          + QString::fromStdString(user.getGender()) + "', '"
                           + QString::fromStdString(user.getDOB()) + "' )";
 
     MySQL_Insert(insert_user);
@@ -32,19 +31,17 @@ vector<User> loadUsers() {
     vector<User> users;
     QSqlQuery query;
 
-    if (query.exec("SELECT id, name, email, phoneNo, gender, religion, DOB FROM users")) {
+    if (query.exec("SELECT id, name, email, phoneNo, bloodGroup, gender, DOB FROM users")) {
         while (query.next()) {
             string id = query.value(0).toString().toStdString();
             string name = query.value(1).toString().toStdString();
             string email = query.value(2).toString().toStdString();
             string phoneNo = query.value(3).toString().toStdString();
-            string genderStr = query.value(4).toString().toStdString();
-            string religionStr = query.value(5).toString().toStdString();
-            Gender gender  = stringToGender(genderStr);
-            Religion religion = stringToReligion(religionStr);
+            string bloodGroup = query.value(4).toString().toStdString();
+            string gender = query.value(5).toString().toStdString();
             string DOB = query.value(6).toString().toStdString();
 
-            users.push_back(User(id, name, email, phoneNo, gender, religion, DOB));
+            users.push_back(User(id, name, email, phoneNo, bloodGroup, gender, DOB));
         }
     }
 
@@ -53,7 +50,7 @@ vector<User> loadUsers() {
 
 
 
-User::User(string id, string name, string email, string phoneNo, Gender gender, Religion religion, string DOB)
+User::User(string id, string name, string email, string phoneNo, string bloodGroup, string gender, string DOB)
 {
     if (id.empty() || name.empty() || phoneNo.empty()) {
         return;
@@ -64,7 +61,7 @@ User::User(string id, string name, string email, string phoneNo, Gender gender, 
     this->email = email;
     this->phoneNo = phoneNo;
     this->gender = gender;
-    this->religion = religion;
+    this->bloodGroup = bloodGroup;
     this->DOB = DOB;
 }
 
@@ -109,24 +106,14 @@ void User::setPhoneNo(string phoneNo)
     this->phoneNo = phoneNo;
 }
 
-Gender User::getGender() const
+string User::getGender() const
 {
     return gender;
 }
 
-void User::setGender(Gender inputGender)
+void User::setGender(string inputGender)
 {
     gender = inputGender;
-}
-
-Religion User::getReligion() const
-{
-    return religion;
-}
-
-void User::setReligion(Religion inputReligion)
-{
-    religion = inputReligion;
 }
 
 string User::getDOB() const
@@ -137,6 +124,16 @@ string User::getDOB() const
 void User::setDOB(string inputDOB)
 {
     DOB = inputDOB;
+}
+
+string User::getBloodGroup() const
+{
+    return bloodGroup;
+}
+
+void User::setBloodGroup(const string &bg)
+{
+    this->bloodGroup = bg;
 }
 
 void User::details()

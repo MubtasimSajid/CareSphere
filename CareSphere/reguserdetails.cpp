@@ -2,7 +2,10 @@
 #include "ui_reguserdetails.h"
 #include "registration.h"
 #include "patientfeed.h"
+#include "user.h"
 #include <QMessageBox>
+
+string currentUserName;
 
 RegUserDetails::RegUserDetails(QWidget *parent)
     : QWidget(parent)
@@ -23,6 +26,9 @@ void RegUserDetails::on_detailsBackToReg_clicked()
     this->close();
 }
 
+void detailsPassing(const string &username) {
+    currentUserName = username;
+}
 
 void RegUserDetails::on_registerDetailsButton_clicked()
 {
@@ -31,11 +37,21 @@ void RegUserDetails::on_registerDetailsButton_clicked()
     QString email = ui->udEmailEdit->text();
     QString gender = (ui->maleButton->isChecked()) ? "Male" : "Female";
     QDate dob = ui->dateEdit->date();
+    QString dobStr = dob.toString();
     QString bloodGroup = ui->bloodGroupDropDown->currentText();
 
     if (!validateInputs(name, email, phone, gender, dob, bloodGroup)) {
         return;
     }
+
+    string strName = name.toStdString();
+    string strPhone = phone.toStdString();
+    string strEmail = email.toStdString();
+    string strGender = gender.toStdString();
+    string strDoB = dobStr.toStdString();
+    string strBG = bloodGroup.toStdString();
+
+    User currentUser(currentUserName, strName, strEmail, strPhone, strBG, strGender, strDoB);;
 
     patientfeed *patientFeedWindow = new patientfeed();
     patientFeedWindow->show();

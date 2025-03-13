@@ -34,5 +34,7 @@ int main(int argc, char *argv[]) {
     // qInfo() << "Religion of the User: " << religionToString( current_user.getReligion());
     // qInfo() << "Date of Birth of the User: " << QString::fromStdString(current_user.getDOB());
 
+    User test("Arian", "Sajid", "arian@email.com", "12345678910", "B+", "Male", "20-Oct-2002");
+
     return a.exec();
 }

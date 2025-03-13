@@ -5,24 +5,6 @@
 #include <vector>
 using namespace std;
 
-enum Gender {
-    male,
-    female,
-    N_A
-};
-
-enum Religion {
-    Islam,
-    Atheism,
-    Buddhism,
-    Christianity,
-    Hinduism,
-    Judaism,
-    Sikhism,
-    Zoroastrianism,
-    Other
-};
-
 class User
 {
 private:
@@ -30,11 +12,11 @@ private:
     string name;
     string email;
     string phoneNo;
-    Gender gender;
-    Religion religion;
+    string gender;
     string DOB;
+    string bloodGroup;
 public:
-    User(string id, string name, string email, string phoneNo, Gender gender = N_A, Religion religion = Other, string DOB = "");
+    User(string id, string name, string email, string phoneNo, string bloodGroup, string gender = "Male", string DOB = "");
     string getId() const;
     void setId(const string &inputID);
     string getName() const;
@@ -43,14 +25,13 @@ public:
     void setEmail(string email);
     string getPhoneNo() const;
     void setPhoneNo(string phoneNo);
-    Gender getGender() const;
-    void setGender(Gender inputGender);
-    Religion getReligion() const;
-    void setReligion(Religion inputReligion);
+    string getGender() const;
+    void setGender(string inputGender);
     string getDOB() const;
     void setDOB(string inputDOB);
+    string getBloodGroup() const;
+    void setBloodGroup(const string &bg);
     void details();
-
 };
 
 void saveUser(const User &user);

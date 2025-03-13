@@ -57,6 +57,7 @@ bool Registration::registerUser(string name, string password) {
     fileWrite.flush();
     fileWrite.close();
     qInfo() << "User '" << name << "' registered successfully!\n";
+
     return true;
 }
 
