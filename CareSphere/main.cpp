@@ -1,5 +1,5 @@
 #include <QApplication>
-
+#include<vector>
 #include "caresphere.h"
 #include "login.h"
 #include "registration.h"
@@ -28,6 +28,14 @@ int main(int argc, char *argv[]) {
     for(auto user: users){
         user.details();
     }
+
+    // Test Case for the Encryption and the Decryption of the password...To use, simply uncomment the codes below:
+    // string password = "MySecurePass123";
+    // string encrypted = encryptPassword(password);
+    // string decrypted = decryptPassword(encrypted);
+    // qInfo() << "Original Password: " << password;
+    // qInfo() << "Encrypted Password: " << encrypted;
+    // qInfo() << "Decrypted Password: " << decrypted;
 
 
 

@@ -10,7 +10,9 @@
 #include <QDebug>
 using namespace std;
 
-string genderToString(Gender gender) {
+const char SECRET_KEY = 'K';  // Simple key for XOR operation
+
+inline string genderToString(Gender gender) {
     switch (gender) {
     case male: return "Male";
     case female: return "Female";
@@ -18,7 +20,7 @@ string genderToString(Gender gender) {
     }
 }
 
-string religionToString(Religion religion) {
+inline string religionToString(Religion religion) {
     switch (religion) {
     case Islam: return "Islam";
     case Atheism: return "Atheism";
@@ -31,6 +33,20 @@ string religionToString(Religion religion) {
     case Other: return "Other";
     default: return "Unknown";
     }
+}
+
+// Function to encrypt the password
+inline string encryptPassword(const string& password) {
+    string encrypted = password;
+    for (char &c : encrypted) {
+        c ^= SECRET_KEY;  // XOR each character with the key
+    }
+    return encrypted;
+}
+
+// Function to decrypt the password (XOR is reversible)
+inline string decryptPassword(const string& encryptedPassword) {
+    return encryptPassword(encryptedPassword);  // XOR again to get the original password
 }
 
 #endif
