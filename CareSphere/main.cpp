@@ -1,6 +1,5 @@
 #include <QApplication>
 #include<vector>
-#include "caresphere.h"
 #include "login.h"
 #include "registration.h"
 #include "user.h"
