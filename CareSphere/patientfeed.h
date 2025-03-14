@@ -6,6 +6,7 @@
 #include <QLineEdit>
 #include <QMenu>
 #include <QSettings>
+#include <QFormLayout>
 #include "appointmentdialog.h"
 #include "QMessageBox"
 

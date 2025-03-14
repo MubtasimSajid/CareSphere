@@ -212,12 +212,24 @@ void patientfeed::setupAppointmentForm()
 void patientfeed::addPrescription()
 {
     bool ok;
-    QString text = QInputDialog::getText(this, "Add Prescription", "Enter prescription details:", QLineEdit::Normal, "", &ok);
+    QString doctorName = QInputDialog::getText(this, "Doctor's Name", "Enter Doctor's Name:", QLineEdit::Normal, "", &ok);
+    if (!ok || doctorName.isEmpty()) return;
 
-    if (ok && !text.isEmpty()) {
-        QListWidgetItem *item = new QListWidgetItem("\u2022 " + text, ui->prescriptionsListWidget);
-        item->setFlags(item->flags() & ~Qt::ItemIsEditable);
+    QStringList medicines;
+    for (int i = 0; i < 15; ++i) {
+        QString medicine = QInputDialog::getText(this, "Add Medicine", QString("Enter Medicine %1 (or leave empty to stop):").arg(i + 1), QLineEdit::Normal, "", &ok);
+        if (!ok || medicine.isEmpty()) break;
+        medicines.append(medicine);
     }
+
+    if (medicines.isEmpty()) {
+        QMessageBox::warning(this, "No Medicines Added", "You must add at least one medicine.");
+        return;
+    }
+
+    QString prescriptionDetails = QString("Dr. %1: %2").arg(doctorName, medicines.join(", "));
+    QListWidgetItem *item = new QListWidgetItem("\u2022 " + prescriptionDetails, ui->prescriptionsListWidget);
+    item->setFlags(item->flags() & ~Qt::ItemIsEditable);
 }
 
 void patientfeed::editPrescription()
@@ -225,11 +237,51 @@ void patientfeed::editPrescription()
     QListWidgetItem *item = ui->prescriptionsListWidget->currentItem();
     if (!item) return;
 
-    bool ok;
-    QString text = QInputDialog::getText(this, "Edit Prescription", "Edit details:", QLineEdit::Normal, item->text().mid(2), &ok);
+    QString currentText = item->text().mid(2);
+    QStringList parts = currentText.split(": ");
+    QString doctorName = parts.value(0).mid(4);  // Remove "Dr. "
+    QStringList medicines = parts.value(1).split(", ");
 
-    if (ok && !text.isEmpty()) {
-        item->setText("\u2022 " + text);
+    QDialog dialog(this);
+    dialog.setWindowTitle("Edit Prescription");
+    QVBoxLayout layout(&dialog);
+
+    QFormLayout formLayout;
+    QLineEdit doctorNameEdit;
+    doctorNameEdit.setText(doctorName);
+    formLayout.addRow("Doctor's Name:", &doctorNameEdit);
+
+    QVector<QLineEdit*> medicineEdits;
+    for (int i = 0; i < 15; ++i) {
+        QLineEdit *medicineEdit = new QLineEdit(&dialog);
+        if (i < medicines.size()) {
+            medicineEdit->setText(medicines[i]);
+        }
+        formLayout.addRow(QString("Medicine %1:").arg(i + 1), medicineEdit);
+        medicineEdits.append(medicineEdit);
+    }
+
+    layout.addLayout(&formLayout);
+
+    QDialogButtonBox buttonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, &dialog);
+    layout.addWidget(&buttonBox);
+
+    connect(&buttonBox, &QDialogButtonBox::accepted, &dialog, &QDialog::accept);
+    connect(&buttonBox, &QDialogButtonBox::rejected, &dialog, &QDialog::reject);
+
+    if (dialog.exec() == QDialog::Accepted) {
+        QString newDoctorName = doctorNameEdit.text();
+        QStringList newMedicines;
+        for (auto *edit : medicineEdits) {
+            if (!edit->text().isEmpty()) {
+                newMedicines.append(edit->text());
+            }
+        }
+
+        if (!newDoctorName.isEmpty() && !newMedicines.isEmpty()) {
+            QString prescriptionText = QString("Dr. %1: %2").arg(newDoctorName, newMedicines.join(", "));
+            item->setText("\u2022 " + prescriptionText);
+        }
     }
 }
 
