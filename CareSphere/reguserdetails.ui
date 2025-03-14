@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>719</width>
-    <height>692</height>
+    <width>575</width>
+    <height>420</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,10 +16,10 @@
   <widget class="QPushButton" name="registerDetailsButton">
    <property name="geometry">
     <rect>
-     <x>300</x>
-     <y>480</y>
+     <x>280</x>
+     <y>360</y>
      <width>131</width>
-     <height>51</height>
+     <height>31</height>
     </rect>
    </property>
    <property name="text">
@@ -29,8 +29,8 @@
   <widget class="QPushButton" name="detailsBackToReg">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>20</y>
+     <x>10</x>
+     <y>0</y>
      <width>51</width>
      <height>31</height>
     </rect>
@@ -42,8 +42,8 @@
   <widget class="QDateEdit" name="dateEdit">
    <property name="geometry">
     <rect>
-     <x>250</x>
-     <y>370</y>
+     <x>230</x>
+     <y>250</y>
      <width>121</width>
      <height>27</height>
     </rect>
@@ -55,8 +55,8 @@
   <widget class="QRadioButton" name="maleButton">
    <property name="geometry">
     <rect>
-     <x>260</x>
-     <y>320</y>
+     <x>240</x>
+     <y>200</y>
      <width>121</width>
      <height>25</height>
     </rect>
@@ -68,8 +68,8 @@
   <widget class="QLabel" name="userDetailsPhoneLabel">
    <property name="geometry">
     <rect>
-     <x>100</x>
-     <y>250</y>
+     <x>80</x>
+     <y>130</y>
      <width>81</width>
      <height>41</height>
     </rect>
@@ -81,8 +81,8 @@
   <widget class="QLabel" name="userDetailsGenderLabel">
    <property name="geometry">
     <rect>
-     <x>100</x>
-     <y>310</y>
+     <x>80</x>
+     <y>190</y>
      <width>78</width>
      <height>41</height>
     </rect>
@@ -94,8 +94,8 @@
   <widget class="QLabel" name="userDetailsEmaillLabel">
    <property name="geometry">
     <rect>
-     <x>100</x>
-     <y>190</y>
+     <x>80</x>
+     <y>70</y>
      <width>78</width>
      <height>41</height>
     </rect>
@@ -107,8 +107,8 @@
   <widget class="QLabel" name="userDetailsNameLabel">
    <property name="geometry">
     <rect>
-     <x>100</x>
-     <y>130</y>
+     <x>80</x>
+     <y>10</y>
      <width>78</width>
      <height>41</height>
     </rect>
@@ -120,8 +120,8 @@
   <widget class="QRadioButton" name="femaleButton">
    <property name="geometry">
     <rect>
-     <x>400</x>
-     <y>320</y>
+     <x>380</x>
+     <y>200</y>
      <width>113</width>
      <height>25</height>
     </rect>
@@ -133,8 +133,8 @@
   <widget class="QLabel" name="userDetailsDOBLabel">
    <property name="geometry">
     <rect>
-     <x>100</x>
-     <y>360</y>
+     <x>80</x>
+     <y>240</y>
      <width>101</width>
      <height>41</height>
     </rect>
@@ -146,8 +146,8 @@
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>250</x>
-     <y>131</y>
+     <x>230</x>
+     <y>11</y>
      <width>321</width>
      <height>164</height>
     </rect>
@@ -239,8 +239,8 @@
   <widget class="QComboBox" name="bloodGroupDropDown">
    <property name="geometry">
     <rect>
-     <x>250</x>
-     <y>430</y>
+     <x>230</x>
+     <y>310</y>
      <width>211</width>
      <height>31</height>
     </rect>
@@ -292,8 +292,8 @@
   <widget class="QLabel" name="userDetailsBloodGroup">
    <property name="geometry">
     <rect>
-     <x>100</x>
-     <y>420</y>
+     <x>80</x>
+     <y>300</y>
      <width>101</width>
      <height>41</height>
     </rect>
