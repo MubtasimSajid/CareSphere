@@ -9,9 +9,12 @@ patientfeed::patientfeed(QWidget *parent)
     , ui(new Ui::patientfeed)
 {
     ui->setupUi(this);
+
     connect(ui->notesPlusButton, &QPushButton::clicked, this, &patientfeed::addBulletPoint);
     ui->notesListWidget->setContextMenuPolicy(Qt::CustomContextMenu);
     connect(ui->notesListWidget, &QListWidget::customContextMenuRequested, this, &patientfeed::showContextMenu);
+
+    connect(ui->appointmentPlusButton, &QPushButton::clicked, this, &patientfeed::addAppointment);
 }
 
 patientfeed::~patientfeed()
@@ -79,4 +82,72 @@ void patientfeed::editBulletPoint()
     if (ok && !text.isEmpty()) {
         item->setText("• " + text);
     }
+}
+
+void patientfeed::addAppointment()
+{
+    bool ok;
+    QStringList timeSlots = {"9:00 AM", "10:00 AM", "11:00 AM", "3:00 PM", "4:00 PM"};
+    QString time = QInputDialog::getItem(this, "Select Time", "Select Appointment Time:", timeSlots, 0, false, &ok);
+
+    if (ok && !time.isEmpty()) {
+        QString date = QInputDialog::getText(this, "Enter Appointment Date", "Enter the date (YYYY-MM-DD):", QLineEdit::Normal, "", &ok);
+        QString doctorName = QInputDialog::getText(this, "Doctor's Name", "Enter Doctor's Name:", QLineEdit::Normal, "", &ok);
+        QString location = QInputDialog::getText(this, "Location", "Enter Appointment Location:", QLineEdit::Normal, "", &ok);
+
+        if (ok && !date.isEmpty() && !doctorName.isEmpty() && !location.isEmpty()) {
+            QString appointmentDetails = QString("%1 - %2 with Dr. %3 at %4").arg(date, time, doctorName, location);
+
+            QListWidgetItem *item = new QListWidgetItem("• " + appointmentDetails, ui->appointmentsListWidget);
+            item->setFlags(item->flags() | Qt::ItemIsEditable);
+        }
+    }
+}
+
+void patientfeed::editAppointment()
+{
+    QListWidgetItem *item = ui->appointmentsListWidget->currentItem();
+    if (item) {
+        QString currentDetails = item->text().mid(2);
+
+        bool ok;
+        QString newDetails = QInputDialog::getText(this, "Edit Appointment", "Edit appointment details:", QLineEdit::Normal, currentDetails, &ok);
+
+        if (ok && !newDetails.isEmpty()) {
+            item->setText("• " + newDetails);
+        }
+    }
+}
+
+void patientfeed::cancelAppointment()
+{
+    QListWidgetItem *item = ui->appointmentsListWidget->currentItem();
+    if (item) {
+        delete item;
+    }
+}
+
+void patientfeed::setupAppointmentForm()
+{
+    bool ok;
+    QStringList timeSlots = {"9:00 AM", "10:00 AM", "11:00 AM", "3:00 PM", "4:00 PM"};
+    QString time = QInputDialog::getItem(this, "Select Time", "Select Appointment Time:", timeSlots, 0, false, &ok);
+
+    if (ok && !time.isEmpty()) {
+        QString date = QInputDialog::getText(this, "Enter Appointment Date", "Enter the date (YYYY-MM-DD):", QLineEdit::Normal, "", &ok);
+        QString doctorName = QInputDialog::getText(this, "Doctor's Name", "Enter Doctor's Name:", QLineEdit::Normal, "", &ok);
+        QString location = QInputDialog::getText(this, "Location", "Enter Appointment Location:", QLineEdit::Normal, "", &ok);
+
+        if (ok && !date.isEmpty() && !doctorName.isEmpty() && !location.isEmpty()) {
+            QString appointmentDetails = QString("%1 - %2 with Dr. %3 at %4").arg(date, time, doctorName, location);
+
+            QListWidgetItem *item = new QListWidgetItem("• " + appointmentDetails, ui->appointmentsListWidget);
+            item->setFlags(item->flags() | Qt::ItemIsEditable);
+        }
+    }
+}
+
+void patientfeed::sendMissedAppointmentNotification(const QString &appointmentDetails)
+{
+
 }
