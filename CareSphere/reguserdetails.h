@@ -6,7 +6,9 @@
 #include "ui_reguserdetails.h"
 #include "registration.h"
 #include "login.h"
+#include "user.h"
 #include <QMessageBox>
+#include <QSettings>
 
 using namespace std;
 

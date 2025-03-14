@@ -41,6 +41,12 @@ void RegUserDetails::on_registerDetailsButton_clicked()
     string strBG = bloodGroup.toStdString();
 
     QMessageBox::information(this, "Success", "Registration successful!");
+    QSettings regUser("CareSphere", "Registration");
+    QString regUsername = regUser.value("regUsername", "").toString();
+    string newUser = regUsername.toStdString();
+
+    User registeredUser(newUser, strName, strEmail, strPhone, strBG, strGender, strDoB);
+    saveUser(registeredUser);
 
     Login *loginWindow = new Login();
     loginWindow->show();

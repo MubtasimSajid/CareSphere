@@ -15,8 +15,5 @@ int main(int argc, char *argv[]) {
     Login loginWindow;
     loginWindow.show();
 
-    vector<User> users;
-    MySQLinit();
-
     return a.exec();
 }

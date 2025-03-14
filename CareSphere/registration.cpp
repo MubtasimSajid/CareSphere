@@ -76,6 +76,8 @@ void Registration::on_registerPushButton_clicked()
     std::string pass = regPassword.toStdString();
 
     if (Registration::registerUser(user, pass)) {
+        QSettings newUser("CareSphere", "Registration");
+        newUser.setValue("regUsername", regUsername);
         ui->regErrorLabel->hide();
         RegUserDetails *regUserDetailsWindow = new RegUserDetails();
         regUserDetailsWindow->show();
