@@ -10,14 +10,18 @@ patientprofile::patientprofile(QWidget *parent)
     QSettings settingsUser("CareSphere", "Login System");
     QString username = settingsUser.value("username", "").toString();
     string strUsername = username.toStdString();
-    User currUser = getUser(strUsername);
-    currUser.details();
-    ui->PatientName->setText(QString::fromStdString(currUser.getName()));
-    ui->PatientBloodGroup->setText(QString::fromStdString(currUser.getBloodGroup()));
-    ui->PatientDateOfBirth->setText(QString::fromStdString(currUser.getDOB()));
-    ui->PatientEmail->setText(QString::fromStdString(currUser.getEmail()));
-    ui->PatientPhone->setText(QString::fromStdString(currUser.getPhoneNo()));
-    ui->PatientGender->setText(QString::fromStdString(currUser.getGender()));
+    try {
+        User currUser = getUser(strUsername);
+        ui->PatientName->setText(QString::fromStdString(currUser.getName()));
+        ui->PatientBloodGroup->setText(QString::fromStdString(currUser.getBloodGroup()));
+        ui->PatientDateOfBirth->setText(QString::fromStdString(currUser.getDOB()));
+        ui->PatientEmail->setText(QString::fromStdString(currUser.getEmail()));
+        ui->PatientPhone->setText(QString::fromStdString(currUser.getPhoneNo()));
+        ui->PatientGender->setText(QString::fromStdString(currUser.getGender()));
+    } catch (const std::exception &e) {
+        qDebug() << "Error: " << e.what();
+        QMessageBox::critical(this, "Error", "Failed to load user profile.");
+    }
 }
 
 patientprofile::~patientprofile()
