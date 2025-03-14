@@ -5,7 +5,19 @@
 #include <sstream>
 #include <string>
 #include <QMainWindow>
+#include <QMessageBox>
+#include <QKeyEvent>
+#include <QTimer>
+#include <QFile>
+#include <QTextStream>
+#include <QGraphicsScene>
+#include <QGraphicsPixmapItem>
+#include <QDebug>
 #include "registration.h"
+#include "ui_login.h"
+#include "utilities.h"
+#include "patientfeed.h"
+
 using namespace std;
 
 namespace Ui {

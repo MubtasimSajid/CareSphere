@@ -112,7 +112,7 @@
   <widget class="QLabel" name="regErrorLabel">
    <property name="geometry">
     <rect>
-     <x>160</x>
+     <x>180</x>
      <y>280</y>
      <width>211</width>
      <height>20</height>

@@ -1,11 +1,4 @@
 #include "reguserdetails.h"
-#include "ui_reguserdetails.h"
-#include "registration.h"
-#include "patientfeed.h"
-#include "user.h"
-#include <QMessageBox>
-
-string currentUserName;
 
 RegUserDetails::RegUserDetails(QWidget *parent)
     : QWidget(parent)
@@ -24,10 +17,6 @@ void RegUserDetails::on_detailsBackToReg_clicked()
     Registration *registrationWindow = new Registration();
     registrationWindow->show();
     this->close();
-}
-
-void detailsPassing(const string &username) {
-    currentUserName = username;
 }
 
 void RegUserDetails::on_registerDetailsButton_clicked()
@@ -51,11 +40,10 @@ void RegUserDetails::on_registerDetailsButton_clicked()
     string strDoB = dobStr.toStdString();
     string strBG = bloodGroup.toStdString();
 
-    User currentUser(currentUserName, strName, strEmail, strPhone, strBG, strGender, strDoB);
-    saveUser(currentUser);
+    QMessageBox::information(this, "Success", "Registration successful!");
 
-    patientfeed *patientFeedWindow = new patientfeed();
-    patientFeedWindow->show();
+    Login *loginWindow = new Login();
+    loginWindow->show();
     this->close();
 }
 

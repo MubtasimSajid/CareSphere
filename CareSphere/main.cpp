@@ -1,9 +1,7 @@
 #include <QApplication>
 #include<vector>
 #include "login.h"
-#include "registration.h"
 #include "user.h"
-#include "utilities.h"
 #include "MySQL_utilities.h"
 #include <QCoreApplication>
 #include <QSqlDatabase>

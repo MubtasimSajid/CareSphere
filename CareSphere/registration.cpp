@@ -40,7 +40,7 @@ bool Registration::registerUser(string name, string password) {
             getline(ss, pass, ',');
 
             if (uname == name) {
-                qInfo() << "Error: Username: '" << name << "' already exists. Choose a different one.\n";
+                ui->regErrorLabel->setText("Username already taken.");
                 fileRead.close();
                 return false;
             }
@@ -56,7 +56,6 @@ bool Registration::registerUser(string name, string password) {
     fileWrite << name << "," << password << "\n";
     fileWrite.flush();
     fileWrite.close();
-    qInfo() << "User '" << name << "' registered successfully!\n";
 
     return true;
 }
@@ -81,9 +80,7 @@ void Registration::on_registerPushButton_clicked()
         RegUserDetails *regUserDetailsWindow = new RegUserDetails();
         regUserDetailsWindow->show();
         this->close();
-
     } else {
-        ui->regErrorLabel->setText("Invalid username or password");
         ui->regErrorLabel->setStyleSheet("color: red;");
         ui->regErrorLabel->show();
     }
