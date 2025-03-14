@@ -25,9 +25,14 @@ private slots:
     void editBulletPoint();
     void deleteBulletPoint();
     void showContextMenu(const QPoint &pos);
+    void addAppointment();
+    void editAppointment();
+    void cancelAppointment();
 
 private:
     Ui::patientfeed *ui;
+    void setupAppointmentForm();
+    void sendMissedAppointmentNotification(const QString &appointmentDetails);
 };
 
 #endif

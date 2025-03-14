@@ -17,7 +17,7 @@
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>40</y>
+     <y>30</y>
      <width>561</width>
      <height>371</height>
     </rect>
@@ -34,7 +34,7 @@
     <enum>QTabWidget::TabShape::Rounded</enum>
    </property>
    <property name="currentIndex">
-    <number>3</number>
+    <number>2</number>
    </property>
    <property name="documentMode">
     <bool>false</bool>
@@ -59,6 +59,30 @@
     <attribute name="title">
      <string>Appointments</string>
     </attribute>
+    <widget class="QListWidget" name="appointmentsListWidget">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>461</width>
+       <height>321</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="appointmentPlusButton">
+     <property name="geometry">
+      <rect>
+       <x>470</x>
+       <y>260</y>
+       <width>71</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Request
+Appointment</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QWidget" name="notesTab">
     <attribute name="title">
@@ -81,9 +105,9 @@
      <property name="geometry">
       <rect>
        <x>0</x>
-       <y>10</y>
+       <y>0</y>
        <width>501</width>
-       <height>301</height>
+       <height>311</height>
       </rect>
      </property>
     </widget>
