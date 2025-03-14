@@ -5,6 +5,8 @@
 #include <QInputDialog>
 #include <QLineEdit>
 #include <QMenu>
+#include "appointmentdialog.h"
+#include "QMessageBox"
 
 namespace Ui {
 class patientfeed;
@@ -28,6 +30,7 @@ private slots:
     void addAppointment();
     void editAppointment();
     void cancelAppointment();
+    void showAppointmentsContextMenu(const QPoint &pos);
 
 private:
     Ui::patientfeed *ui;
