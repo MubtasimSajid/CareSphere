@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>499</width>
-    <height>475</height>
+    <width>561</width>
+    <height>371</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,8 +16,8 @@
   <widget class="QPushButton" name="registerPushButton">
    <property name="geometry">
     <rect>
-     <x>190</x>
-     <y>310</y>
+     <x>220</x>
+     <y>260</y>
      <width>131</width>
      <height>51</height>
     </rect>
@@ -29,8 +29,8 @@
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>140</y>
+     <x>50</x>
+     <y>90</y>
      <width>111</width>
      <height>121</height>
     </rect>
@@ -58,8 +58,8 @@
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>160</x>
-     <y>140</y>
+     <x>190</x>
+     <y>90</y>
      <width>321</width>
      <height>121</height>
     </rect>
@@ -112,8 +112,8 @@
   <widget class="QLabel" name="regErrorLabel">
    <property name="geometry">
     <rect>
-     <x>180</x>
-     <y>280</y>
+     <x>210</x>
+     <y>230</y>
      <width>211</width>
      <height>20</height>
     </rect>
