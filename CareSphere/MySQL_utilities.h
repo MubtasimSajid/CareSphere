@@ -8,13 +8,12 @@
 #include <QDebug>
 using namespace std;
 inline void MySQLinit(){
-    // Create a MySQL database connection
     QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
     db.setHostName("localhost");
-    db.setDatabaseName("CareSphereDB"); // Database created in Step 1
-    db.setUserName("root"); // Replace with your MySQL username
-    db.setPassword("sql1234567890#SQL"); // Replace with your MySQL password
-    db.setPort(3306); // MySQL default port
+    db.setDatabaseName("CareSphereDB");
+    db.setUserName("root");
+    db.setPassword("sql1234567890#SQL");
+    db.setPort(3306);
 
     // Try to open the database
     if (!db.open()) {
@@ -48,11 +47,11 @@ inline void MySQL_Update(QString query_update) {
 inline QString MySQL_Fetch(QString query_fetch) {
     QSqlQuery query;
     if (query.exec(query_fetch)) {
-        if (query.next()) { // Fetch the first row
-            return query.value(0).toString(); // Return the first column's value
+        if (query.next()) {
+            return query.value(0).toString();
         } else {
             qDebug() << "❌ No results found.";
-            return ""; // Return an empty string if no data is found
+            return "";
         }
     } else {
         qDebug() << "❌ Query execution failed:" << query.lastError().text();

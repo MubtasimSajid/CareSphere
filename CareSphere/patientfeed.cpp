@@ -96,7 +96,6 @@ void patientfeed::editBulletPoint()
 
 void patientfeed::addAppointment()
 {
-    // Create an instance of AppointmentDialog for new appointment
     AppointmentDialog dialog(this);
 
     if (dialog.exec() == QDialog::Accepted) {
@@ -105,21 +104,17 @@ void patientfeed::addAppointment()
         QString doctorName = dialog.getDoctorNameLineEdit()->text();
         QString location = dialog.getLocationLineEdit()->text();
 
-        // Validate the date format
         if (!dialog.isValidDate(date)) {
             QMessageBox::warning(this, "Invalid Date", "Please enter the date in DD-MM-YYYY format.");
             return;
         }
 
-        // Check if any field is empty
         if (date.isEmpty() || doctorName.isEmpty() || location.isEmpty()) {
             QMessageBox::warning(this, "Input Error", "Please fill in all the fields.");
         } else {
-            // Create the appointment details
             QString appointmentDetails = QString("%1 - %2 with Dr. %3 at %4")
                                              .arg(date, time, doctorName, location);
 
-            // Add to the appointments list
             QListWidgetItem *item = new QListWidgetItem("• " + appointmentDetails, ui->appointmentsListWidget);
             item->setFlags(item->flags() & ~Qt::ItemIsEditable);
         }
@@ -130,19 +125,17 @@ void patientfeed::editAppointment()
 {
     QListWidgetItem *item = ui->appointmentsListWidget->currentItem();
     if (item) {
-        QString currentDetails = item->text().mid(2);  // Remove bullet point
+        QString currentDetails = item->text().mid(2);
 
-        // Parse the current details (assuming it's in the format "DD-MM-YYYY - 10:00 AM with Dr. Smith at Clinic")
         QStringList parts = currentDetails.split(" with ");
         QString dateTimeLocation = parts[0];
         QString doctorAndLocation = parts[1];
         QStringList dateTimeParts = dateTimeLocation.split(" - ");
-        QString date = dateTimeParts[0];  // Date in DD-MM-YYYY format
+        QString date = dateTimeParts[0];
         QString time = dateTimeParts[1];
         QString doctorName = doctorAndLocation.split(" at ")[0];
         QString location = doctorAndLocation.split(" at ")[1];
 
-        // Show the dialog with current values
         AppointmentDialog dialog(this);
         dialog.getDateLineEdit()->setText(date);
         dialog.getTimeComboBox()->setCurrentText(time);
@@ -154,7 +147,6 @@ void patientfeed::editAppointment()
             .arg(dialog.getDateLineEdit()->text(), dialog.getTimeComboBox()->currentText(),
                  dialog.getDoctorNameLineEdit()->text(), dialog.getLocationLineEdit()->text());
 
-            // Check if the new details are valid
             if (dialog.getDateLineEdit()->text().isEmpty() || dialog.getDoctorNameLineEdit()->text().isEmpty() || dialog.getLocationLineEdit()->text().isEmpty()) {
                 QMessageBox::warning(this, "Input Error", "Please fill in all the fields.");
             } else {
@@ -174,9 +166,9 @@ void patientfeed::showAppointmentsContextMenu(const QPoint &pos)
 
     QAction *selectedAction = menu.exec(globalPos);
     if (selectedAction == editAction) {
-        editAppointment();  // Edit appointment
+        editAppointment();
     } else if (selectedAction == deleteAction) {
-        cancelAppointment();  // Delete appointment
+        cancelAppointment();
     }
 }
 
@@ -239,7 +231,7 @@ void patientfeed::editPrescription()
 
     QString currentText = item->text().mid(2);
     QStringList parts = currentText.split(": ");
-    QString doctorName = parts.value(0).mid(4);  // Remove "Dr. "
+    QString doctorName = parts.value(0).mid(4);
     QStringList medicines = parts.value(1).split(", ");
 
     QDialog dialog(this);
@@ -310,11 +302,56 @@ void patientfeed::showPrescriptionsContextMenu(const QPoint &pos)
 
 void patientfeed::addReminder()
 {
-    bool ok;
-    QString text = QInputDialog::getText(this, "Add Reminder", "Enter reminder details:", QLineEdit::Normal, "", &ok);
+    QDialog dialog(this);
+    dialog.setWindowTitle("Add Reminder");
 
-    if (ok && !text.isEmpty()) {
-        QListWidgetItem *item = new QListWidgetItem("\u2022 " + text, ui->remindersListWidget);
+    QFormLayout form(&dialog);
+
+    QLineEdit *titleEdit = new QLineEdit(&dialog);
+    QLineEdit *dateEdit = new QLineEdit(&dialog);
+    QLineEdit *timeEdit = new QLineEdit(&dialog);
+    QLineEdit *noteEdit = new QLineEdit(&dialog);
+
+    dateEdit->setPlaceholderText("DD-MM-YYYY");
+    timeEdit->setPlaceholderText("HH:MM AM/PM (Optional)");
+    noteEdit->setPlaceholderText("Optional note");
+
+    form.addRow("Title:", titleEdit);
+    form.addRow("Date:", dateEdit);
+    form.addRow("Time:", timeEdit);
+    form.addRow("Note:", noteEdit);
+
+    QPushButton *okButton = new QPushButton("OK", &dialog);
+    QPushButton *cancelButton = new QPushButton("Cancel", &dialog);
+
+    QHBoxLayout *buttonLayout = new QHBoxLayout;
+    buttonLayout->addWidget(okButton);
+    buttonLayout->addWidget(cancelButton);
+    form.addRow(buttonLayout);
+
+    connect(okButton, &QPushButton::clicked, &dialog, &QDialog::accept);
+    connect(cancelButton, &QPushButton::clicked, &dialog, &QDialog::reject);
+
+    if (dialog.exec() == QDialog::Accepted)
+    {
+        QString title = titleEdit->text();
+        QString date = dateEdit->text();
+        QString time = timeEdit->text();
+        QString note = noteEdit->text();
+
+        if (title.isEmpty() || date.isEmpty())
+        {
+            QMessageBox::warning(this, "Input Error", "Title and Date are required!");
+            return;
+        }
+
+        QString reminderDetails = QString("• %1 - %2").arg(title, date);
+        if (!time.isEmpty())
+            reminderDetails.append(" at " + time);
+        if (!note.isEmpty())
+            reminderDetails.append(" - " + note);
+
+        QListWidgetItem *item = new QListWidgetItem(reminderDetails, ui->remindersListWidget);
         item->setFlags(item->flags() & ~Qt::ItemIsEditable);
     }
 }
@@ -322,13 +359,74 @@ void patientfeed::addReminder()
 void patientfeed::editReminder()
 {
     QListWidgetItem *item = ui->remindersListWidget->currentItem();
-    if (!item) return;
+    if (!item)
+        return;
 
-    bool ok;
-    QString text = QInputDialog::getText(this, "Edit Reminder", "Edit details:", QLineEdit::Normal, item->text().mid(2), &ok);
+    QString currentText = item->text().mid(2);
+    QStringList parts = currentText.split(" - ");
 
-    if (ok && !text.isEmpty()) {
-        item->setText("\u2022 " + text);
+    QString title = parts[0];
+    QString date = (parts.size() > 1) ? parts[1] : "";
+    QString time, note;
+
+    if (parts.size() > 2)
+    {
+        QStringList timeAndNote = parts[2].split(" - ");
+        time = timeAndNote[0];
+        if (timeAndNote.size() > 1)
+            note = timeAndNote[1];
+    }
+
+    QDialog dialog(this);
+    dialog.setWindowTitle("Edit Reminder");
+
+    QFormLayout form(&dialog);
+
+    QLineEdit *titleEdit = new QLineEdit(title, &dialog);
+    QLineEdit *dateEdit = new QLineEdit(date, &dialog);
+    QLineEdit *timeEdit = new QLineEdit(time, &dialog);
+    QLineEdit *noteEdit = new QLineEdit(note, &dialog);
+
+    dateEdit->setPlaceholderText("DD-MM-YYYY");
+    timeEdit->setPlaceholderText("HH:MM AM/PM (Optional)");
+    noteEdit->setPlaceholderText("Optional note");
+
+    form.addRow("Title:", titleEdit);
+    form.addRow("Date:", dateEdit);
+    form.addRow("Time:", timeEdit);
+    form.addRow("Note:", noteEdit);
+
+    QPushButton *okButton = new QPushButton("OK", &dialog);
+    QPushButton *cancelButton = new QPushButton("Cancel", &dialog);
+
+    QHBoxLayout *buttonLayout = new QHBoxLayout;
+    buttonLayout->addWidget(okButton);
+    buttonLayout->addWidget(cancelButton);
+    form.addRow(buttonLayout);
+
+    connect(okButton, &QPushButton::clicked, &dialog, &QDialog::accept);
+    connect(cancelButton, &QPushButton::clicked, &dialog, &QDialog::reject);
+
+    if (dialog.exec() == QDialog::Accepted)
+    {
+        QString newTitle = titleEdit->text();
+        QString newDate = dateEdit->text();
+        QString newTime = timeEdit->text();
+        QString newNote = noteEdit->text();
+
+        if (newTitle.isEmpty() || newDate.isEmpty())
+        {
+            QMessageBox::warning(this, "Input Error", "Title and Date are required!");
+            return;
+        }
+
+        QString newReminderDetails = QString("• %1 - %2").arg(newTitle, newDate);
+        if (!newTime.isEmpty())
+            newReminderDetails.append(" at " + newTime);
+        if (!newNote.isEmpty())
+            newReminderDetails.append(" - " + newNote);
+
+        item->setText(newReminderDetails);
     }
 }
 
@@ -353,10 +451,4 @@ void patientfeed::showRemindersContextMenu(const QPoint &pos)
     } else if (selectedAction == deleteAction) {
         deleteReminder();
     }
-}
-
-
-void patientfeed::sendMissedAppointmentNotification(const QString &appointmentDetails)
-{
-
 }

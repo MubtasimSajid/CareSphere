@@ -72,8 +72,8 @@ void Login::on_loginButton_clicked() {
 
         patientfeed *patientFeedWindow = new patientfeed();
         patientFeedWindow->show();
-        this->close();
         ui->errorLabel->hide();
+        this->close();
     } else {
         ui->errorLabel->setText("Invalid username or password");
         ui->errorLabel->setStyleSheet("color: red;");

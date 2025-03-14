@@ -8,7 +8,9 @@
 #include <QSettings>
 #include <QFormLayout>
 #include "appointmentdialog.h"
-#include "QMessageBox"
+#include <QMessageBox>
+#include <QDateTime>
+#include <QMessageBox>
 
 namespace Ui {
 class patientfeed;
@@ -45,7 +47,6 @@ private slots:
 private:
     Ui::patientfeed *ui;
     void setupAppointmentForm();
-    void sendMissedAppointmentNotification(const QString &appointmentDetails);
 };
 
 #endif
