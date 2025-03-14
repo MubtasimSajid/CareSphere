@@ -34,7 +34,7 @@
     <enum>QTabWidget::TabShape::Rounded</enum>
    </property>
    <property name="currentIndex">
-    <number>1</number>
+    <number>3</number>
    </property>
    <property name="documentMode">
     <bool>false</bool>
@@ -83,7 +83,7 @@ Prescription</string>
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>471</width>
+       <width>451</width>
        <height>321</height>
       </rect>
      </property>
@@ -91,10 +91,10 @@ Prescription</string>
     <widget class="QPushButton" name="addRemindersButton">
      <property name="geometry">
       <rect>
-       <x>480</x>
-       <y>260</y>
-       <width>61</width>
-       <height>51</height>
+       <x>460</x>
+       <y>250</y>
+       <width>81</width>
+       <height>61</height>
       </rect>
      </property>
      <property name="text">
@@ -121,7 +121,7 @@ Reminders</string>
      <property name="geometry">
       <rect>
        <x>460</x>
-       <y>260</y>
+       <y>250</y>
        <width>81</width>
        <height>61</height>
       </rect>
@@ -136,27 +136,27 @@ Appointment</string>
     <attribute name="title">
      <string>Notes</string>
     </attribute>
-    <widget class="QPushButton" name="notesPlusButton">
-     <property name="geometry">
-      <rect>
-       <x>509</x>
-       <y>279</y>
-       <width>31</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>+</string>
-     </property>
-    </widget>
     <widget class="QListWidget" name="notesListWidget">
      <property name="geometry">
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>501</width>
-       <height>311</height>
+       <width>451</width>
+       <height>321</height>
       </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="notesPlusButton">
+     <property name="geometry">
+      <rect>
+       <x>460</x>
+       <y>250</y>
+       <width>81</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>+</string>
      </property>
     </widget>
    </widget>
