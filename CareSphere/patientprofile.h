@@ -2,6 +2,7 @@
 #define PATIENTPROFILE_H
 
 #include <QWidget>
+#include <QSettings>
 
 namespace Ui {
 class patientprofile;

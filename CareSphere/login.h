@@ -13,6 +13,7 @@
 #include <QGraphicsScene>
 #include <QGraphicsPixmapItem>
 #include <QDebug>
+#include <QSettings>
 #include "registration.h"
 #include "ui_login.h"
 #include "utilities.h"

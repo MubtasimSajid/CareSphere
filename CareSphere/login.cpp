@@ -67,6 +67,9 @@ void Login::on_loginButton_clicked() {
     std::string pass = password.toStdString();
 
     if (verify(user, pass)) {
+        QSettings settingsUser("CareSphere", "Login System");
+        settingsUser.setValue("username", username);
+
         patientfeed *patientFeedWindow = new patientfeed();
         patientFeedWindow->show();
         this->close();

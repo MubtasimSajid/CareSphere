@@ -7,6 +7,10 @@ patientprofile::patientprofile(QWidget *parent)
     , ui(new Ui::patientprofile)
 {
     ui->setupUi(this);
+
+    QSettings settingsUser("CareSphere", "Login System");
+    QString username = settingsUser.value("username", "").toString();
+    qDebug() << username;
 }
 
 patientprofile::~patientprofile()
