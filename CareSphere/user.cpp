@@ -16,7 +16,7 @@ const string FILE_NAME = FOLDER_NAME + "/users.csv";
 void saveUser(const User &user)
 {
     QSqlQuery query;
-    QString insert_user = "INSERT INTO users (id,name, email, phoneNo, bloodGroup,gender, DOB) VALUES ('"
+    QString insert_user = "INSERT INTO users (id, name, email, phoneNo, bloodGroup,gender, DOB) VALUES ('"
                           + QString::fromStdString(user.getId()) + "', '"
                           + QString::fromStdString(user.getName()) + "', '"
                           + QString::fromStdString(user.getEmail()) + "', '"

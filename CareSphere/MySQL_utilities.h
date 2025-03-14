@@ -1,7 +1,6 @@
 #ifndef MYSQL_UTILITIES_H
 #define MYSQL_UTILITIES_H
 
-#include<string>
 #include <QCoreApplication>
 #include <QSqlDatabase>
 #include <QSqlError>

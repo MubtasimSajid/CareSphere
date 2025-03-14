@@ -7,6 +7,7 @@
 #include "registration.h"
 #include "login.h"
 #include "user.h"
+#include "MySQL_utilities.h"
 #include <QMessageBox>
 #include <QSettings>
 

@@ -1,7 +1,5 @@
 #include <QApplication>
-#include<vector>
 #include "login.h"
-#include "user.h"
 #include "MySQL_utilities.h"
 #include <QCoreApplication>
 #include <QSqlDatabase>
@@ -11,6 +9,8 @@
 
 int main(int argc, char *argv[]) {
     QApplication a(argc, argv);
+
+    MySQLinit();
 
     Login loginWindow;
     loginWindow.show();
