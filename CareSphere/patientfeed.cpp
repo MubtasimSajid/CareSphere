@@ -17,6 +17,14 @@ patientfeed::patientfeed(QWidget *parent)
     connect(ui->appointmentPlusButton, &QPushButton::clicked, this, &patientfeed::addAppointment);
     ui->appointmentsListWidget->setContextMenuPolicy(Qt::CustomContextMenu);
     connect(ui->appointmentsListWidget, &QListWidget::customContextMenuRequested, this, &patientfeed::showAppointmentsContextMenu);
+
+    connect(ui->prescriptionsPlusButton, &QPushButton::clicked, this, &patientfeed::addPrescription);
+    ui->prescriptionsListWidget->setContextMenuPolicy(Qt::CustomContextMenu);
+    connect(ui->prescriptionsListWidget, &QListWidget::customContextMenuRequested, this, &patientfeed::showPrescriptionsContextMenu);
+
+    connect(ui->addRemindersButton, &QPushButton::clicked, this, &patientfeed::addReminder);
+    ui->remindersListWidget->setContextMenuPolicy(Qt::CustomContextMenu);
+    connect(ui->remindersListWidget, &QListWidget::customContextMenuRequested, this, &patientfeed::showRemindersContextMenu);
 }
 
 patientfeed::~patientfeed()
@@ -200,6 +208,101 @@ void patientfeed::setupAppointmentForm()
         }
     }
 }
+
+void patientfeed::addPrescription()
+{
+    bool ok;
+    QString text = QInputDialog::getText(this, "Add Prescription", "Enter prescription details:", QLineEdit::Normal, "", &ok);
+
+    if (ok && !text.isEmpty()) {
+        QListWidgetItem *item = new QListWidgetItem("\u2022 " + text, ui->prescriptionsListWidget);
+        item->setFlags(item->flags() & ~Qt::ItemIsEditable);
+    }
+}
+
+void patientfeed::editPrescription()
+{
+    QListWidgetItem *item = ui->prescriptionsListWidget->currentItem();
+    if (!item) return;
+
+    bool ok;
+    QString text = QInputDialog::getText(this, "Edit Prescription", "Edit details:", QLineEdit::Normal, item->text().mid(2), &ok);
+
+    if (ok && !text.isEmpty()) {
+        item->setText("\u2022 " + text);
+    }
+}
+
+void patientfeed::deletePrescription()
+{
+    QListWidgetItem *item = ui->prescriptionsListWidget->currentItem();
+    if (item) {
+        delete item;
+    }
+}
+
+void patientfeed::showPrescriptionsContextMenu(const QPoint &pos)
+{
+    QPoint globalPos = ui->prescriptionsListWidget->viewport()->mapToGlobal(pos);
+    QMenu menu;
+    QAction *editAction = menu.addAction("Edit Prescription");
+    QAction *deleteAction = menu.addAction("Delete Prescription");
+
+    QAction *selectedAction = menu.exec(globalPos);
+    if (selectedAction == editAction) {
+        editPrescription();
+    } else if (selectedAction == deleteAction) {
+        deletePrescription();
+    }
+}
+
+void patientfeed::addReminder()
+{
+    bool ok;
+    QString text = QInputDialog::getText(this, "Add Reminder", "Enter reminder details:", QLineEdit::Normal, "", &ok);
+
+    if (ok && !text.isEmpty()) {
+        QListWidgetItem *item = new QListWidgetItem("\u2022 " + text, ui->remindersListWidget);
+        item->setFlags(item->flags() & ~Qt::ItemIsEditable);
+    }
+}
+
+void patientfeed::editReminder()
+{
+    QListWidgetItem *item = ui->remindersListWidget->currentItem();
+    if (!item) return;
+
+    bool ok;
+    QString text = QInputDialog::getText(this, "Edit Reminder", "Edit details:", QLineEdit::Normal, item->text().mid(2), &ok);
+
+    if (ok && !text.isEmpty()) {
+        item->setText("\u2022 " + text);
+    }
+}
+
+void patientfeed::deleteReminder()
+{
+    QListWidgetItem *item = ui->remindersListWidget->currentItem();
+    if (item) {
+        delete item;
+    }
+}
+
+void patientfeed::showRemindersContextMenu(const QPoint &pos)
+{
+    QPoint globalPos = ui->remindersListWidget->viewport()->mapToGlobal(pos);
+    QMenu menu;
+    QAction *editAction = menu.addAction("Edit Reminder");
+    QAction *deleteAction = menu.addAction("Delete Reminder");
+
+    QAction *selectedAction = menu.exec(globalPos);
+    if (selectedAction == editAction) {
+        editReminder();
+    } else if (selectedAction == deleteAction) {
+        deleteReminder();
+    }
+}
+
 
 void patientfeed::sendMissedAppointmentNotification(const QString &appointmentDetails)
 {

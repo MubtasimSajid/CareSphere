@@ -32,6 +32,14 @@ private slots:
     void editAppointment();
     void cancelAppointment();
     void showAppointmentsContextMenu(const QPoint &pos);
+    void addPrescription();
+    void editPrescription();
+    void deletePrescription();
+    void showPrescriptionsContextMenu(const QPoint &pos);
+    void addReminder();
+    void editReminder();
+    void deleteReminder();
+    void showRemindersContextMenu(const QPoint &pos);
 
 private:
     Ui::patientfeed *ui;
