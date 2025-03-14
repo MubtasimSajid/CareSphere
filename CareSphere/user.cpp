@@ -149,15 +149,26 @@ void User::details()
 }
 
 
-
-User getUser(const vector<User> &users , string id)
+User getUser(const string &username)
 {
-    for(const auto &x: users){
-        if (x.getId() == id){
-            return x;
-            }
+    QSqlQuery query;
+    query.prepare("SELECT id, name, email, phoneNo, bloodGroup, gender, DOB FROM users WHERE id = :username");
+    query.bindValue(":username", QString::fromStdString(username));
+
+    if (query.exec()) {
+        while (query.next()) {
+            string id = query.value(0).toString().toStdString();
+            string name = query.value(1).toString().toStdString();
+            string email = query.value(2).toString().toStdString();
+            string phoneNo = query.value(3).toString().toStdString();
+            string bloodGroup = query.value(4).toString().toStdString();
+            string gender = query.value(5).toString().toStdString();
+            string DOB = query.value(6).toString().toStdString();
+            return User(id, name, email, phoneNo, bloodGroup, gender, DOB);
+        }
+    } else {
+        qDebug() << "Query failed: " << query.lastError().text();
     }
 
-    // Handle case when user is not found
-    throw runtime_error("User not found");
+    throw runtime_error("User not found");
 }

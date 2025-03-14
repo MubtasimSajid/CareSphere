@@ -46,7 +46,7 @@ void patientfeed::addBulletPoint()
 
     if (ok && !text.isEmpty()) {
         QListWidgetItem *item = new QListWidgetItem("• " + text, ui->notesListWidget);
-        item->setFlags(item->flags() | Qt::ItemIsEditable);
+        item->setFlags(item->flags() & ~Qt::ItemIsEditable);
     }
 }
 
@@ -113,7 +113,7 @@ void patientfeed::addAppointment()
 
             // Add to the appointments list
             QListWidgetItem *item = new QListWidgetItem("• " + appointmentDetails, ui->appointmentsListWidget);
-            item->setFlags(item->flags() | Qt::ItemIsEditable);
+            item->setFlags(item->flags() & ~Qt::ItemIsEditable);
         }
     }
 }
