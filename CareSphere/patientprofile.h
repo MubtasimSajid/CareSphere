@@ -3,6 +3,8 @@
 
 #include <QWidget>
 #include <QSettings>
+#include "user.h"
+#include "patientfeed.h"
 
 namespace Ui {
 class patientprofile;

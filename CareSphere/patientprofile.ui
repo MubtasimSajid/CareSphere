@@ -58,7 +58,7 @@
     <string>Patient Profile</string>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>200</x>
@@ -124,7 +124,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="Patientemail">
+       <widget class="QLabel" name="PatientEmail">
         <property name="text">
          <string/>
         </property>
@@ -145,7 +145,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="PatientDateofBirth">
+       <widget class="QLabel" name="PatientDateOfBirth">
         <property name="enabled">
          <bool>true</bool>
         </property>
@@ -155,7 +155,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="bloodGroupLabel">
+       <widget class="QLabel" name="PatientBloodGroup">
         <property name="enabled">
          <bool>true</bool>
         </property>

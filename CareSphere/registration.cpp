@@ -40,7 +40,7 @@ bool Registration::registerUser(string name, string password) {
             getline(ss, pass, ',');
 
             if (uname == name) {
-                ui->regErrorLabel->setText("Username already taken.");
+                ui->regErrorLabel->setText("Username already taken");
                 fileRead.close();
                 return false;
             }

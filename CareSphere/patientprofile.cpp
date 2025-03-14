@@ -1,5 +1,4 @@
 #include "patientprofile.h"
-#include "patientfeed.h"
 #include "ui_patientprofile.h"
 
 patientprofile::patientprofile(QWidget *parent)
@@ -10,6 +9,8 @@ patientprofile::patientprofile(QWidget *parent)
 
     QSettings settingsUser("CareSphere", "Login System");
     QString username = settingsUser.value("username", "").toString();
+    std::string strUsername = username.toStdString();
+    User currUser = getUser(strUsername);
 }
 
 patientprofile::~patientprofile()
