@@ -32,6 +32,8 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         patientprofile.h patientprofile.cpp patientprofile.ui
         patientprofile.h patientprofile.cpp patientprofile.ui
         appointmentdialog.h appointmentdialog.cpp
+        prescription.h prescription.cpp
+        prescription.h prescription.cpp
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET CareSphere APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
