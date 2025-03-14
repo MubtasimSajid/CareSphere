@@ -16,10 +16,12 @@ const string FILE_NAME = FOLDER_NAME + "/users.csv";
 void saveUser(const User &user)
 {
     QSqlQuery query;
-    QString insert_user = "INSERT INTO users (name, email, phoneNo, gender, religion, DOB) VALUES ('"
+    QString insert_user = "INSERT INTO users (id,name, email, phoneNo, bloodGroup,gender, DOB) VALUES ('"
+                          + QString::fromStdString(user.getId()) + "', '"
                           + QString::fromStdString(user.getName()) + "', '"
                           + QString::fromStdString(user.getEmail()) + "', '"
                           + QString::fromStdString(user.getPhoneNo()) + "', '"
+                          + QString::fromStdString(user.getBloodGroup()) + "', '"
                           + QString::fromStdString(user.getGender()) + "', '"
                           + QString::fromStdString(user.getDOB()) + "' )";
 
@@ -148,10 +150,10 @@ void User::details()
 
 
 
-User getUser(const vector<User> &users , string name)
+User getUser(const vector<User> &users , string id)
 {
     for(const auto &x: users){
-        if (x.getName() == name){
+        if (x.getId() == id){
             return x;
             }
     }

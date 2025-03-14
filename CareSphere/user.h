@@ -16,7 +16,7 @@ private:
     string DOB;
     string bloodGroup;
 public:
-    User(string id, string name, string email, string phoneNo, string bloodGroup, string gender = "Male", string DOB = "");
+    User(string id, string name, string email, string phoneNo, string , string gender = "Male", string DOB = "");
     string getId() const;
     void setId(const string &inputID);
     string getName() const;
