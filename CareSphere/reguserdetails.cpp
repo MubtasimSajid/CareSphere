@@ -51,7 +51,8 @@ void RegUserDetails::on_registerDetailsButton_clicked()
     string strDoB = dobStr.toStdString();
     string strBG = bloodGroup.toStdString();
 
-    User currentUser(currentUserName, strName, strEmail, strPhone, strBG, strGender, strDoB);;
+    User currentUser(currentUserName, strName, strEmail, strPhone, strBG, strGender, strDoB);
+    saveUser(currentUser);
 
     patientfeed *patientFeedWindow = new patientfeed();
     patientFeedWindow->show();
