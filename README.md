@@ -1,3 +1,3 @@
 # CareSphere
-This is a healthcare management system currently under development (this repository is supposed to streamline our workflow). It aims to provide seamless interaction among doctors, hospitals/clinics, their management and staff, and patients. We intend to write the codes in C++. File operations will be used to maintain a database in the background. Qt will be used to build the GUI. 
-This started as a project proposal for our OOP-4302 lab.
+This is a healthcare management system developed using C++, MySQL (some file operations) & Qt. C++ was the primary language used to develop this project. MySQL retains the database in the background. Qt was used to create the GUI. A more expanded suite of functionalities has been added to the CLI version of this project. The GUI side can provide a convenient app for the patients to handle their medical necessities. At the same time, the CLI version is equipped for more advanced services including for doctors & hospital administrations.
+This started as a project submission idea for our OOP-4302 lab. As a result, further improvements are expected.
