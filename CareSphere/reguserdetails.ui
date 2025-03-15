@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>575</width>
-    <height>420</height>
+    <height>435</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,8 +16,8 @@
   <widget class="QPushButton" name="registerDetailsButton">
    <property name="geometry">
     <rect>
-     <x>280</x>
-     <y>360</y>
+     <x>270</x>
+     <y>390</y>
      <width>131</width>
      <height>31</height>
     </rect>
@@ -43,7 +43,7 @@
    <property name="geometry">
     <rect>
      <x>230</x>
-     <y>250</y>
+     <y>290</y>
      <width>121</width>
      <height>27</height>
     </rect>
@@ -56,7 +56,7 @@
    <property name="geometry">
     <rect>
      <x>240</x>
-     <y>200</y>
+     <y>240</y>
      <width>121</width>
      <height>25</height>
     </rect>
@@ -68,8 +68,8 @@
   <widget class="QLabel" name="userDetailsPhoneLabel">
    <property name="geometry">
     <rect>
-     <x>80</x>
-     <y>130</y>
+     <x>90</x>
+     <y>170</y>
      <width>81</width>
      <height>41</height>
     </rect>
@@ -81,8 +81,8 @@
   <widget class="QLabel" name="userDetailsGenderLabel">
    <property name="geometry">
     <rect>
-     <x>80</x>
-     <y>190</y>
+     <x>90</x>
+     <y>230</y>
      <width>78</width>
      <height>41</height>
     </rect>
@@ -94,8 +94,8 @@
   <widget class="QLabel" name="userDetailsEmaillLabel">
    <property name="geometry">
     <rect>
-     <x>80</x>
-     <y>70</y>
+     <x>90</x>
+     <y>110</y>
      <width>78</width>
      <height>41</height>
     </rect>
@@ -107,8 +107,8 @@
   <widget class="QLabel" name="userDetailsNameLabel">
    <property name="geometry">
     <rect>
-     <x>80</x>
-     <y>10</y>
+     <x>90</x>
+     <y>50</y>
      <width>78</width>
      <height>41</height>
     </rect>
@@ -121,7 +121,7 @@
    <property name="geometry">
     <rect>
      <x>380</x>
-     <y>200</y>
+     <y>240</y>
      <width>113</width>
      <height>25</height>
     </rect>
@@ -133,8 +133,8 @@
   <widget class="QLabel" name="userDetailsDOBLabel">
    <property name="geometry">
     <rect>
-     <x>80</x>
-     <y>240</y>
+     <x>90</x>
+     <y>280</y>
      <width>101</width>
      <height>41</height>
     </rect>
@@ -147,7 +147,7 @@
    <property name="geometry">
     <rect>
      <x>230</x>
-     <y>11</y>
+     <y>51</y>
      <width>321</width>
      <height>164</height>
     </rect>
@@ -240,7 +240,7 @@
    <property name="geometry">
     <rect>
      <x>230</x>
-     <y>310</y>
+     <y>350</y>
      <width>211</width>
      <height>31</height>
     </rect>
@@ -292,8 +292,8 @@
   <widget class="QLabel" name="userDetailsBloodGroup">
    <property name="geometry">
     <rect>
-     <x>80</x>
-     <y>300</y>
+     <x>90</x>
+     <y>340</y>
      <width>101</width>
      <height>41</height>
     </rect>
