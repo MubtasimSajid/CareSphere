@@ -10,20 +10,18 @@
 #include <QSqlQuery>
 #include <QSqlError>
 #include <iomanip> // For table formatting
-// Default Constructor
+// Default constructor
 Prescription::Prescription() {
     user_name = "";
-    medicine = "";
-    dosage = "";
-    frequency = "";
+    doctor_name = "";
+    medicines = "";
 }
 
-// Parameterized Constructor
-Prescription::Prescription(string un, string m, string d, string f) {
+// Parameterized constructor
+Prescription::Prescription(string un, string dn, string m) {
     user_name = un;
-    medicine = m;
-    dosage = d;
-    frequency = f;
+    doctor_name = dn;
+    medicines = m;
 }
 
 // Setters
@@ -31,16 +29,12 @@ void Prescription::setUserName(string un) {
     user_name = un;
 }
 
-void Prescription::setMedicine(string m) {
-    medicine = m;
+void Prescription::setDoctorName(string dn) {
+    doctor_name = dn;
 }
 
-void Prescription::setDosage(string d) {
-    dosage = d;
-}
-
-void Prescription::setFrequency(string f) {
-    frequency = f;
+void Prescription::setMedicineNotes(string m) {
+    medicines = m;
 }
 
 // Getters
@@ -48,26 +42,19 @@ string Prescription::getUserName() const {
     return user_name;
 }
 
-string Prescription::getMedicine() const {
-    return medicine;
+string Prescription::getDoctorName() const {
+    return doctor_name;
 }
 
-string Prescription::getDosage() const {
-    return dosage;
+string Prescription::getMedicineNotes() const {
+    return medicines;
 }
 
-string Prescription::getFrequency() const {
-    return frequency;
-}
-
-
-// Display Details Function
+// Display prescription details
 void Prescription::displayDetails() const {
-    cout << "Prescription Details:\n";
-    cout << "User: " << user_name << "\n";
-    cout << "Medicine: " << medicine << "\n";
-    cout << "Dosage: " << dosage << "\n";
-    cout << "Frequency: " << frequency << "\n";
+    cout << "User Name: " << user_name << endl;
+    cout << "Doctor Name: " << doctor_name << endl;
+    cout << "Medicines: " << medicines << endl;
 }
 
 
@@ -75,11 +62,10 @@ void Prescription::displayDetails() const {
 void SavePrescription(const Prescription &p)
 {
     QSqlQuery query;
-    QString insert_user = "INSERT INTO prescriptions (user_id, medicine, dosage, frequency) VALUES ('"
+    QString insert_user = "INSERT INTO prescriptions (user_id, doctor_name, MEDICINES) VALUES ('"
                           + QString::fromStdString(p.getUserName()) + "', '"
-                          + QString::fromStdString(p.getMedicine()) + "', '"
-                          + QString::fromStdString(p.getDosage()) + "', '"
-                          + QString::fromStdString(p.getFrequency()) + "' )";
+                          + QString::fromStdString(p.getDoctorName()) + "', '"
+                          + QString::fromStdString(p.getMedicineNotes()) + "' )";
 
     MySQL_Insert(insert_user);
 }
@@ -88,58 +74,39 @@ void SavePrescription(const Prescription &p)
 
 string GetUserPrescriptions(const string &user_name) {
     QSqlQuery query;
-    query.prepare("SELECT user_id, medicine, dosage, frequency FROM prescriptions WHERE user_id = :username");
+    query.prepare("SELECT doctor_name, MEDICINES FROM prescriptions WHERE user_id = :username");
     query.bindValue(":username", QString::fromStdString(user_name));
 
     vector<Prescription> prescriptions; // Store all prescriptions
 
     if (!query.exec()) {
         qDebug() << "Query failed: " << query.lastError().text();
-        return "Error retrieving prescriptions.";
+        return "";
     }
 
     // Store results in vector
     while (query.next()) {
         prescriptions.emplace_back(
-            query.value(0).toString().toStdString(), // user_name
-            query.value(1).toString().toStdString(), // medicine
-            query.value(2).toString().toStdString(), // dosage
-            query.value(3).toString().toStdString()  // frequency
+            user_name,
+            query.value(0).toString().toUtf8().constData(),  // Use UTF-8 safe conversion
+            query.value(1).toString().toUtf8().constData()
             );
     }
 
     if (prescriptions.empty()) {
-        return "No prescriptions found for user: " + user_name;
+        return "";
     }
 
-    // Define column widths
-    int col1_width = 15; // Medicine
-    int col2_width = 10; // Dosage
-    int col3_width = 25; // Frequency
-
-    // Convert vector contents to a properly aligned table
+    // Format the output string with properly encoded bullet points
     stringstream result;
-    result << "Prescriptions for " << user_name << ":\n\n";
+    result << "Prescriptions for " << user_name << ":\n";
 
-    // Print table header
-    result << "+" << string(col1_width, '-') << "+" << string(col2_width, '-') << "+" << string(col3_width, '-') << "+\n";
-    result << "| " << left << setw(col1_width - 1) << "Medicine"
-           << "| " << setw(col2_width - 1) << "Dosage"
-           << "| " << setw(col3_width - 1) << "Frequency"
-           << "|\n";
-    result << "+" << string(col1_width, '-') << "+" << string(col2_width, '-') << "+" << string(col3_width, '-') << "+\n";
-
-    // Print each row
     for (const auto &p : prescriptions) {
-        result << "| " << left << setw(col1_width - 1) << p.getMedicine()
-        << "| " << setw(col2_width - 1) << p.getDosage()
-        << "| " << setw(col3_width - 1) << p.getFrequency()
-        << "|\n";
+        result << ".Dr. " << p.getDoctorName() << ": " << p.getMedicineNotes() << "\n";
     }
 
-    // Print bottom border
-    result << "+" << string(col1_width, '-') << "+" << string(col2_width, '-') << "+" << string(col3_width, '-') << "+\n";
-
-    return result.str(); // Return the formatted string
+    return result.str(); // Return the formatted prescription list
 }
+
+
 
