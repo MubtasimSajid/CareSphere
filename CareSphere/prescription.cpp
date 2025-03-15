@@ -99,7 +99,7 @@ string GetUserPrescriptions(const string &user_name) {
 
     // Format the output string with properly encoded bullet points
     stringstream result;
-    result << "Prescriptions for " << user_name << ":\n";
+    // result << "Prescriptions for " << user_name << ":\n";
 
     for (const auto &p : prescriptions) {
         result << ".Dr. " << p.getDoctorName() << ": " << p.getMedicineNotes() << "\n";

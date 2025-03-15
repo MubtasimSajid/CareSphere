@@ -17,35 +17,35 @@ int main(int argc, char *argv[]) {
     MySQLinit();
     QTextStream out(stdout);
 
-    // // Testing Prescriptions
+    // Testing Prescriptions
     // Prescription test("F-00", "WAZED", "ACE-PLUS, PERACETAMOL, NAPA");
     // test.displayDetails();
-    // // SavePrescription(test);
-    // string check = GetUserPrescriptions("F-00");
-    // cout<<check<<endl;
+    // SavePrescription(test);
+    string check = GetUserPrescriptions("F-00");
+    cout<<check<<endl;
 
 
-    // // Testing Notes
+    // Testing Notes
     // string notes = "Eat Banana";
-    // // save_User_Notes("F-00", notes);
-    // string check = get_User_Notes("F-00");
-    // cout<<check<<endl;
+    // save_User_Notes("F-00", notes);
+    string check2 = get_User_Notes("F-00");
+    cout<<check2<<endl<<endl;
 
-    // // Testing Reminders
-    // // Creating a reminder object
+    // Testing Reminders
+    // Creating a reminder object
     // Reminder r1("F-00", "Doctor Appointment", "2025-12-01", "12:30:00", "Visit Dr. Smith for a checkup");
     // Save_User_Reminder(r1);
-    // string check = Get_User_Reminders("F-00");
-    // cout<<check<<endl;
+    string check3 = Get_User_Reminders("F-00");
+    cout<<check3<<endl;
 
-    // // Testing Appointments
-    // // Creating an appointment object
+    // Testing Appointments
+    // Creating an appointment object
     // Appointment a1("F-00", "Test", "Mirpur", "01-12-2025", "9:00 PM");
-    // // Save_User_Appointment(a1);
-    // string check = Get_User_Appointments("F-00");
-    // cout<<check<<endl;
-    // // Displaying the formatted output
-    // // cout << a1.formatAppointment() << endl;
+    // Save_User_Appointment(a1);
+    string check4 = Get_User_Appointments("F-00");
+    cout<<check4<<endl;
+    // Displaying the formatted output
+    // cout << a1.formatAppointment() << endl;
 
     Login loginWindow;
     loginWindow.show();
