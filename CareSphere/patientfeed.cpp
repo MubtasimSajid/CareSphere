@@ -14,7 +14,7 @@ patientfeed::patientfeed(QWidget *parent)
 {
     ui->setupUi(this);
 
-    connect(ui->notesPlusButton, &QPushButton::clicked, this, &patientfeed::addBulletPoint);
+    connect(ui->notesPlusButton, &QPushButton::clicked, this, [this]() { addBulletPoint(ui->notesListWidget); });
     ui->notesListWidget->setContextMenuPolicy(Qt::CustomContextMenu);
     connect(ui->notesListWidget, &QListWidget::customContextMenuRequested, this, &patientfeed::showContextMenu);
 
@@ -29,6 +29,11 @@ patientfeed::patientfeed(QWidget *parent)
     connect(ui->addRemindersButton, &QPushButton::clicked, this, &patientfeed::addReminder);
     ui->remindersListWidget->setContextMenuPolicy(Qt::CustomContextMenu);
     connect(ui->remindersListWidget, &QListWidget::customContextMenuRequested, this, &patientfeed::showRemindersContextMenu);
+
+    vector<string> userNotes = get_User_Notes(strUsername);
+    for (const string &note : userNotes) {
+        addBulletPoint(true, QString::fromStdString(note));
+    }
 }
 
 patientfeed::~patientfeed()
@@ -51,30 +56,24 @@ void patientfeed::on_feedToProfileButton_clicked()
     this->close();
 }
 
-void patientfeed::addBulletPoint(const bool fromDB = false)
+void patientfeed::addBulletPoint(bool fromDB, QString text)
 {
-    bool ok;
-    QString text = QInputDialog::getText(this, "Add Notes", "Enter text:", QLineEdit::Normal, "", &ok);
-
-
+    if (!fromDB) {
+        bool ok;
+        text = QInputDialog::getText(this, "Add Notes", "Enter text:", QLineEdit::Normal, "", &ok);
+        if (!ok || text.isEmpty()) return;
+        save_User_Notes(strUsername, text.toStdString());
+    }
 
     for (int i = 0; i < ui->notesListWidget->count(); ++i) {
         QListWidgetItem *existingItem = ui->notesListWidget->item(i);
         if (existingItem->text() == "• " + text) {
-            QMessageBox::warning(this, "Duplicate Note", "This note already exists!");
-            return;
+            return; // Avoid duplicate notes
         }
     }
 
-    if (!fromDB) {
-        save_User_Notes(strUsername, text.toStdString());
-    }
-
-
-    if (ok && !text.isEmpty()) {
-        QListWidgetItem *item = new QListWidgetItem("• " + text, ui->notesListWidget);
-        item->setFlags(item->flags() & ~Qt::ItemIsEditable);
-    }
+    QListWidgetItem *item = new QListWidgetItem("• " + text, ui->notesListWidget);
+    item->setFlags(item->flags() & ~Qt::ItemIsEditable);
 }
 
 void patientfeed::deleteBulletPoint()
@@ -105,12 +104,25 @@ void patientfeed::editBulletPoint()
     QListWidgetItem *item = ui->notesListWidget->currentItem();
     if (!item) return;
 
-    bool ok;
-    QString text = QInputDialog::getText(this, "Edit Notes", "Edit text:", QLineEdit::Normal, item->text().mid(2), &ok);
+    QString originalText = item->text().mid(2);
 
-    if (ok && !text.isEmpty()) {
-        item->setText("• " + text);
+    bool ok;
+    QString newText = QInputDialog::getText(this, "Edit Notes", "Edit text:",
+                                            QLineEdit::Normal, originalText, &ok);
+
+    Update_User_Notes(strUsername, newText.toStdString(), originalText.toStdString());
+
+    if (!ok || newText.isEmpty()) return;
+
+    for (int i = 0; i < ui->notesListWidget->count(); ++i) {
+        QListWidgetItem *existingItem = ui->notesListWidget->item(i);
+        if (existingItem != item && existingItem->text().mid(2) == newText) {
+            QMessageBox::warning(this, "Same Note Found", "This note already exists.");
+            return;
+        }
     }
+
+    item->setText("• " + newText);
 }
 
 void patientfeed::addAppointment()
