@@ -51,13 +51,25 @@ void patientfeed::on_feedToProfileButton_clicked()
     this->close();
 }
 
-void patientfeed::addBulletPoint()
+void patientfeed::addBulletPoint(const bool fromDB = false)
 {
     bool ok;
     QString text = QInputDialog::getText(this, "Add Notes", "Enter text:", QLineEdit::Normal, "", &ok);
 
-    save_User_Notes(strUsername, text.toStdString());
-    // qInfo()<<strUsername<<text.toStdString();
+
+
+    for (int i = 0; i < ui->notesListWidget->count(); ++i) {
+        QListWidgetItem *existingItem = ui->notesListWidget->item(i);
+        if (existingItem->text() == "• " + text) {
+            QMessageBox::warning(this, "Duplicate Note", "This note already exists!");
+            return;
+        }
+    }
+
+    if (!fromDB) {
+        save_User_Notes(strUsername, text.toStdString());
+    }
+
 
     if (ok && !text.isEmpty()) {
         QListWidgetItem *item = new QListWidgetItem("• " + text, ui->notesListWidget);
