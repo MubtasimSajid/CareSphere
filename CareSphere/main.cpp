@@ -25,9 +25,9 @@ int main(int argc, char *argv[]) {
     // cout<<check<<endl;
 
 
-    // // Testing Notes
-    // // string notes = "Eat Banana";
-    // // save_User_Notes("F-00", notes);
+    // Testing Notes
+    string notes = "Eat Banana";
+    save_User_Notes("new3", notes);
     // string check2 = get_User_Notes("F-00");
     // cout<<check2<<endl<<endl;
 
