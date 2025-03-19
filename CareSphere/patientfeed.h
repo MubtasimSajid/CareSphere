@@ -11,6 +11,8 @@
 #include <QMessageBox>
 #include <QDateTime>
 #include <QMessageBox>
+#include <QSettings>
+#include "utilities.h"
 
 namespace Ui {
 class patientfeed;

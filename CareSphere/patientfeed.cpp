@@ -4,6 +4,10 @@
 #include "patientprofile.h"
 #include <qmenu.h>
 
+QSettings settingsUser("CareSphere", "Login System");
+QString username = settingsUser.value("username", "").toString();
+string strUsername = username.toStdString();
+
 patientfeed::patientfeed(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::patientfeed)
@@ -51,6 +55,8 @@ void patientfeed::addBulletPoint()
 {
     bool ok;
     QString text = QInputDialog::getText(this, "Add Notes", "Enter text:", QLineEdit::Normal, "", &ok);
+
+    save_User_Notes(strUsername, text.toStdString());
 
     if (ok && !text.isEmpty()) {
         QListWidgetItem *item = new QListWidgetItem("• " + text, ui->notesListWidget);
