@@ -26,9 +26,10 @@ int main(int argc, char *argv[]) {
 
 
     // Testing Notes
-    string notes = "Eat Banana";
-    save_User_Notes("new3", notes);
-    // string check2 = get_User_Notes("F-00");
+    string notes = "Eat Apple";
+    // save_User_Notes("new3", notes);
+    Update_User_Notes("new3", "Eat 0000", notes);
+    // string check2 = get_User_Notes("new3");
     // cout<<check2<<endl<<endl;
 
     // // Testing Reminders

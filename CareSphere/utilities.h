@@ -36,6 +36,19 @@ inline void save_User_Notes(const string &user_name, const string &notes){
     MySQL_Insert(insert_user);
 }
 
+inline void Update_User_Notes(const string &user_name, const string &notes, const string &orginal_note){
+    QSqlQuery query;
+    QString update = "UPDATE NOTES SET notes = '"+
+                     QString::fromStdString(notes) +
+                     "' WHERE user_id = '" +
+                     QString::fromStdString(user_name) +
+                     "' and notes = '" +
+                     QString::fromStdString(orginal_note) + "' ";
+
+    MySQL_Update(update);
+}
+
+
 inline std::string get_User_Notes(const std::string &username) {
     QSqlQuery query;
 
