@@ -57,7 +57,11 @@ void patientfeed::addBulletPoint()
     QString text = QInputDialog::getText(this, "Add Notes", "Enter text:", QLineEdit::Normal, "", &ok);
 
     save_User_Notes(strUsername, text.toStdString());
+<<<<<<< HEAD
     qInfo() << strUsername << text.toStdString();
+=======
+    qInfo()<<strUsername<<text.toStdString();
+>>>>>>> 79df795c4e6a23ae6528fcda32af8767dfdace8e
 
     if (ok && !text.isEmpty()) {
         QListWidgetItem *item = new QListWidgetItem("• " + text, ui->notesListWidget);
