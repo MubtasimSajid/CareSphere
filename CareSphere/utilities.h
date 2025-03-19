@@ -48,6 +48,16 @@ inline void Update_User_Notes(const string &user_name, const string &notes, cons
     MySQL_Update(update);
 }
 
+inline void Delete_User_Notes(const string &user_name, const string &notes){
+    QSqlQuery query;
+    QString update = "DELETE FROM NOTES WHERE notes = '"+
+                     QString::fromStdString(notes) +
+                     "' and user_id = '" +
+                     QString::fromStdString(user_name) + "' ";
+
+    MySQL_Update(update);
+}
+
 
 inline std::vector<std::string> get_User_Notes(const std::string &username) {
     QSqlQuery query;

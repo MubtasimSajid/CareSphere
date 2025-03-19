@@ -27,11 +27,12 @@ int main(int argc, char *argv[]) {
 
     // Testing Notes
     // string notes = "Eat Apple";
-    // save_User_Notes("new3", notes);
-    vector<string> Notes = get_User_Notes("new3");
-    for (auto x: Notes){
-        cout<<x<<endl;
-    }
+    save_User_Notes("new3", "banana");
+    // vector<string> Notes = get_User_Notes("new3");
+    // for (auto x: Notes){
+    //     cout<<x<<endl;
+    // }
+    Delete_User_Notes("new3", "banana");
     // string check2 = get_User_Notes("new3");
     // cout<<check2<<endl<<endl;
 
