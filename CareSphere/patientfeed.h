@@ -29,7 +29,7 @@ public:
 private slots:
     void on_logOutButton_clicked();
     void on_feedToProfileButton_clicked();
-    void addBulletPoint(bool fromDB, QString text = "");
+    void addBulletPoint(bool fromDB = false, QString text = "");
     void editBulletPoint();
     void deleteBulletPoint();
     void showContextMenu(const QPoint &pos);

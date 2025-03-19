@@ -58,17 +58,21 @@ void patientfeed::on_feedToProfileButton_clicked()
 
 void patientfeed::addBulletPoint(bool fromDB, QString text)
 {
-    if (!fromDB) {
+    if (!fromDB || text == "") {
         bool ok;
-        text = QInputDialog::getText(this, "Add Notes", "Enter text:", QLineEdit::Normal, "", &ok);
-        if (!ok || text.isEmpty()) return;
+        QString userInput = QInputDialog::getText(this, "Add Notes", "Enter text:", QLineEdit::Normal, "", &ok);
+
+        if (!ok || userInput.trimmed().isEmpty()) {
+            return;
+        }
+        text = userInput.trimmed();
         save_User_Notes(strUsername, text.toStdString());
     }
 
     for (int i = 0; i < ui->notesListWidget->count(); ++i) {
         QListWidgetItem *existingItem = ui->notesListWidget->item(i);
         if (existingItem->text() == "• " + text) {
-            return; // Avoid duplicate notes
+            return;
         }
     }
 
@@ -80,6 +84,8 @@ void patientfeed::deleteBulletPoint()
 {
     QListWidgetItem *item = ui->notesListWidget->currentItem();
     if (item) {
+        QString deletedText = item->text();
+        //Delete_User_Notes(strUsername, deletedText.toStdString());
         delete item;
     }
 }
