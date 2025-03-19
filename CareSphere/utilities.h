@@ -49,7 +49,7 @@ inline void Update_User_Notes(const string &user_name, const string &notes, cons
 }
 
 
-inline std::string get_User_Notes(const std::string &username) {
+inline std::vector<std::string> get_User_Notes(const std::string &username) {
     QSqlQuery query;
 
     // Query to get all notes for the given user_id
@@ -58,18 +58,15 @@ inline std::string get_User_Notes(const std::string &username) {
 
     if (!query.exec()) {
         qDebug() << "Query failed: " << query.lastError().text();
-        return "";  // Return an empty string on failure
+        return {};  // Return an empty vector on failure
     }
 
-    std::string all_notes;
+    std::vector<std::string> notes;
     while (query.next()) {
-        if (!all_notes.empty()) {
-            all_notes += "\n";  // Add newline separator between notes
-        }
-        all_notes += query.value(0).toString().toStdString();
+        notes.push_back(query.value(0).toString().toStdString());  // Add each note as a separate string
     }
 
-    return all_notes.empty() ? "No notes found for this user." : all_notes;
+    return notes.empty() ? std::vector<std::string>{"No notes found for this user."} : notes;
 }
 
 #endif

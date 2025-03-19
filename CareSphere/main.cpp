@@ -26,9 +26,12 @@ int main(int argc, char *argv[]) {
 
 
     // Testing Notes
-    string notes = "Eat Apple";
+    // string notes = "Eat Apple";
     // save_User_Notes("new3", notes);
-    Update_User_Notes("new3", "Eat 0000", notes);
+    vector<string> Notes = get_User_Notes("new3");
+    for (auto x: Notes){
+        cout<<x<<endl;
+    }
     // string check2 = get_User_Notes("new3");
     // cout<<check2<<endl<<endl;
 
