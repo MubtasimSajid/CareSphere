@@ -14,6 +14,7 @@
 #include <QSettings>
 #include "utilities.h"
 #include "prescription.h"
+#include "reminders.h"
 
 namespace Ui {
 class patientfeed;

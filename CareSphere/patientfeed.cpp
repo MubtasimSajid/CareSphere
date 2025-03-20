@@ -436,6 +436,9 @@ void patientfeed::addReminder()
 
         QListWidgetItem *item = new QListWidgetItem(reminderDetails, ui->remindersListWidget);
         item->setFlags(item->flags() & ~Qt::ItemIsEditable);
+
+        Reminder newReminder(strUsername, title.toStdString(), date.toStdString(), time.toStdString(), note.toStdString());
+        Save_User_Reminder(newReminder);
     }
 }
 
