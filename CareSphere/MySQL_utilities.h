@@ -6,7 +6,9 @@
 #include <QSqlError>
 #include <QSqlQuery>
 #include <QDebug>
+
 using namespace std;
+
 inline void MySQLinit(){
     QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
     db.setHostName("localhost");
