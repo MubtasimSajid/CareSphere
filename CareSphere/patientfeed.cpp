@@ -444,7 +444,7 @@ void patientfeed::addReminder()
 
         QString reminderDetails = QString("• %1 - %2").arg(title, date);
         if (!time.isEmpty())
-            reminderDetails.append(" at " + time);
+            reminderDetails.append(" - " + time);
         if (!note.isEmpty())
             reminderDetails.append(" - " + note);
 
@@ -465,17 +465,10 @@ void patientfeed::editReminder()
     QString currentText = item->text().mid(2);
     QStringList parts = currentText.split(" - ");
 
-    QString title = parts[0];
-    QString date = (parts.size() > 1) ? parts[1] : "";
-    QString time, note;
-
-    if (parts.size() > 2)
-    {
-        QStringList timeAndNote = parts[2].split(" - ");
-        time = timeAndNote[0];
-        if (timeAndNote.size() > 1)
-            note = timeAndNote[1];
-    }
+    QString title = parts.value(0);
+    QString date = parts.value(1);
+    QString time = (parts.size() > 2) ? parts.value(2) : "";
+    QString note = (parts.size() > 3) ? parts.value(3) : "";
 
     QDialog dialog(this);
     dialog.setWindowTitle("Edit Reminder");
@@ -522,11 +515,13 @@ void patientfeed::editReminder()
 
         QString newReminderDetails = QString("• %1 - %2").arg(newTitle, newDate);
         if (!newTime.isEmpty())
-            newReminderDetails.append(" at " + newTime);
+            newReminderDetails.append(" - " + newTime);
         if (!newNote.isEmpty())
             newReminderDetails.append(" - " + newNote);
 
         item->setText(newReminderDetails);
+
+        Update_Reminder(strUsername, newTitle.toStdString(), newDate.toStdString(), newTime.toStdString(), newNote.toStdString(), title.toStdString(), date.toStdString(), time.toStdString(), note.toStdString());
     }
 }
 

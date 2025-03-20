@@ -16,7 +16,7 @@ private:
 public:
     // Constructors
     Reminder();
-    Reminder(string un, string t, string d, string tm, string n);
+    Reminder(string un, string t, string d, string tm = "", string n = "");
 
     // Setters
     void setUserName (string un);
