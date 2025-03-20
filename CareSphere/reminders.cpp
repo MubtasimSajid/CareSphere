@@ -56,51 +56,92 @@ void Save_User_Reminder(Reminder r) {
 }
 
 // Function to Retrieve User Reminders
-string Get_User_Reminders(const string &user_name) {
+vector<string> Get_User_Reminders(const string &user_name) {
     QSqlQuery query;
     query.prepare("SELECT title, reminder_date, reminder_time, note FROM reminders WHERE user_id = :username");
     query.bindValue(":username", QString::fromStdString(user_name));
 
-    vector<Reminder> reminders; // Store all reminders
+    vector<string> remindersList; // Store each reminder as a formatted string
 
     if (!query.exec()) {
         qDebug() << "Query failed: " << query.lastError().text();
-        return "";
+        return {};
     }
 
     // Store results in vector
     while (query.next()) {
-        reminders.emplace_back(
-            user_name,  // Fix: Added user_name to match constructor
-            query.value(0).toString().toUtf8().constData(),  // Title
-            query.value(1).toString().toUtf8().constData(),  // Date
-            query.value(2).toString().isEmpty() ? "N/A" : query.value(2).toString().toUtf8().constData(), // Time (Handle NULL)
-            query.value(3).toString().isEmpty() ? "" : query.value(3).toString().toUtf8().constData() // Note (Handle NULL)
-            );
-    }
-
-    if (reminders.empty()) {
-        return "";
-    }
-
-    // Format the output string with bullet points (•)
-    stringstream result;
-
-    for (const auto &r : reminders) {
-        result << ". " << r.getTitle() << " - " << r.getDate();
+        string reminderEntry = string(query.value(0).toString().toUtf8().constData()) +  // Title
+                               " - " + string(query.value(1).toString().toUtf8().constData());  // Date
 
         // Append time if available
-        if (r.getTime() != "N/A") {
-            result << " at " << r.getTime();
+        string time = query.value(2).toString().toUtf8().constData();
+        if (!time.empty()) {
+            reminderEntry += " at " + time;
         }
 
         // Append note if available
-        if (!r.getNote().empty()) {
-            result << " - " << r.getNote();
+        string note = query.value(3).toString().toUtf8().constData();
+        if (!note.empty()) {
+            reminderEntry += " - " + note;
         }
 
-        result << "\n"; // Newline for next reminder
+        remindersList.push_back(reminderEntry);
     }
 
-    return result.str(); // Return the formatted reminder list
+    return remindersList; // Return vector of formatted reminder strings
 }
+
+
+
+void Update_Reminder(string user_name, string newTitle, string newReminderDate, string newReminderTime, string newNote,
+                     string oldTitle, string oldReminderDate, string oldReminderTime, string oldNote)
+{
+    QSqlQuery query;
+
+    // Correct SQL query syntax
+    query.prepare("UPDATE reminders SET title = :newTitle, reminder_date = :newReminderDate, reminder_time = :newReminderTime, note = :newNote "
+                  "WHERE user_id = :userId AND title = :oldTitle AND reminder_date = :oldReminderDate AND reminder_time = :oldReminderTime AND note = :oldNote");
+
+    // Bind values to the query parameters
+    query.bindValue(":newTitle", QString::fromStdString(newTitle));
+    query.bindValue(":newReminderDate", QString::fromStdString(newReminderDate));
+    query.bindValue(":newReminderTime", QString::fromStdString(newReminderTime));
+    query.bindValue(":newNote", QString::fromStdString(newNote));
+    query.bindValue(":userId", QString::fromStdString(user_name));  // Assuming user_name is passed as argument
+    query.bindValue(":oldTitle", QString::fromStdString(oldTitle));
+    query.bindValue(":oldReminderDate", QString::fromStdString(oldReminderDate));
+    query.bindValue(":oldReminderTime", QString::fromStdString(oldReminderTime));
+    query.bindValue(":oldNote", QString::fromStdString(oldNote));
+
+    if (!query.exec()) {
+        qDebug() << "Update failed: " << query.lastError().text();
+    } else {
+        qDebug() << "Reminder updated successfully!";
+    }
+}
+
+
+void Delete_Reminder(string user_name, string Title, string ReminderDate, string ReminderTime, string note)
+{
+    QSqlQuery query;
+
+    query.prepare("DELETE FROM reminders "
+                  "WHERE user_id = :userId AND title = :Title AND reminder_date = :ReminderDate AND reminder_time = :ReminderTime AND note = :Note");
+
+    query.bindValue(":userId", QString::fromStdString(user_name));
+    query.bindValue(":Title", QString::fromStdString(Title));
+    query.bindValue(":ReminderDate", QString::fromStdString(ReminderDate));
+    query.bindValue(":ReminderTime", QString::fromStdString(ReminderTime));
+    query.bindValue(":Note", QString::fromStdString(note));
+
+    if (!query.exec()) {
+        qDebug() << "Deletion failed: " << query.lastError().text();
+    } else {
+        if (query.numRowsAffected() > 0) {
+            qDebug() << "Reminder deleted successfully!";
+        } else {
+            qDebug() << "No reminder found with the provided details.";
+        }
+    }
+}
+

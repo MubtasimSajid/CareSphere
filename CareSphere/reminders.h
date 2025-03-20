@@ -2,7 +2,7 @@
 #define REMINDERS_H
 
 #include <string>
-
+#include<vector>
 using namespace std;
 
 class Reminder {
@@ -38,5 +38,8 @@ public:
 
 
 void Save_User_Reminder(Reminder r);
-string Get_User_Reminders (const string &user_name);
+vector<string> Get_User_Reminders(const string &user_name);
+void Update_Reminder(string user_name, string newTitle, string newReminderDate, string newReminderTime, string newNote,
+                     string oldTitle, string oldReminderDate, string oldReminderTime, string oldNote);
+void Delete_Reminder (string user_name, string Title, string ReminderDate, string ReminderTime, string note);
 #endif // REMINDERS_H
