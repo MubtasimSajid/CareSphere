@@ -330,45 +330,6 @@ void patientfeed::addPrescription()
     SavePrescription(newPrescription);
 }
 
-void patientfeed::loadPrescriptions()
-{
-    ui->prescriptionsListWidget->clear();
-
-    std::vector<std::string> prescriptions = GetUserPrescriptions(strUsername);
-
-    for (const std::string &prescription : prescriptions) {
-        QString prescriptionDetails = QString::fromStdString(prescription);
-        QListWidgetItem *item = new QListWidgetItem("\u2022 " + prescriptionDetails, ui->prescriptionsListWidget);
-        item->setFlags(item->flags() & ~Qt::ItemIsEditable);
-    }
-}
-
-void patientfeed::loadReminders()
-{
-    ui->remindersListWidget->clear();
-
-    std::vector<std::string> reminders = Get_User_Reminders(strUsername);
-
-    for (const std::string &reminder : reminders) {
-        QString reminderDetails = QString::fromStdString(reminder);
-        QListWidgetItem *item = new QListWidgetItem("\u2022 " + reminderDetails, ui->remindersListWidget);
-        item->setFlags(item->flags() & ~Qt::ItemIsEditable);
-    }
-}
-
-void patientfeed::loadAppointments()
-{
-    ui->appointmentsListWidget->clear();
-
-    std::vector<std::string> appointments = Get_User_Appointments(strUsername);
-
-    for (const std::string &appointment : appointments) {
-        QString appointmentDetails = QString::fromStdString(appointment);
-        QListWidgetItem *item = new QListWidgetItem("\u2022 " + appointmentDetails, ui->appointmentsListWidget);
-        item->setFlags(item->flags() & ~Qt::ItemIsEditable);
-    }
-}
-
 void patientfeed::editPrescription()
 {
     QListWidgetItem *item = ui->prescriptionsListWidget->currentItem();
@@ -633,3 +594,41 @@ void patientfeed::showRemindersContextMenu(const QPoint &pos)
     }
 }
 
+void patientfeed::loadPrescriptions()
+{
+    ui->prescriptionsListWidget->clear();
+
+    std::vector<std::string> prescriptions = GetUserPrescriptions(strUsername);
+
+    for (const std::string &prescription : prescriptions) {
+        QString prescriptionDetails = QString::fromStdString(prescription);
+        QListWidgetItem *item = new QListWidgetItem("\u2022 " + prescriptionDetails, ui->prescriptionsListWidget);
+        item->setFlags(item->flags() & ~Qt::ItemIsEditable);
+    }
+}
+
+void patientfeed::loadReminders()
+{
+    ui->remindersListWidget->clear();
+
+    std::vector<std::string> reminders = Get_User_Reminders(strUsername);
+
+    for (const std::string &reminder : reminders) {
+        QString reminderDetails = QString::fromStdString(reminder);
+        QListWidgetItem *item = new QListWidgetItem("\u2022 " + reminderDetails, ui->remindersListWidget);
+        item->setFlags(item->flags() & ~Qt::ItemIsEditable);
+    }
+}
+
+void patientfeed::loadAppointments()
+{
+    ui->appointmentsListWidget->clear();
+
+    std::vector<std::string> appointments = Get_User_Appointments(strUsername);
+
+    for (const std::string &appointment : appointments) {
+        QString appointmentDetails = QString::fromStdString(appointment);
+        QListWidgetItem *item = new QListWidgetItem("\u2022 " + appointmentDetails, ui->appointmentsListWidget);
+        item->setFlags(item->flags() & ~Qt::ItemIsEditable);
+    }
+}
