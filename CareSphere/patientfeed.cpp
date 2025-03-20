@@ -528,9 +528,27 @@ void patientfeed::editReminder()
 void patientfeed::deleteReminder()
 {
     QListWidgetItem *item = ui->remindersListWidget->currentItem();
-    if (item) {
-        delete item;
-    }
+    if (!item)
+        return;
+
+    // Extract reminder text without the bullet point
+    QString currentText = item->text().mid(2);
+    QStringList parts = currentText.split(" - ");
+
+    // Extract title, date, time (optional), and note (optional)
+    QString title = parts.value(0);
+    QString date = parts.value(1);
+    QString time = (parts.size() > 2) ? parts.value(2) : "";
+    QString note = (parts.size() > 3) ? parts.value(3) : "";
+
+    // Debugging output to check extracted values
+    qInfo() << "Deleting Reminder - Title:" << title << ", Date:" << date << ", Time:" << time << ", Note:" << note;
+
+    // Call the delete function with correct values
+    Delete_Reminder(strUsername, title.toStdString(), date.toStdString(), time.toStdString(), note.toStdString());
+
+    // Remove the item from the list
+    delete item;
 }
 
 void patientfeed::showRemindersContextMenu(const QPoint &pos)
