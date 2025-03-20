@@ -1,9 +1,5 @@
-#include <sstream>  // Required for std::stringstream
-#include<string>
-#include<vector>
 #include "appointment.h"
-#include "MySQL_utilities.h"
-// Default constructor
+
 Appointment::Appointment() {
     user_name = "";
     doctor_name = "";
@@ -12,7 +8,6 @@ Appointment::Appointment() {
     time = "";
 }
 
-// Parameterized constructor
 Appointment::Appointment(string un, string dn, string loc, string d, string t) {
     user_name = un;
     doctor_name = dn;
@@ -21,21 +16,18 @@ Appointment::Appointment(string un, string dn, string loc, string d, string t) {
     time = t;
 }
 
-// Setters
 void Appointment::setUserName(string un) { user_name = un; }
 void Appointment::setDoctorName(string dn) { doctor_name = dn; }
 void Appointment::setLocation(string loc) { location = loc; }
 void Appointment::setDate(string d) { date = d; }
 void Appointment::setTime(string t) { time = t; }
 
-// Getters
 string Appointment::getUserName() const { return user_name; }
 string Appointment::getDoctorName() const { return doctor_name; }
 string Appointment::getLocation() const { return location; }
 string Appointment::getDate() const { return date; }
 string Appointment::getTime() const { return time; }
 
-// Function to return formatted appointment output
 string Appointment::formatAppointment() const {
     return ". " + date + " - " + time + " with Dr. " + doctor_name + " at " + location;
 }
@@ -59,22 +51,19 @@ vector<string> Get_User_Appointments(const string &user_name)
     query.prepare("SELECT appointment_date, appointment_time, doctor_name, location FROM appointments WHERE user_id = :username");
     query.bindValue(":username", QString::fromStdString(user_name));
 
-    vector<string> appointmentsList; // Vector to store formatted appointment strings
+    vector<string> appointmentsList;
 
     if (!query.exec()) {
         qDebug() << "Query failed: " << query.lastError().text();
         return {};
     }
 
-    // Store results in vector
     while (query.next()) {
-        // Convert QString values to std::string
         string date = query.value(0).toString().toStdString();
         string time = query.value(1).toString().toStdString();
         string doctorName = query.value(2).toString().toStdString();
         string location = query.value(3).toString().toStdString();
 
-        // Use std::string concatenation
         string appointmentEntry = "" + date +
                                   " - " + time +
                                   " with Dr. " + doctorName +
@@ -83,7 +72,7 @@ vector<string> Get_User_Appointments(const string &user_name)
         appointmentsList.push_back(appointmentEntry);
     }
 
-    return appointmentsList; // Return vector of formatted appointment strings
+    return appointmentsList;
 }
 
 
