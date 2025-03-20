@@ -39,7 +39,7 @@ string Reminder::getNote() const { return note; }
 
 // Function to return formatted reminder output
 string Reminder::formatReminder() const {
-    return "• " + title + " - " + date + " at " + time + " - " + note;
+    return "• " + title + " - " + date + " - " + time + " - " + note;
 }
 
 // Function to Save a Reminder
@@ -76,7 +76,7 @@ vector<string> Get_User_Reminders(const string &user_name) {
         // Append time if available
         string time = query.value(2).toString().toUtf8().constData();
         if (!time.empty()) {
-            reminderEntry += " at " + time;
+            reminderEntry += " - " + time;
         }
 
         // Append note if available
