@@ -48,14 +48,17 @@ inline void Update_User_Notes(const string &user_name, const string &notes, cons
     MySQL_Update(update);
 }
 
-inline void Delete_User_Notes(const string &user_name, const string &notes){
+inline void Delete_User_Notes(const string &user_name, const string &notes) {
     QSqlQuery query;
-    QString update = "DELETE FROM NOTES WHERE notes = '"+
-                     QString::fromStdString(notes) +
-                     "' and user_id = '" +
-                     QString::fromStdString(user_name) + "' ";
+    query.prepare("DELETE FROM NOTES WHERE notes = :notes AND user_id = :user_name");
+    query.bindValue(":notes", QString::fromStdString(notes));
+    query.bindValue(":user_name", QString::fromStdString(user_name));
 
-    MySQL_Update(update);
+    if (!query.exec()) {
+        qDebug() << "Error deleting note: " << query.lastError().text();
+    } else {
+        qDebug() << "Note deleted successfully!";
+    }
 }
 
 

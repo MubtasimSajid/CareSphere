@@ -18,15 +18,15 @@ int main(int argc, char *argv[]) {
     QTextStream out(stdout);
 
     // // Testing Prescriptions
-    Prescription test("F-00", "WAZED", "ACE-PLUS, PERACETAMOL, NAPA");
-    // // test.displayDetails();
-    // SavePrescription(test);
-    DeletePrescription("F-00", "WAZED", "ACE-PLUS, PERACETAMOL, NAPA");
-    // UpdatePrescription("F-00", "FTK", "No Medicines", "WAZED", "ACE-PLUS, PERACETAMOL, NAPA");
-    vector<string> check = GetUserPrescriptions("F-00");
-    for(auto x: check){
-        qInfo()<<x;
-    }
+    // Prescription test("F-00", "WAZED", "ACE-PLUS, PERACETAMOL, NAPA");
+    // // // test.displayDetails();
+    // // SavePrescription(test);
+    // DeletePrescription("F-00", "WAZED", "ACE-PLUS, PERACETAMOL, NAPA");
+    // // UpdatePrescription("F-00", "FTK", "No Medicines", "WAZED", "ACE-PLUS, PERACETAMOL, NAPA");
+    // vector<string> check = GetUserPrescriptions("F-00");
+    // for(auto x: check){
+    //     qInfo()<<x;
+    // }
 
 
     // Testing Notes

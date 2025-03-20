@@ -84,8 +84,8 @@ void patientfeed::deleteBulletPoint()
 {
     QListWidgetItem *item = ui->notesListWidget->currentItem();
     if (item) {
-        QString deletedText = item->text();
-        //Delete_User_Notes(strUsername, deletedText.toStdString());
+        QString deletedText = item->text().mid(2);
+        Delete_User_Notes(strUsername, deletedText.toStdString());
         delete item;
     }
 }
