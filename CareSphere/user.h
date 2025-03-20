@@ -1,10 +1,10 @@
 #ifndef USER_H
 #define USER_H
+
 #include <iostream>
 #include <string>
 #include <vector>
 #include "MySQL_utilities.h"
-#include "utilities.h"
 #include <QDebug>
 #include <fstream>
 #include <sstream>   // String stream for CSV parsing
