@@ -36,6 +36,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         prescription.h prescription.cpp
         reminders.h reminders.cpp
         appointment.h appointment.cpp
+        caresphere.h caresphere.cpp
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET CareSphere APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
