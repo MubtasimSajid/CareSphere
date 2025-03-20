@@ -1,6 +1,4 @@
 #include "appointmentdialog.h"
-#include <QRegularExpression>
-#include <QMessageBox>
 
 AppointmentDialog::AppointmentDialog(QWidget *parent)
     : QDialog(parent)

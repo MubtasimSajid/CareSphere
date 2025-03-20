@@ -7,6 +7,8 @@
 #include <QPushButton>
 #include <QVBoxLayout>
 #include <QLabel>
+#include <QRegularExpression>
+#include <QMessageBox>
 
 class AppointmentDialog : public QDialog
 {

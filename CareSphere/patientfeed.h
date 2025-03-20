@@ -12,10 +12,14 @@
 #include <QDateTime>
 #include <QMessageBox>
 #include <QSettings>
+#include <qmenu.h>
 #include "utilities.h"
 #include "prescription.h"
 #include "reminders.h"
 #include "appointment.h"
+#include "ui_patientfeed.h"
+#include "login.h"
+#include "patientprofile.h"
 
 namespace Ui {
 class patientfeed;

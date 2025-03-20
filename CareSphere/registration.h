@@ -3,7 +3,11 @@
 
 #include <QWidget>
 #include <QString>
+#include <QMessageBox>
 #include "reguserdetails.h"
+#include "login.h"
+#include "ui_registration.h"
+#include "utilities.h"
 
 using namespace std;
 

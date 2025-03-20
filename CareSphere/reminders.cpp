@@ -1,9 +1,4 @@
 #include "reminders.h"
-#include "MySQL_utilities.h"
-#include <sstream>  // Ensure you include this for stringstream
-#include <QSqlQuery>
-#include <QSqlError>
-#include <QDebug>
 
 // Default constructor
 Reminder::Reminder() {

@@ -1,8 +1,4 @@
-#include <QMessageBox>
 #include "registration.h"
-#include "login.h"
-#include "ui_registration.h"
-#include "utilities.h"
 
 Registration::Registration(QWidget *parent)
     : QWidget(parent)

@@ -3,6 +3,17 @@
 
 #include <string>
 #include <vector>
+#include <QDebug>
+#include <fstream>
+#include <vector>
+#include <sstream>   // String stream for CSV parsing
+#include <sys/stat.h> // For creating directories
+#include <QString>
+#include <QSqlQuery>
+#include <QSqlError>
+#include <iomanip> // For table formatting
+#include "MySQL_utilities.h"
+#include "utilities.h"
 
 using namespace std;
 

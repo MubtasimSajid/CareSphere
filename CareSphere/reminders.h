@@ -3,6 +3,11 @@
 
 #include <string>
 #include<vector>
+#include <sstream>
+#include <QSqlQuery>
+#include <QSqlError>
+#include <QDebug>
+#include "MySQL_utilities.h"
 using namespace std;
 
 class Reminder {

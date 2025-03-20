@@ -1,15 +1,4 @@
 #include "Prescription.h"
-#include "MySQL_utilities.h"
-#include"utilities.h"
-#include <QDebug>
-#include <fstream>
-#include <vector>
-#include <sstream>   // String stream for CSV parsing
-#include <sys/stat.h> // For creating directories
-#include <QString>
-#include <QSqlQuery>
-#include <QSqlError>
-#include <iomanip> // For table formatting
 
 Prescription::Prescription() {
     user_name = "";

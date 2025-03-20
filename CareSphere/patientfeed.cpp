@@ -1,8 +1,4 @@
 #include "patientfeed.h"
-#include "ui_patientfeed.h"
-#include "login.h"
-#include "patientprofile.h"
-#include <qmenu.h>
 
 QSettings settingsUser("CareSphere", "Login System");
 QString username = settingsUser.value("username", "").toString();
