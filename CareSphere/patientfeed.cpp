@@ -167,35 +167,73 @@ void patientfeed::addAppointment()
 void patientfeed::editAppointment()
 {
     QListWidgetItem *item = ui->appointmentsListWidget->currentItem();
-    if (item) {
-        QString currentDetails = item->text().mid(2);
+    if (!item)
+        return;
 
-        QStringList parts = currentDetails.split(" with ");
-        QString dateTimeLocation = parts[0];
-        QString doctorAndLocation = parts[1];
-        QStringList dateTimeParts = dateTimeLocation.split(" - ");
-        QString date = dateTimeParts[0];
-        QString time = dateTimeParts[1];
-        QString doctorName = doctorAndLocation.split(" at ")[0];
-        QString location = doctorAndLocation.split(" at ")[1];
+    // Extract appointment text without the bullet point
+    QString currentDetails = item->text().mid(2);
 
-        AppointmentDialog dialog(this);
-        dialog.getDateLineEdit()->setText(date);
-        dialog.getTimeComboBox()->setCurrentText(time);
-        dialog.getDoctorNameLineEdit()->setText(doctorName);
-        dialog.getLocationLineEdit()->setText(location);
+    // Ensure proper parsing
+    if (!currentDetails.contains(" with ") || !currentDetails.contains(" at "))
+    {
+        QMessageBox::warning(this, "Invalid Data", "Appointment data is corrupted or incorrectly formatted.");
+        return;
+    }
 
-        if (dialog.exec() == QDialog::Accepted) {
-            QString newDetails = QString("%1 - %2 with Dr. %3 at %4")
-            .arg(dialog.getDateLineEdit()->text(), dialog.getTimeComboBox()->currentText(),
-                 dialog.getDoctorNameLineEdit()->text(), dialog.getLocationLineEdit()->text());
+    // Splitting the string to extract details
+    QStringList parts = currentDetails.split(" with ");
+    QString dateTimeLocation = parts.value(0);
+    QString doctorAndLocation = parts.value(1);
 
-            if (dialog.getDateLineEdit()->text().isEmpty() || dialog.getDoctorNameLineEdit()->text().isEmpty() || dialog.getLocationLineEdit()->text().isEmpty()) {
-                QMessageBox::warning(this, "Input Error", "Please fill in all the fields.");
-            } else {
-                item->setText("• " + newDetails);  // Update item text
-            }
+    QStringList dateTimeParts = dateTimeLocation.split(" - ");
+    QString date = dateTimeParts.value(0);
+    QString time = (dateTimeParts.size() > 1) ? dateTimeParts.value(1) : "";
+
+    QStringList doctorLocationParts = doctorAndLocation.split(" at ");
+    QString doctorName = doctorLocationParts.value(0).trimmed();
+    QString location = doctorLocationParts.value(1).trimmed();
+
+    // Ensure "Dr. " prefix exists
+    if (doctorName.startsWith("Dr. "))
+    {
+        doctorName = doctorName.mid(4); // Remove "Dr. "
+    }
+
+    // Open the appointment dialog
+    AppointmentDialog dialog(this);
+
+    dialog.getDateLineEdit()->setText(date);
+    dialog.getTimeComboBox()->setCurrentText(time);
+    dialog.getDoctorNameLineEdit()->setText(doctorName);
+    dialog.getLocationLineEdit()->setText(location);
+
+    if (dialog.exec() == QDialog::Accepted)
+    {
+        QString newDoctorName = dialog.getDoctorNameLineEdit()->text().trimmed();
+        QString newLocation = dialog.getLocationLineEdit()->text().trimmed();
+        QString newDate = dialog.getDateLineEdit()->text().trimmed();
+        QString newTime = dialog.getTimeComboBox()->currentText().trimmed();
+
+        // Ensure required fields are filled
+        if (newDoctorName.isEmpty() || newLocation.isEmpty() || newDate.isEmpty())
+        {
+            QMessageBox::warning(this, "Input Error", "Please fill in all required fields.");
+            return;
         }
+
+        // Construct new appointment details with "Dr. " prefix
+        QString newDetails = QString("%1 - %2 with Dr. %3 at %4")
+                                 .arg(newDate, newTime, newDoctorName, newLocation);
+
+        // Update QListWidget
+        item->setText("• " + newDetails);
+
+        // Update database
+        Update_User_Appointment(strUsername,
+                                newDoctorName.toStdString(), newLocation.toStdString(),
+                                newDate.toStdString(), newTime.toStdString(),
+                                doctorName.toStdString(), location.toStdString(),
+                                date.toStdString(), time.toStdString());
     }
 }
 
