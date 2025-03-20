@@ -10,21 +10,19 @@
 #include <QSqlQuery>
 #include <QSqlError>
 #include <iomanip> // For table formatting
-// Default constructor
+
 Prescription::Prescription() {
     user_name = "";
     doctor_name = "";
     medicines = "";
 }
 
-// Parameterized constructor
 Prescription::Prescription(string un, string dn, string m) {
     user_name = un;
     doctor_name = dn;
     medicines = m;
 }
 
-// Setters
 void Prescription::setUserName(string un) {
     user_name = un;
 }
@@ -37,7 +35,6 @@ void Prescription::setMedicineNotes(string m) {
     medicines = m;
 }
 
-// Getters
 string Prescription::getUserName() const {
     return user_name;
 }
@@ -49,15 +46,6 @@ string Prescription::getDoctorName() const {
 string Prescription::getMedicineNotes() const {
     return medicines;
 }
-
-// Display prescription details
-void Prescription::displayDetails() const {
-    cout << "User Name: " << user_name << endl;
-    cout << "Doctor Name: " << doctor_name << endl;
-    cout << "Medicines: " << medicines << endl;
-}
-
-
 
 void SavePrescription(const Prescription &p)
 {
