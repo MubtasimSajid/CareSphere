@@ -15,22 +15,21 @@ inline void MySQLinit(){
     db.setPassword("sql1234567890#SQL");
     db.setPort(3306);
 
-    // Try to open the database
     if (!db.open()) {
-        qDebug() << "❌ Database connection failed:" << db.lastError().text();
+        qDebug() << "Database connection failed:" << db.lastError().text();
         return;
     }
 
-    qDebug() << "✅ Connected to MySQL Database Successfully!";
+    qDebug() << "Connected to MySQL Database Successfully!";
 }
 
 inline void MySQL_Insert(QString query_insert) {
     QSqlQuery query;
 
     if (query.exec(query_insert)) {
-        qDebug() << "✅ Operation inserted successfully!";
+        qDebug() << "Operation inserted successfully!";
     } else {
-        qDebug() << "❌ Failed to insert user:" << query.lastError().text();
+        qDebug() << "Failed to insert user:" << query.lastError().text();
     }
 }
 
@@ -38,9 +37,9 @@ inline void MySQL_Update(QString query_update) {
     QSqlQuery query;
 
     if (query.exec(query_update)) {
-        qDebug() << "✅ Operation updated successfully!";
+        qDebug() << "Operation updated successfully!";
     } else {
-        qDebug() << "❌ Failed to insert user:" << query.lastError().text();
+        qDebug() << "Failed to insert user:" << query.lastError().text();
     }
 }
 
@@ -50,13 +49,13 @@ inline QString MySQL_Fetch(QString query_fetch) {
         if (query.next()) {
             return query.value(0).toString();
         } else {
-            qDebug() << "❌ No results found.";
+            qDebug() << "No results found.";
             return "";
         }
     } else {
-        qDebug() << "❌ Query execution failed:" << query.lastError().text();
+        qDebug() << "Query execution failed:" << query.lastError().text();
         return "";
     }
 }
 
-#endif // MYSQL_UTILITIES_H
+#endif
