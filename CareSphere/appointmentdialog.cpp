@@ -10,7 +10,6 @@ AppointmentDialog::AppointmentDialog(QWidget *parent)
     dateLineEdit = new QLineEdit(this);
     timeComboBox = new QComboBox(this);
 
-    // Adding time slots to combo box
     timeComboBox->addItems({"9:00 AM", "10:00 AM", "11:00 AM", "3:00 PM", "4:00 PM"});
 
     submitButton = new QPushButton("Submit", this);
@@ -48,24 +47,20 @@ QLineEdit *AppointmentDialog::getLocationLineEdit() const {
 }
 
 bool AppointmentDialog::isValidDate(const QString &date) const {
-    // Define a regular expression for the date format (DD-MM-YYYY)
     QRegularExpression datePattern("(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-(\\d{4})");
-
-    // Create a match object and check if the input matches the regular expression
     QRegularExpressionMatch match = datePattern.match(date);
 
-    return match.hasMatch();  // Return true if the date matches the format
+    return match.hasMatch();
 }
 
 void AppointmentDialog::onSubmit()
 {
     QString date = dateLineEdit->text();
 
-    // If date is invalid, show an error message and return
     if (!isValidDate(date)) {
         QMessageBox::warning(this, "Invalid Date", "Please enter the date in DD-MM-YYYY format.");
         return;
     }
 
-    accept();  // Closes the dialog and returns the result
+    accept();
 }
