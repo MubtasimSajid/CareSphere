@@ -48,6 +48,7 @@ private slots:
     void deleteReminder();
     void showRemindersContextMenu(const QPoint &pos);
     void loadPrescriptions();
+    void loadReminders();
 
 private:
     Ui::patientfeed *ui;

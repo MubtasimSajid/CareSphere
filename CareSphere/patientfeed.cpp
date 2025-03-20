@@ -15,6 +15,7 @@ patientfeed::patientfeed(QWidget *parent)
     ui->setupUi(this);
 
     loadPrescriptions();
+    loadReminders();
 
     connect(ui->notesPlusButton, &QPushButton::clicked, this, [this]() { addBulletPoint(ui->notesListWidget); });
     ui->notesListWidget->setContextMenuPolicy(Qt::CustomContextMenu);
@@ -281,6 +282,19 @@ void patientfeed::loadPrescriptions()
     }
 }
 
+void patientfeed::loadReminders()
+{
+    ui->remindersListWidget->clear();
+
+    std::vector<std::string> reminders = Get_User_Reminders(strUsername);
+
+    for (const std::string &reminder : reminders) {
+        QString reminderDetails = QString::fromStdString(reminder);
+        QListWidgetItem *item = new QListWidgetItem("\u2022 " + reminderDetails, ui->remindersListWidget);
+        item->setFlags(item->flags() & ~Qt::ItemIsEditable);
+    }
+}
+
 void patientfeed::editPrescription()
 {
     QListWidgetItem *item = ui->prescriptionsListWidget->currentItem();
@@ -538,3 +552,4 @@ void patientfeed::showRemindersContextMenu(const QPoint &pos)
         deleteReminder();
     }
 }
+
