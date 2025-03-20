@@ -16,6 +16,7 @@ patientfeed::patientfeed(QWidget *parent)
 
     loadPrescriptions();
     loadReminders();
+    loadAppointments();
 
     connect(ui->notesPlusButton, &QPushButton::clicked, this, [this]() { addBulletPoint(ui->notesListWidget); });
     ui->notesListWidget->setContextMenuPolicy(Qt::CustomContextMenu);
@@ -155,6 +156,8 @@ void patientfeed::addAppointment()
             QString appointmentDetails = QString("%1 - %2 with Dr. %3 at %4")
                                              .arg(date, time, doctorName, location);
 
+            Appointment newAppointment(strUsername, doctorName.toStdString(), location.toStdString(), date.toStdString(), time.toStdString());
+            Save_User_Appointment(newAppointment);
             QListWidgetItem *item = new QListWidgetItem("• " + appointmentDetails, ui->appointmentsListWidget);
             item->setFlags(item->flags() & ~Qt::ItemIsEditable);
         }
@@ -291,6 +294,19 @@ void patientfeed::loadReminders()
     for (const std::string &reminder : reminders) {
         QString reminderDetails = QString::fromStdString(reminder);
         QListWidgetItem *item = new QListWidgetItem("\u2022 " + reminderDetails, ui->remindersListWidget);
+        item->setFlags(item->flags() & ~Qt::ItemIsEditable);
+    }
+}
+
+void patientfeed::loadAppointments()
+{
+    ui->appointmentsListWidget->clear();
+
+    std::vector<std::string> appointments = Get_User_Appointments(strUsername);
+
+    for (const std::string &appointment : appointments) {
+        QString appointmentDetails = QString::fromStdString(appointment);
+        QListWidgetItem *item = new QListWidgetItem("\u2022 " + appointmentDetails, ui->appointmentsListWidget);
         item->setFlags(item->flags() & ~Qt::ItemIsEditable);
     }
 }
@@ -531,23 +547,16 @@ void patientfeed::deleteReminder()
     if (!item)
         return;
 
-    // Extract reminder text without the bullet point
     QString currentText = item->text().mid(2);
     QStringList parts = currentText.split(" - ");
 
-    // Extract title, date, time (optional), and note (optional)
     QString title = parts.value(0);
     QString date = parts.value(1);
     QString time = (parts.size() > 2) ? parts.value(2) : "";
     QString note = (parts.size() > 3) ? parts.value(3) : "";
 
-    // Debugging output to check extracted values
-    qInfo() << "Deleting Reminder - Title:" << title << ", Date:" << date << ", Time:" << time << ", Note:" << note;
-
-    // Call the delete function with correct values
     Delete_Reminder(strUsername, title.toStdString(), date.toStdString(), time.toStdString(), note.toStdString());
 
-    // Remove the item from the list
     delete item;
 }
 

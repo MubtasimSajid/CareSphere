@@ -15,6 +15,7 @@
 #include "utilities.h"
 #include "prescription.h"
 #include "reminders.h"
+#include "appointment.h"
 
 namespace Ui {
 class patientfeed;
@@ -49,6 +50,7 @@ private slots:
     void showRemindersContextMenu(const QPoint &pos);
     void loadPrescriptions();
     void loadReminders();
+    void loadAppointments();
 
 private:
     Ui::patientfeed *ui;

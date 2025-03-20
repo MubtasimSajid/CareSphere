@@ -75,7 +75,7 @@ vector<string> Get_User_Appointments(const string &user_name)
         string location = query.value(3).toString().toStdString();
 
         // Use std::string concatenation
-        string appointmentEntry = ". " + date +
+        string appointmentEntry = "" + date +
                                   " - " + time +
                                   " with Dr. " + doctorName +
                                   " at " + location;
