@@ -72,41 +72,30 @@ void SavePrescription(const Prescription &p)
 
 
 
-string GetUserPrescriptions(const string &user_name) {
+vector<string> GetUserPrescriptions(const string &user_name) {
     QSqlQuery query;
     query.prepare("SELECT doctor_name, MEDICINES FROM prescriptions WHERE user_id = :username");
     query.bindValue(":username", QString::fromStdString(user_name));
 
-    vector<Prescription> prescriptions; // Store all prescriptions
+    vector<string> prescriptionList; // Store all prescription strings
 
     if (!query.exec()) {
         qDebug() << "Query failed: " << query.lastError().text();
-        return "";
+        return {};
     }
 
     // Store results in vector
     while (query.next()) {
-        prescriptions.emplace_back(
-            user_name,
-            query.value(0).toString().toUtf8().constData(),  // Use UTF-8 safe conversion
-            query.value(1).toString().toUtf8().constData()
-            );
+        string doctorName = query.value(0).toString().toStdString();
+        string medicineNotes = query.value(1).toString().toStdString();
+        string prescriptionEntry = "Dr. " + doctorName + ": " + medicineNotes;
+
+        prescriptionList.push_back(prescriptionEntry);
     }
 
-    if (prescriptions.empty()) {
-        return "";
-    }
-
-    // Format the output string with properly encoded bullet points
-    stringstream result;
-    // result << "Prescriptions for " << user_name << ":\n";
-
-    for (const auto &p : prescriptions) {
-        result << ".Dr. " << p.getDoctorName() << ": " << p.getMedicineNotes() << "\n";
-    }
-
-    return result.str(); // Return the formatted prescription list
+    return prescriptionList; // Return vector of prescription strings
 }
+
 
 
 

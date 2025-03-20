@@ -21,18 +21,20 @@ int main(int argc, char *argv[]) {
     // // Prescription test("F-00", "WAZED", "ACE-PLUS, PERACETAMOL, NAPA");
     // // test.displayDetails();
     // // SavePrescription(test);
-    // string check = GetUserPrescriptions("F-00");
-    // cout<<check<<endl;
+    vector<string> check = GetUserPrescriptions("F-00");
+    for(auto x: check){
+        qInfo()<<x;
+    }
 
 
     // Testing Notes
     // string notes = "Eat Apple";
-    save_User_Notes("new3", "banana");
+    // save_User_Notes("new3", "banana");
     // vector<string> Notes = get_User_Notes("new3");
     // for (auto x: Notes){
     //     cout<<x<<endl;
     // }
-    Delete_User_Notes("new3", "banana");
+    // Delete_User_Notes("new3", "banana");
     // string check2 = get_User_Notes("new3");
     // cout<<check2<<endl<<endl;
 

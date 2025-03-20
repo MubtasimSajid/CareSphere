@@ -2,6 +2,7 @@
 #define PRESCRIPTION_H
 
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -32,6 +33,6 @@ public:
 
 // Function declarations for prescription handling
 void SavePrescription(const Prescription &p);
-string GetUserPrescriptions(const string &user_name);
+vector<string> GetUserPrescriptions(const string &user_name);
 
 #endif // PRESCRIPTION_H
