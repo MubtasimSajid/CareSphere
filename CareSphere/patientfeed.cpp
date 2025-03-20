@@ -349,6 +349,20 @@ void patientfeed::editPrescription()
 void patientfeed::deletePrescription()
 {
     QListWidgetItem *item = ui->prescriptionsListWidget->currentItem();
+
+    QString currentText = item->text().mid(2);
+    QStringList parts = currentText.split(": ");
+
+    if (parts.size() < 2) {
+        QMessageBox::warning(this, "Invalid Data", "Prescription data is incomplete or corrupted.");
+        return;
+    }
+
+    QString doctorName = parts.value(0).mid(4);
+    QString medicineList = parts.value(1);
+
+    DeletePrescription(strUsername, doctorName.toStdString(), medicineList.toStdString());
+
     if (item) {
         delete item;
     }
