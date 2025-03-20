@@ -36,5 +36,8 @@ public:
     string formatAppointment() const;
 };
 void Save_User_Appointment(Appointment a);
-string Get_User_Appointments (const string &user_name);
+vector<string> Get_User_Appointments(const string &user_name);
+void Update_User_Appointment(string user_name, string newDoctorName, string newLocation, string newAppointmentDate, string newAppointmentTime,
+                             string oldDoctorName, string oldLocation, string oldAppointmentDate, string oldAppointmentTime);
+void Delete_User_Appointment (string user_name, string DoctorName, string Location, string AppointmentDate , string AppointmentTime );
 #endif // APPOINTMENT_H

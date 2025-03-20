@@ -51,10 +51,12 @@ int main(int argc, char *argv[]) {
     // // Creating an appointment object
     // // Appointment a1("F-00", "Test", "Mirpur", "01-12-2025", "9:00 PM");
     // // Save_User_Appointment(a1);
-    // string check4 = Get_User_Appointments("F-00");
-    // cout<<check4<<endl;
-    // // Displaying the formatted output
-    // // cout << a1.formatAppointment() << endl;
+    // Update_User_Appointment("F-00", "Test-Doc", "testlocation", "01-12-2003", "12:00 PM", "Wazed", "Mohmaddpur", "01-12-2025", "9:00 PM");
+    // vector<string> check = Get_User_Appointments("F-00");
+    // for(auto x: check){
+    //     qInfo()<<x;
+    // }
+    Delete_User_Appointment("F-00", "Test", "Mirpur", "01-12-2025", "9:00 PM");
 
     Login loginWindow;
     loginWindow.show();
