@@ -77,14 +77,13 @@ vector<string> GetUserPrescriptions(const string &user_name) {
     query.prepare("SELECT doctor_name, MEDICINES FROM prescriptions WHERE user_id = :username");
     query.bindValue(":username", QString::fromStdString(user_name));
 
-    vector<string> prescriptionList; // Store all prescription strings
+    vector<string> prescriptionList;
 
     if (!query.exec()) {
         qDebug() << "Query failed: " << query.lastError().text();
         return {};
     }
 
-    // Store results in vector
     while (query.next()) {
         string doctorName = query.value(0).toString().toStdString();
         string medicineNotes = query.value(1).toString().toStdString();
@@ -93,12 +92,8 @@ vector<string> GetUserPrescriptions(const string &user_name) {
         prescriptionList.push_back(prescriptionEntry);
     }
 
-    return prescriptionList; // Return vector of prescription strings
+    return prescriptionList;
 }
-
-
-
-
 
 void UpdatePrescription(const string& user_name,
                         const string& doctor__Name_new,

@@ -13,6 +13,7 @@
 #include <QMessageBox>
 #include <QSettings>
 #include "utilities.h"
+#include "prescription.h"
 
 namespace Ui {
 class patientfeed;
@@ -45,6 +46,7 @@ private slots:
     void editReminder();
     void deleteReminder();
     void showRemindersContextMenu(const QPoint &pos);
+    void loadPrescriptions();
 
 private:
     Ui::patientfeed *ui;

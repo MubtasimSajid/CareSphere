@@ -14,6 +14,8 @@ patientfeed::patientfeed(QWidget *parent)
 {
     ui->setupUi(this);
 
+    loadPrescriptions();
+
     connect(ui->notesPlusButton, &QPushButton::clicked, this, [this]() { addBulletPoint(ui->notesListWidget); });
     ui->notesListWidget->setContextMenuPolicy(Qt::CustomContextMenu);
     connect(ui->notesListWidget, &QListWidget::customContextMenuRequested, this, &patientfeed::showContextMenu);
@@ -259,6 +261,24 @@ void patientfeed::addPrescription()
     QString prescriptionDetails = QString("Dr. %1: %2").arg(doctorName, medicines.join(", "));
     QListWidgetItem *item = new QListWidgetItem("\u2022 " + prescriptionDetails, ui->prescriptionsListWidget);
     item->setFlags(item->flags() & ~Qt::ItemIsEditable);
+
+    std::string strDoctorName = doctorName.toStdString();
+    std::string strMedicines = medicines.join(", ").toStdString();
+    Prescription newPrescription(strUsername, strDoctorName, strMedicines);
+    SavePrescription(newPrescription);
+}
+
+void patientfeed::loadPrescriptions()
+{
+    ui->prescriptionsListWidget->clear();
+
+    std::vector<std::string> prescriptions = GetUserPrescriptions(strUsername);
+
+    for (const std::string &prescription : prescriptions) {
+        QString prescriptionDetails = QString::fromStdString(prescription);
+        QListWidgetItem *item = new QListWidgetItem("\u2022 " + prescriptionDetails, ui->prescriptionsListWidget);
+        item->setFlags(item->flags() & ~Qt::ItemIsEditable);
+    }
 }
 
 void patientfeed::editPrescription()
