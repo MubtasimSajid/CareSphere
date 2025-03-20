@@ -34,5 +34,6 @@ public:
 // Function declarations for prescription handling
 void SavePrescription(const Prescription &p);
 vector<string> GetUserPrescriptions(const string &user_name);
+void UpdatePrescription(const string& user_name, const string& doctor__Name_new, const string& medicine_Text_new, const string& doctor__Name_old, const string& medicine_Text_old);
 
 #endif // PRESCRIPTION_H
