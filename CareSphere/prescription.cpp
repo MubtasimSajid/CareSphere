@@ -124,3 +124,21 @@ void UpdatePrescription(const string& user_name,
     }
 }
 
+
+void DeletePrescription(const string &user_name, const string &doctor__Name, const string &medicine_Text)
+{
+    QSqlQuery query;
+
+    query.prepare("DELETE FROM prescriptions "
+                  "WHERE user_id = :userId AND doctor_name = :Doctor AND MEDICINES = :Medicines");
+
+    query.bindValue(":userId", QString::fromStdString(user_name));
+    query.bindValue(":Doctor", QString::fromStdString(doctor__Name));
+    query.bindValue(":Medicines", QString::fromStdString(medicine_Text));
+
+    if (!query.exec()) {
+        qDebug() << "Deletion failed: " << query.lastError().text();
+    } else {
+        qDebug() << "Prescription deleted successfully!";
+    }
+}
