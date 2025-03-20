@@ -288,8 +288,8 @@ void patientfeed::editPrescription()
 
     QString currentText = item->text().mid(2);
     QStringList parts = currentText.split(": ");
-    QString doctorName = parts.value(0).mid(4);
-    QStringList medicines = parts.value(1).split(", ");
+    QString oldDoctorName = parts.value(0).mid(4);
+    QString oldMedicineList = parts.value(1);
 
     QDialog dialog(this);
     dialog.setWindowTitle("Edit Prescription");
@@ -297,14 +297,15 @@ void patientfeed::editPrescription()
 
     QFormLayout formLayout;
     QLineEdit doctorNameEdit;
-    doctorNameEdit.setText(doctorName);
+    doctorNameEdit.setText(oldDoctorName);
     formLayout.addRow("Doctor's Name:", &doctorNameEdit);
 
     QVector<QLineEdit*> medicineEdits;
+    QStringList oldMedicines = oldMedicineList.split(", ");
     for (int i = 0; i < 15; ++i) {
         QLineEdit *medicineEdit = new QLineEdit(&dialog);
-        if (i < medicines.size()) {
-            medicineEdit->setText(medicines[i]);
+        if (i < oldMedicines.size()) {
+            medicineEdit->setText(oldMedicines[i]);
         }
         formLayout.addRow(QString("Medicine %1:").arg(i + 1), medicineEdit);
         medicineEdits.append(medicineEdit);
@@ -327,10 +328,21 @@ void patientfeed::editPrescription()
             }
         }
 
+        QString newMedicineList = newMedicines.join(", ");
+
         if (!newDoctorName.isEmpty() && !newMedicines.isEmpty()) {
-            QString prescriptionText = QString("Dr. %1: %2").arg(newDoctorName, newMedicines.join(", "));
+            QString prescriptionText = QString("Dr. %1: %2").arg(newDoctorName, newMedicineList);
             item->setText("\u2022 " + prescriptionText);
+
+            qDebug() << "Old Doctor Name: " << oldDoctorName;
+            qDebug() << "New Doctor Name: " << newDoctorName;
+            qDebug() << "Old Medicines: " << oldMedicineList;
+            qDebug() << "New Medicines: " << newMedicineList;
+        } else {
+            QMessageBox::warning(this, "No Fields Should Be Empty", "PLease fill up the required fields.");
+            return;
         }
+        UpdatePrescription(strUsername, newDoctorName.toStdString(), newMedicineList.toStdString(), oldDoctorName.toStdString(), oldMedicineList.toStdString());
     }
 }
 
