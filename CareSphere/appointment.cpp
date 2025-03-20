@@ -104,8 +104,6 @@ void Update_User_Appointment(string user_name, string newDoctorName, string newL
         qDebug() << "Update failed: " << query.lastError().text();
     } else if (query.numRowsAffected() == 0) {
         qDebug() << "No matching appointment found to update.";
-    } else {
-        qDebug() << "Appointment updated successfully!";
     }
 }
 
@@ -126,9 +124,7 @@ void Delete_User_Appointment(string user_name, string DoctorName, string Locatio
     if (!query.exec()) {
         qDebug() << "Deletion failed: " << query.lastError().text();
     } else {
-        if (query.numRowsAffected() > 0) {
-            qDebug() << "Appointment deleted successfully!";
-        } else {
+        if (query.numRowsAffected() <= 0) {
             qDebug() << "No appointment found with the provided details.";
         }
     }
