@@ -248,9 +248,38 @@ void patientfeed::showAppointmentsContextMenu(const QPoint &pos)
 void patientfeed::cancelAppointment()
 {
     QListWidgetItem *item = ui->appointmentsListWidget->currentItem();
-    if (item) {
-        delete item;
+    if (!item)
+        return;
+
+    QString currentDetails = item->text().mid(2);
+
+    if (!currentDetails.contains(" with ") || !currentDetails.contains(" at "))
+    {
+        QMessageBox::warning(this, "Invalid Data", "Appointment data is corrupted or incorrectly formatted.");
+        return;
     }
+
+    QStringList parts = currentDetails.split(" with ");
+    QString dateTimeLocation = parts.value(0);
+    QString doctorAndLocation = parts.value(1);
+
+    QStringList dateTimeParts = dateTimeLocation.split(" - ");
+    QString date = dateTimeParts.value(0);
+    QString time = (dateTimeParts.size() > 1) ? dateTimeParts.value(1) : "";
+
+    QStringList doctorLocationParts = doctorAndLocation.split(" at ");
+    QString doctorName = doctorLocationParts.value(0).trimmed();
+    QString location = doctorLocationParts.value(1).trimmed();
+
+    if (doctorName.startsWith("Dr. "))
+    {
+        doctorName = doctorName.mid(4);
+    }
+
+
+    Delete_User_Appointment(strUsername, doctorName.toStdString(), location.toStdString(), date.toStdString(), time.toStdString());
+
+    delete item;
 }
 
 void patientfeed::setupAppointmentForm()
