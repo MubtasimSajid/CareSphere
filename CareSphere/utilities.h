@@ -76,7 +76,7 @@ inline std::vector<std::string> get_User_Notes(const std::string &username) {
         notes.push_back(query.value(0).toString().toStdString());  // Add each note as a separate string
     }
 
-    return notes.empty() ? std::vector<std::string>{"No notes found for this user."} : notes;
+    return notes.empty() ? std::vector<std::string>{""} : notes;
 }
 
 #endif
