@@ -32,7 +32,9 @@ patientfeed::patientfeed(QWidget *parent)
 
     vector<string> userNotes = get_User_Notes(strUsername);
     for (const string &note : userNotes) {
-        addBulletPoint(true, QString::fromStdString(note));
+        if (!note.empty()) {
+            addBulletPoint(true, QString::fromStdString(note));
+        }
     }
 }
 
