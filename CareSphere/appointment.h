@@ -8,7 +8,6 @@
 #include <vector>
 #include "MySQL_utilities.h"
 
-
 using namespace std;
 
 class Appointment {

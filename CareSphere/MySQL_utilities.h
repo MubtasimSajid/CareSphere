@@ -21,16 +21,12 @@ inline void MySQLinit(){
         qDebug() << "Database connection failed:" << db.lastError().text();
         return;
     }
-
-    qDebug() << "Connected to MySQL Database Successfully!";
 }
 
 inline void MySQL_Insert(QString query_insert) {
     QSqlQuery query;
 
-    if (query.exec(query_insert)) {
-        qDebug() << "Operation inserted successfully!";
-    } else {
+    if (!query.exec(query_insert)) {
         qDebug() << "Failed to insert user:" << query.lastError().text();
     }
 }
@@ -38,9 +34,7 @@ inline void MySQL_Insert(QString query_insert) {
 inline void MySQL_Update(QString query_update) {
     QSqlQuery query;
 
-    if (query.exec(query_update)) {
-        qDebug() << "Operation updated successfully!";
-    } else {
+    if (!query.exec(query_update)) {
         qDebug() << "Failed to insert user:" << query.lastError().text();
     }
 }
