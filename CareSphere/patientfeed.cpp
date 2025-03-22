@@ -1,14 +1,17 @@
 #include "patientfeed.h"
 
-QSettings settingsUser("CareSphere", "Login System");
-QString username = settingsUser.value("username", "").toString();
-string strUsername = username.toStdString();
+QString username;
+string strUsername;
 
 patientfeed::patientfeed(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::patientfeed)
 {
     ui->setupUi(this);
+
+    QSettings settingsUser("CareSphere", "Login System");
+    username = settingsUser.value("username", "").toString();
+    strUsername = username.toStdString();
 
     loadPrescriptions();
     loadReminders();
@@ -45,9 +48,9 @@ patientfeed::~patientfeed()
 
 void patientfeed::on_logOutButton_clicked()
 {
+    this->close();
     Login *loginWindow = new Login();
     loginWindow->show();
-    this->close();
 }
 
 

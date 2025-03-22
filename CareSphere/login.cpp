@@ -68,12 +68,21 @@ void Login::on_loginButton_clicked() {
 
     if (verify(user, pass)) {
         QSettings settingsUser("CareSphere", "Login System");
+        settingsUser.remove("username");
         settingsUser.setValue("username", username);
+        settingsUser.sync();
 
-        patientfeed *patientFeedWindow = new patientfeed();
+        this->hide();
+
+        static patientfeed *patientFeedWindow = nullptr;
+        if (!patientFeedWindow) {
+            patientFeedWindow = new patientfeed();
+        } else {
+            patientFeedWindow->close();
+            patientFeedWindow = new patientfeed();
+        }
         patientFeedWindow->show();
         ui->errorLabel->hide();
-        this->close();
     } else {
         ui->errorLabel->setText("Invalid username or password");
         ui->errorLabel->setStyleSheet("color: red;");
@@ -99,7 +108,7 @@ bool Login::eventFilter(QObject *obj, QEvent *event) {
 
 void Login::on_registerButton_clicked()
 {
+    this->close();
     Registration *registerWindow = new Registration();
     registerWindow->show();
-    this->close();
 }

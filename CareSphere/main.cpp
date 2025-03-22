@@ -1,6 +1,7 @@
 #include <QApplication>
+#include <QSettings>
 #include "login.h"
-#include"prescription.h"
+#include "prescription.h"
 #include "MySQL_utilities.h"
 #include "reminders.h"
 #include "appointment.h"
@@ -19,5 +20,11 @@ int main(int argc, char *argv[]) {
     Login loginWindow;
     loginWindow.show();
 
-    return a.exec();
+    int result = a.exec();
+
+    QSettings settings("CareSphere", "Login System");
+    settings.clear();
+    settings.sync();
+
+    return result;
 }
