@@ -53,9 +53,9 @@ void patientfeed::on_logOutButton_clicked()
 
 void patientfeed::on_feedToProfileButton_clicked()
 {
+    this->close();
     patientprofile *patientProfileWindow = new patientprofile();
     patientProfileWindow->show();
-    this->close();
 }
 
 void patientfeed::addBulletPoint(bool fromDB, QString text)
