@@ -1,0 +1,41 @@
+﻿  Hospital.cpp
+D:\OOP PROJECT\MySQL_CareSphere\MySQL1\MySQL\src\Hospital.cpp(413,78): warning C4267: 'argument': conversion from 'size_t' to 'unsigned long', possible loss of data
+D:\OOP PROJECT\MySQL_CareSphere\MySQL1\MySQL\src\Hospital.cpp(414,81): warning C4267: 'argument': conversion from 'size_t' to 'unsigned long', possible loss of data
+D:\OOP PROJECT\MySQL_CareSphere\MySQL1\MySQL\src\Hospital.cpp(415,81): warning C4267: 'argument': conversion from 'size_t' to 'unsigned long', possible loss of data
+D:\OOP PROJECT\MySQL_CareSphere\MySQL1\MySQL\src\Hospital.cpp(416,90): warning C4267: 'argument': conversion from 'size_t' to 'unsigned long', possible loss of data
+D:\OOP PROJECT\MySQL_CareSphere\MySQL1\MySQL\src\Hospital.cpp(417,75): warning C4267: 'argument': conversion from 'size_t' to 'unsigned long', possible loss of data
+D:\OOP PROJECT\MySQL_CareSphere\MySQL1\MySQL\src\Hospital.cpp(418,102): warning C4267: 'argument': conversion from 'size_t' to 'unsigned long', possible loss of data
+D:\OOP PROJECT\MySQL_CareSphere\MySQL1\MySQL\src\Hospital.cpp(419,87): warning C4267: 'argument': conversion from 'size_t' to 'unsigned long', possible loss of data
+D:\OOP PROJECT\MySQL_CareSphere\MySQL1\MySQL\src\Hospital.cpp(420,78): warning C4267: 'argument': conversion from 'size_t' to 'unsigned long', possible loss of data
+D:\OOP PROJECT\MySQL_CareSphere\MySQL1\MySQL\src\Hospital.cpp(421,81): warning C4267: 'argument': conversion from 'size_t' to 'unsigned long', possible loss of data
+D:\OOP PROJECT\MySQL_CareSphere\MySQL1\MySQL\src\Hospital.cpp(422,87): warning C4267: 'argument': conversion from 'size_t' to 'unsigned long', possible loss of data
+D:\OOP PROJECT\MySQL_CareSphere\MySQL1\MySQL\src\Hospital.cpp(423,87): warning C4267: 'argument': conversion from 'size_t' to 'unsigned long', possible loss of data
+D:\OOP PROJECT\MySQL_CareSphere\MySQL1\MySQL\src\Hospital.cpp(437,34): warning C4244: '=': conversion from 'uint64_t' to 'int', possible loss of data
+D:\OOP PROJECT\MySQL_CareSphere\MySQL1\MySQL\src\Hospital.cpp(489,107): warning C4267: 'argument': conversion from 'size_t' to 'unsigned long', possible loss of data
+D:\OOP PROJECT\MySQL_CareSphere\MySQL1\MySQL\src\Hospital.cpp(490,101): warning C4267: 'argument': conversion from 'size_t' to 'unsigned long', possible loss of data
+D:\OOP PROJECT\MySQL_CareSphere\MySQL1\MySQL\src\Hospital.cpp(549,106): warning C4267: 'argument': conversion from 'size_t' to 'unsigned long', possible loss of data
+D:\OOP PROJECT\MySQL_CareSphere\MySQL1\MySQL\src\Hospital.cpp(550,96): warning C4267: 'argument': conversion from 'size_t' to 'unsigned long', possible loss of data
+D:\OOP PROJECT\MySQL_CareSphere\MySQL1\MySQL\src\Hospital.cpp(606,104): warning C4267: 'argument': conversion from 'size_t' to 'unsigned long', possible loss of data
+D:\OOP PROJECT\MySQL_CareSphere\MySQL1\MySQL\src\Hospital.cpp(607,107): warning C4267: 'argument': conversion from 'size_t' to 'unsigned long', possible loss of data
+D:\OOP PROJECT\MySQL_CareSphere\MySQL1\MySQL\src\Hospital.cpp(608,107): warning C4267: 'argument': conversion from 'size_t' to 'unsigned long', possible loss of data
+D:\OOP PROJECT\MySQL_CareSphere\MySQL1\MySQL\src\Hospital.cpp(609,101): warning C4267: 'argument': conversion from 'size_t' to 'unsigned long', possible loss of data
+D:\OOP PROJECT\MySQL_CareSphere\MySQL1\MySQL\src\Hospital.cpp(610,116): warning C4267: 'argument': conversion from 'size_t' to 'unsigned long', possible loss of data
+D:\OOP PROJECT\MySQL_CareSphere\MySQL1\MySQL\src\Hospital.cpp(611,116): warning C4267: 'argument': conversion from 'size_t' to 'unsigned long', possible loss of data
+D:\OOP PROJECT\MySQL_CareSphere\MySQL1\MySQL\src\Hospital.cpp(631,34): warning C4244: 'initializing': conversion from 'uint64_t' to 'int', possible loss of data
+D:\OOP PROJECT\MySQL_CareSphere\MySQL1\MySQL\src\Hospital.cpp(650,30): warning C4244: 'initializing': conversion from 'uint64_t' to 'int', possible loss of data
+D:\OOP PROJECT\MySQL_CareSphere\MySQL1\MySQL\src\Hospital.cpp(695,94): warning C4267: 'argument': conversion from 'size_t' to 'unsigned long', possible loss of data
+D:\OOP PROJECT\MySQL_CareSphere\MySQL1\MySQL\src\Hospital.cpp(724,106): warning C4267: 'argument': conversion from 'size_t' to 'unsigned long', possible loss of data
+D:\OOP PROJECT\MySQL_CareSphere\MySQL1\MySQL\src\Hospital.cpp(932,78): warning C4267: 'argument': conversion from 'size_t' to 'unsigned long', possible loss of data
+D:\OOP PROJECT\MySQL_CareSphere\MySQL1\MySQL\src\Hospital.cpp(933,81): warning C4267: 'argument': conversion from 'size_t' to 'unsigned long', possible loss of data
+D:\OOP PROJECT\MySQL_CareSphere\MySQL1\MySQL\src\Hospital.cpp(934,87): warning C4267: 'argument': conversion from 'size_t' to 'unsigned long', possible loss of data
+D:\OOP PROJECT\MySQL_CareSphere\MySQL1\MySQL\src\Hospital.cpp(935,78): warning C4267: 'argument': conversion from 'size_t' to 'unsigned long', possible loss of data
+D:\OOP PROJECT\MySQL_CareSphere\MySQL1\MySQL\src\Hospital.cpp(936,81): warning C4267: 'argument': conversion from 'size_t' to 'unsigned long', possible loss of data
+D:\OOP PROJECT\MySQL_CareSphere\MySQL1\MySQL\src\Hospital.cpp(937,87): warning C4267: 'argument': conversion from 'size_t' to 'unsigned long', possible loss of data
+D:\OOP PROJECT\MySQL_CareSphere\MySQL1\MySQL\src\Hospital.cpp(938,87): warning C4267: 'argument': conversion from 'size_t' to 'unsigned long', possible loss of data
+     Creating library D:\OOP PROJECT\MySQL_CareSphere\MySQL1\x64\Release\MySQL.lib and object D:\OOP PROJECT\MySQL_CareSphere\MySQL1\x64\Release\MySQL.exp
+  Generating code
+  1 of 1246 functions (<0.1%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    89 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  MySQL.vcxproj -> D:\OOP PROJECT\MySQL_CareSphere\MySQL1\x64\Release\MySQL.exe
