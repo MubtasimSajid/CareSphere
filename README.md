@@ -40,6 +40,9 @@ SELECT * FROM appointments;
 ```
 If they are working correctly, you're good to go. Otherwise, there may have been an error in executing the .sql file.
 
+Here are the images for each tab & window for the GUI app:
+![GUI - Login](Screenshots/GUI%20-%20Login.jpg)
+
 # CareSphere CLI
 The CLI app is way more verbose in terms of the rich feature set it offers. It has different modes for different types of users: doctors, hospitals & patients. This is the app for hospitals/clinics to hold all their management-related information to properly deliver healthcare services. Doctors can log in here, link themselves to a medicare institution & manage their availability, patient list & other professional details seamlessly. Similarly, a patient can book an appointment with a doctor, store their previous medical record & see their medical details at a glance. This is the one app for the different players in the health management sector to not only properly handle themselves, but also to easily collaborate with other parties.
 
