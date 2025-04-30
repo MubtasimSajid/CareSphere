@@ -42,6 +42,12 @@ If they are working correctly, you're good to go. Otherwise, there may have been
 
 Here are the images for each tab & window for the GUI app:
 ![GUI - Login](Screenshots/GUI%20-%20Login.jpg)
+![GUI - Registration](Screenshots/GUI%20-%20Registration.jpg)
+![GUI - Register Info](Screenshots/GUI%20-%20Register%20Info.jpg)
+![GUI - Prescriptions](Screenshots/GUI%20-%20Prescriptions.jpg)
+![GUI - Reminders](Screenshots/GUI%20-%20Reminders.jpg)
+![GUI - Appointments](Screenshots/GUI%20-%20Appointments.jpg)
+![GUI - Patient Profile](Screenshots/GUI%20-%20Patient%20Profile.jpg)
 
 # CareSphere CLI
 The CLI app is way more verbose in terms of the rich feature set it offers. It has different modes for different types of users: doctors, hospitals & patients. This is the app for hospitals/clinics to hold all their management-related information to properly deliver healthcare services. Doctors can log in here, link themselves to a medicare institution & manage their availability, patient list & other professional details seamlessly. Similarly, a patient can book an appointment with a doctor, store their previous medical record & see their medical details at a glance. This is the one app for the different players in the health management sector to not only properly handle themselves, but also to easily collaborate with other parties.
@@ -51,10 +57,15 @@ The technologies used here are listed below -
 2. MySQL Database
 3. MySQL Connector for C++
 
-To run this app locally, first clone the "CLI" folder (or download & extract the ZIP), & then open the folder in Visual Studio (it can, obviously, be run on other IDEs as well (may need more tinkering in some cases), but we'll stick to Visual Studio as that's where it was written). Configure the MySQL Connector from the project settings to match with your device's setup. The database connection details (such as host, username & password) may need to be updated inside the code. After all that's done, the project is ready to be built & run.
+To run this app locally, first clone the "CLI" folder (or download & extract the ZIP), & then open the folder in Visual Studio (it can be run on other IDEs as well (may need more tinkering in some cases), but we'll stick to Visual Studio as that's where it was written). Configure the MySQL Connector from the project settings to match with your device's setup. The database connection details (such as host, username & password) may need to be updated inside the code. After all that's done, the project is ready to be built & run.
 The project is structured into 3 sub-folders.
 /src - main source files, houses all the .cpp codes
 /include - the header files reside here
+
+The screenshots for the various dashboards are attached below:
+![CLI - Hospital Dashboard](Screenshots/CLI%20-%20Hospital%20Dashboard.jpg)
+![CLI - Doctor Dashboard](Screenshots/CLI%20-%20Doctor%20Dashboard.jpg)
+![CLI - Patient Dashboard](Screenshots/CLI%20-%20Patient%20Dashboard.jpg)
 
 # License
 CareSphere was initially made to be submitted as a project submission for IUT CSE-22's OOP-4302 lab course. It was made by [Mubtasim Sajid Ahmed](https://github.com/MubtasimSajid), [Mahmudul Hasan Sakib](https://github.com/beiged231), [Farhan Tahsin Khan](https://github.com/Farhan41229) & [AKM Ishmam Tahmid](https://github.com/ishmam259). Now we're releasing this fully open & free. Hope you have fun tinkering with it. If you develop further upon it & change the apps substantially, you're allowed to place your own preferred license over it.
