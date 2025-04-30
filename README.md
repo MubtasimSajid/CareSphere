@@ -41,6 +41,7 @@ SELECT * FROM appointments;
 If they are working correctly, you're good to go. Otherwise, there may have been an error in executing the .sql file.
 
 Here are the images for each tab & window for the GUI app:
+
 ![GUI - Login](Screenshots/GUI%20-%20Login.jpg)
 ![GUI - Registration](Screenshots/GUI%20-%20Registration.jpg)
 ![GUI - Register Info](Screenshots/GUI%20-%20Register%20Info.jpg)
@@ -63,6 +64,7 @@ The project is structured into 3 sub-folders.
 /include - the header files reside here
 
 The screenshots for the various dashboards are attached below:
+
 ![CLI - Hospital Dashboard](Screenshots/CLI%20-%20Hospital%20Dashboard.jpg)
 ![CLI - Doctor Dashboard](Screenshots/CLI%20-%20Doctor%20Dashboard.jpg)
 ![CLI - Patient Dashboard](Screenshots/CLI%20-%20Patient%20Dashboard.jpg)
