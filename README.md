@@ -4,7 +4,7 @@ We have 2 different editions of the app - a GUI version, another CLI. Both of th
 
 Below are explanations for both of them & the ways to set them up -
 
-# CareSphere GUI
+## CareSphere GUI
 The GUI edition of CareSphere aims to be a one-stop personal hub for the patient to collect & organise all their medical necessities, including prescriptions, reminders, appointments & notes. It intuitively visualises the healthcare-related materials in one place  & helps you elegantly order your medical priorities.
 
 The GUI app was created using C++ blended with Qt. The files needed for this app to run locally are stored in the GUI directory. For some reason, if the steps described below to test the app out yourself don't work, please try renaming the "GUI" folder to "CareSphere".
@@ -56,7 +56,7 @@ Here are the images for each tab & window for the GUI app:
 
 ![GUI - Patient Profile](Screenshots/GUI%20-%20Patient%20Profile.jpg)
 
-# CareSphere CLI
+## CareSphere CLI
 The CLI app is way more verbose in terms of the rich feature set it offers. It has different modes for different types of users: doctors, hospitals & patients. This is the app for hospitals/clinics to hold all their management-related information to properly deliver healthcare services. Doctors can log in here, link themselves to a medicare institution & manage their availability, patient list & other professional details seamlessly. Similarly, a patient can book an appointment with a doctor, store their previous medical record & see their medical details at a glance. This is the one app for the different players in the health management sector to not only properly handle themselves, but also to easily collaborate with other parties.
 
 The technologies used here are listed below -
