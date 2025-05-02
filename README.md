@@ -2,7 +2,7 @@
 CareSphere is a healthcare management system which aims to provide a platform for the different stakeholders of the sector (patients, doctors & hospitals/clinics alike) with a carefully curated featureset to enable them to handle their operations more efficiently & communicate with others more effectively. CareSphere simplifies medicare management.
 We have 2 different editions of the app - a GUI version, another CLI. Both of them offer a separate set of features & were designed for the purposes of a different demographic.
 
-Below are explanations for both of them & the ways to set them up -
+Below are explanations for both of them & the ways to set them up (the 'Screenshots' folder holds the snapshots of how each app is supposed to look) -
 
 ## CareSphere GUI
 The GUI edition of CareSphere aims to be a one-stop personal hub for the patient to collect & organise all their medical necessities, including prescriptions, reminders, appointments & notes. It intuitively visualises the healthcare-related materials in one place  & helps you elegantly order your medical priorities.
