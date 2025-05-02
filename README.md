@@ -66,8 +66,14 @@ The technologies used here are listed below -
 
 To run this app locally, first clone the "CLI" folder (or download & extract the ZIP), & then open the folder in Visual Studio (it can be run on other IDEs as well (may need more tinkering in some cases), but we'll stick to Visual Studio as that's where it was written). Configure the MySQL Connector from the project settings to match with your device's setup. The database connection details (such as host, username & password) may need to be updated inside the code. After all that's done, the project is ready to be built & run.
 The project is structured into 3 sub-folders.
+
 /src - main source files, houses all the .cpp codes
+
 /include - the header files reside here
+
+/x64/release - object files (.obj) are collected here
+
+All other files are stored right under the "CLI" directory.
 
 The screenshots for the various dashboards are attached below:
 
