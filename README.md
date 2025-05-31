@@ -83,5 +83,19 @@ The screenshots for the various dashboards are attached below:
 
 ![CLI - Patient Dashboard](Screenshots/CLI%20-%20Patient%20Dashboard.jpg)
 
-# License
-CareSphere was initially made to be submitted as a project submission for IUT CSE-22's OOP-4302 lab course. It was made by [Mubtasim Sajid Ahmed](https://github.com/MubtasimSajid), [Mahmudul Hasan Sakib](https://github.com/beiged231), [Farhan Tahsin Khan](https://github.com/Farhan41229) & [AKM Ishmam Tahmid](https://github.com/ishmam259). Now we're releasing this fully open & free. Hope you have fun tinkering with it. If you develop further upon it & change the apps substantially, you're allowed to place your own preferred license over it.
+## Contributions
+CareSphere was initially made to be submitted as a project submission for IUT CSE-22's OOP-4302 lab course. It was made by [Mubtasim Sajid Ahmed](https://github.com/MubtasimSajid), [Mahmudul Hasan Sakib](https://github.com/beiged231), [Farhan Tahsin Khan](https://github.com/Farhan41229) & [AKM Ishmam Tahmid](https://github.com/ishmam259).
+
+## 📜 License
+
+This project is licensed under the **GNU General Public License v3.0 (GPLv3)**.
+
+You are free to:
+
+- Use, study, and modify the source code.
+- Distribute original or modified versions, **provided they are also licensed under GPLv3**.
+
+> This ensures that all derivative works remain free and open-source under the same license.
+
+For full license details, see the [LICENSE](./LICENSE) file or visit the official GNU website:  
+[https://www.gnu.org/licenses/gpl-3.0.html](https://www.gnu.org/licenses/gpl-3.0.html)
